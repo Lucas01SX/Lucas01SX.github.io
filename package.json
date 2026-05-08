@@ -10,6 +10,10 @@
     "lint": "ng lint",
     "prepare": "husky"
   },
+  "lint-staged": {
+    "*.{ts,html}": "eslint --fix",
+    "*.{ts,html,scss,json}": "prettier --write"
+  },
   "private": true,
   "packageManager": "npm@10.9.4",
   "dependencies": {
