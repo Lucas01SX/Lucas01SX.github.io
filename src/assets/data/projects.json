@@ -1,0 +1,50 @@
+[
+  {
+    "slug": "helpdesk-dotnet",
+    "title": "Helpdesk API (.NET)",
+    "shortDescription": "Helpdesk ticket system built with Clean Architecture, EF Core, and PostgreSQL.",
+    "description": "Full-featured helpdesk domain built in C# .NET 8. Implements a ticket state machine (Open → In Progress → Resolved / Cancelled) with role-based access control, SLA deadline tracking, domain events, and structured logging. Refresh token rotation with family invalidation. Auth audit events.",
+    "stack": ["C#", ".NET 8", "EF Core", "PostgreSQL", "Docker", "MSTest"],
+    "category": "Backend API",
+    "status": "in-progress",
+    "architecture": {
+      "summary": "Clean Architecture with four layers: Domain, Application, Infrastructure, and API. Domain layer has zero external dependencies. State transitions enforced at domain layer only. Use Cases injected directly via DI — no command bus.",
+      "diagram": "graph TD\n  API[API Layer] --> APP[Application / Use Cases]\n  APP --> DOM[Domain]\n  APP --> INF[Infrastructure]\n  INF --> DOM\n  INF --> DB[(PostgreSQL)]"
+    },
+    "links": {
+      "github": "https://github.com/Lucas01SX"
+    }
+  },
+  {
+    "slug": "helpdesk-nestjs",
+    "title": "Helpdesk API (NestJS)",
+    "shortDescription": "Same helpdesk domain reimplemented in TypeScript using Fastify, Prisma, and BullMQ.",
+    "description": "TypeScript implementation of the same helpdesk domain. Uses Fastify for performance, Prisma as ORM, BullMQ for async event processing, and Vitest for testing. Demonstrates that domain invariants survive a complete stack change.",
+    "stack": ["TypeScript", "NestJS", "Fastify", "Prisma", "PostgreSQL", "BullMQ", "Vitest"],
+    "category": "Backend API",
+    "status": "planned",
+    "architecture": {
+      "summary": "Modular NestJS structure with dedicated modules per domain area. Domain logic isolated from the framework. BullMQ handles async event dispatch after persistence.",
+      "diagram": "graph TD\n  API[Fastify / NestJS] --> MOD[Domain Modules]\n  MOD --> DOM[Domain Layer]\n  MOD --> PRI[Prisma ORM]\n  PRI --> DB[(PostgreSQL)]\n  MOD --> BULL[BullMQ]\n  BULL --> WORKER[Event Workers]"
+    },
+    "links": {
+      "github": "https://github.com/Lucas01SX"
+    }
+  },
+  {
+    "slug": "helpdesk-java",
+    "title": "Helpdesk API (Java)",
+    "shortDescription": "Java implementation with Spring Boot, JPA, and JUnit 5 test coverage.",
+    "description": "Java implementation of the helpdesk domain using Spring Boot 3 and Spring Data JPA. Applies the same architectural decisions — Clean Architecture, spec-first domain invariants, role-based authorization — in a strongly-typed enterprise stack.",
+    "stack": ["Java", "Spring Boot 3", "Spring Data JPA", "PostgreSQL", "JUnit 5"],
+    "category": "Backend API",
+    "status": "planned",
+    "architecture": {
+      "summary": "Layered architecture following Spring Boot conventions. Repository pattern via Spring Data JPA. Domain invariants enforced in the service layer. JUnit 5 for all business rule coverage.",
+      "diagram": "graph TD\n  CTL[Controllers] --> SVC[Service Layer]\n  SVC --> DOM[Domain]\n  SVC --> REP[Repository]\n  REP --> DB[(PostgreSQL)]"
+    },
+    "links": {
+      "github": "https://github.com/Lucas01SX"
+    }
+  }
+]

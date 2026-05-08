@@ -1,0 +1,49 @@
+@if (project(); as p) {
+  <article class="detail section">
+    <div class="container">
+      <header class="detail__header">
+        <span class="detail__category">{{ p.category }}</span>
+        <h1 class="detail__title" data-testid="project-title">{{ p.title }}</h1>
+        <span class="detail__status detail__status--{{ p.status }}" data-testid="project-status">{{
+          p.status
+        }}</span>
+      </header>
+
+      <p class="detail__description" data-testid="project-description">{{ p.description }}</p>
+
+      <section class="detail__stack" data-testid="stack-section">
+        <h2 class="detail__section-heading">Tech Stack</h2>
+        <ul class="detail__stack-list">
+          @for (tech of p.stack; track tech) {
+            <li class="detail__tech">{{ tech }}</li>
+          }
+        </ul>
+      </section>
+
+      <section class="detail__architecture" data-testid="architecture-section">
+        <h2 class="detail__section-heading">Architecture Zone</h2>
+        <p class="detail__arch-summary">{{ p.architecture.summary }}</p>
+        <app-mermaid-diagram [definition]="p.architecture.diagram" />
+      </section>
+
+      @if (p.links.github) {
+        <div class="detail__links">
+          <a
+            [href]="p.links.github"
+            class="detail__github-link"
+            data-testid="github-link"
+            target="_blank"
+            rel="noopener noreferrer"
+            >View on GitHub</a
+          >
+        </div>
+      }
+    </div>
+  </article>
+} @else {
+  <div class="detail-not-found section">
+    <div class="container">
+      <p data-testid="not-found-message">Project not found.</p>
+    </div>
+  </div>
+}

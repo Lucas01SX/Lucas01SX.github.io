@@ -1,0 +1,41 @@
+<main class="projects-page section">
+  <div class="container">
+    <h1 class="projects-page__heading">Projects</h1>
+    <p class="projects-page__subtitle">
+      Same domain. Different stacks. Each one built to demonstrate architecture depth.
+    </p>
+
+    @if (projects().length === 0) {
+      <p class="projects-page__empty" data-testid="loading">Loading projects...</p>
+    } @else {
+      <ul class="projects-page__grid" data-testid="project-list">
+        @for (project of projects(); track project.slug) {
+          <li class="project-card" data-testid="project-card">
+            <div class="project-card__header">
+              <span class="project-card__category">{{ project.category }}</span>
+              <span
+                class="project-card__status project-card__status--{{ project.status }}"
+                data-testid="project-status"
+                >{{ project.status }}</span
+              >
+            </div>
+            <h2 class="project-card__title">{{ project.title }}</h2>
+            <p class="project-card__description">{{ project.shortDescription }}</p>
+            <ul class="project-card__stack">
+              @for (tech of project.stack; track tech) {
+                <li class="project-card__tech">{{ tech }}</li>
+              }
+            </ul>
+            <a
+              [routerLink]="['/projects', project.slug]"
+              class="project-card__link"
+              data-testid="project-link"
+            >
+              View Project
+            </a>
+          </li>
+        }
+      </ul>
+    }
+  </div>
+</main>
