@@ -1,0 +1,19 @@
+<header class="header">
+  <a data-testid="logo" routerLink="/" class="header__logo">Lucas Santana</a>
+
+  <nav class="header__nav">
+    <a routerLink="/">Home</a>
+    <a routerLink="/projects">Projects</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <button
+    data-testid="theme-toggle"
+    type="button"
+    class="header__theme-toggle"
+    (click)="toggleTheme()"
+    [attr.aria-label]="theme() === 'dark' ? 'Switch to light theme' : 'Switch to dark theme'"
+  >
+    {{ theme() === 'dark' ? 'Light' : 'Dark' }}
+  </button>
+</header>
