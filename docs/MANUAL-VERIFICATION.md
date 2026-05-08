@@ -120,3 +120,53 @@ Behaviors that cannot be automated. Each must be verified before marking the mil
 5. Confirm footer content is visible
 
 **When to verify:** Before closing M2.
+
+---
+
+## M3 — Design Foundation
+
+### Dark and light theme visual completeness
+
+**Why it cannot be automated:** CSS custom property values and computed colors cannot be asserted in unit tests.
+
+**Expected behavior:** Both themes render correctly across all current surfaces. Dark: near-black background (`#0a0a0f`), dark surface (`#111118`), light text (`#e2e8f0`), blue accent (`#3b82f6`). Light: off-white background (`#f8fafc`), white surface, dark text (`#0f172a`), darker blue accent (`#2563eb`). Header and footer borders are visible in both themes. No FOUC (flash of unstyled content) on load or theme switch.
+
+**How to verify:**
+1. Run `npm start` and open `http://localhost:4200`
+2. Confirm dark theme defaults on first load — background, text, header, footer colors correct
+3. Click theme toggle — confirm full page switches to light theme, all surfaces update
+4. Open DevTools → Elements → `<html>` → confirm `data-theme` attribute changes on toggle
+5. Inspect any text element → Computed styles → confirm correct `color` value for the active theme
+
+**When to verify:** Before closing M3.
+
+---
+
+### Sticky header behavior
+
+**Why it cannot be automated:** `position: sticky` scroll behavior requires a browser environment.
+
+**Expected behavior:** The header stays fixed at the top of the viewport as the user scrolls down the page. Content scrolls behind it, not above it.
+
+**How to verify:**
+1. Open `http://localhost:4200`
+2. Add enough content to the home component to allow scrolling (or reduce viewport height)
+3. Scroll down — confirm header remains visible and pinned at the top
+4. Confirm no content overlap or z-index issues
+
+**When to verify:** Before closing M3.
+
+---
+
+### Container and section layout
+
+**Why it cannot be automated:** Visual centering and max-width layout require browser rendering.
+
+**Expected behavior:** Content sections are centered with a max-width of 1100px. On desktop they are centered with padding. On mobile (< 640px) the padding reduces to `--space-4`.
+
+**How to verify:**
+1. Open `http://localhost:4200` on a wide screen (> 1100px)
+2. Apply `.container` and `.section` classes to a test element — confirm horizontal centering and max-width
+3. Resize to 375px width — confirm padding shrinks, no horizontal scroll
+
+**When to verify:** When first content section using `.container` is added in M4.
