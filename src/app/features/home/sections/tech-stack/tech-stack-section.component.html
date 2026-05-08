@@ -1,0 +1,17 @@
+<section class="stack section">
+  <div class="container">
+    <h2 class="stack__heading">Tech Stack</h2>
+    <div class="stack__grid">
+      @for (category of categories; track category.name) {
+        <div class="stack__category" data-testid="stack-category">
+          <h3 class="stack__category-name">{{ category.name }}</h3>
+          <ul class="stack__items">
+            @for (item of category.items; track item) {
+              <li class="stack__item">{{ item }}</li>
+            }
+          </ul>
+        </div>
+      }
+    </div>
+  </div>
+</section>

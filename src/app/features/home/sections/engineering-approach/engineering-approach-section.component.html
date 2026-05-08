@@ -1,0 +1,13 @@
+<section class="approach section">
+  <div class="container">
+    <h2 class="approach__heading">Engineering Approach</h2>
+    <ul class="approach__pillars" data-testid="pillars">
+      @for (pillar of pillars; track pillar.title) {
+        <li class="approach__pillar">
+          <h3 class="approach__pillar-title">{{ pillar.title }}</h3>
+          <p class="approach__pillar-desc">{{ pillar.description }}</p>
+        </li>
+      }
+    </ul>
+  </div>
+</section>
