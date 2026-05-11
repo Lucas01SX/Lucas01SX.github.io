@@ -1,59 +1,89 @@
-# Lucas01SXGithubIo
+# Lucas Santana — Portfolio
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.2.10.
+Angular 21 portfolio showcasing backend architecture depth across .NET, TypeScript/NestJS, and Java stacks.
 
-## Development server
+**Live:** https://lucas01sx.github.io
 
-To start a local development server, run:
+---
 
-```bash
-ng serve
-```
+## Tech Stack
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+- **Framework:** Angular 21 (standalone components, signals)
+- **Language:** TypeScript (strict mode)
+- **Styles:** SCSS + BEM + CSS custom properties design tokens
+- **Tests:** Vitest via `@analogjs/vitest-angular`
+- **CI/CD:** GitHub Actions → GitHub Pages
 
-## Code scaffolding
+---
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+## Commands
 
 ```bash
-ng generate --help
+# Development server (http://localhost:4200)
+npm start
+
+# Run unit tests (watch mode)
+npm test
+
+# Run unit tests once (CI)
+npm test -- --run
+
+# Lint
+npm run lint
+
+# Production build
+npm run build
 ```
 
-## Building
+---
 
-To build the project run:
+## Branching Strategy
 
-```bash
-ng build
+This project follows **Gitflow Lite** to demonstrate a professional development workflow:
+
+| Branch | Purpose |
+|---|---|
+| `main` | Production — triggers GitHub Pages deploy |
+| `develop` | Integration — all features merge here first |
+| `feature/*` | Individual feature work branched from `develop` |
+| `hotfix/*` | Critical fixes branched from `main`, merged into both `main` and `develop` |
+
+**Flow:** `feature/*` → PR → `develop` → PR → `main` → auto-deploy
+
+---
+
+## Project Structure
+
+```
+src/app/
+├── core/
+│   ├── models/        ← TypeScript interfaces (Project, etc.)
+│   └── services/      ← ProjectService (HTTP), ThemeService (signals)
+├── features/
+│   ├── home/          ← Landing page with 6 sections
+│   └── projects/      ← Project list + detail with Mermaid diagrams
+├── layout/            ← Header (theme toggle, nav) and Footer
+└── shared/
+    └── components/    ← MermaidDiagramComponent
+public/
+└── assets/data/
+    └── projects.json  ← Static project catalog
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+---
 
-## Running unit tests
+## Architecture Diagrams
 
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
+Each project card includes a Mermaid.js architecture diagram rendered client-side via dynamic import — no SSR dependency.
 
-```bash
-ng test
-```
+---
 
-## Running end-to-end tests
+## CI Pipeline
 
-For end-to-end (e2e) testing, run:
+Every push to `main` or `develop` and every PR targeting those branches runs:
 
-```bash
-ng e2e
-```
+1. **Lint** — ESLint + Prettier
+2. **Test** — Vitest (89 tests)
+3. **Build** — Angular production build
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+Merges to `main` additionally trigger the **Deploy** workflow to GitHub Pages.
