@@ -15,6 +15,7 @@
             [routerLink]="['/projects', project.slug]"
             class="project-card__link"
             data-testid="project-link"
+            [attr.aria-label]="'View ' + project.title"
           >
             View Project
           </a>

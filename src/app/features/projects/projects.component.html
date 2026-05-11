@@ -1,4 +1,4 @@
-<main class="projects-page section">
+<div class="projects-page section">
   <div class="container">
     <h1 class="projects-page__heading">Projects</h1>
     <p class="projects-page__subtitle">
@@ -30,6 +30,7 @@
               [routerLink]="['/projects', project.slug]"
               class="project-card__link"
               data-testid="project-link"
+              [attr.aria-label]="'View ' + project.title"
             >
               View Project
             </a>
@@ -38,4 +39,4 @@
       </ul>
     }
   </div>
-</main>
+</div>
