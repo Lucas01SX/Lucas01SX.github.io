@@ -49,3 +49,27 @@
     }
   }
 }
+
+@media (max-width: 640px) {
+  .header {
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    padding: var(--space-3) var(--space-4);
+
+    &__logo {
+      font-size: var(--text-base);
+      flex: 1;
+    }
+
+    &__nav {
+      order: 3;
+      width: 100%;
+      justify-content: center;
+      gap: var(--space-5);
+    }
+
+    &__theme-toggle {
+      font-size: var(--text-xs);
+    }
+  }
+}
