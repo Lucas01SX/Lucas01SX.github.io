@@ -1,5 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { EngineeringApproachSectionComponent } from './engineering-approach-section.component';
+import { translocoTesting } from '../../../../../testing/transloco-testing';
 
 describe('EngineeringApproachSectionComponent', () => {
   let fixture: ComponentFixture<EngineeringApproachSectionComponent>;
@@ -7,7 +8,7 @@ describe('EngineeringApproachSectionComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [EngineeringApproachSectionComponent],
+      imports: [EngineeringApproachSectionComponent, translocoTesting],
     }).compileComponents();
 
     fixture = TestBed.createComponent(EngineeringApproachSectionComponent);

@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { provideRouter } from '@angular/router';
 import { ProjectsPreviewSectionComponent } from './projects-preview-section.component';
+import { translocoTesting } from '../../../../../testing/transloco-testing';
 
 describe('ProjectsPreviewSectionComponent', () => {
   let fixture: ComponentFixture<ProjectsPreviewSectionComponent>;
@@ -8,7 +9,7 @@ describe('ProjectsPreviewSectionComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ProjectsPreviewSectionComponent],
+      imports: [ProjectsPreviewSectionComponent, translocoTesting],
       providers: [provideRouter([])],
     }).compileComponents();
 

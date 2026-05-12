@@ -1,6 +1,6 @@
-<section id="contact" class="contact section">
+<section id="contact" class="contact section" *transloco="let t">
   <div class="container">
-    <h2 class="contact__heading">Contact</h2>
+    <h2 class="contact__heading">{{ t('contact.heading') }}</h2>
     <div class="contact__links">
       <a
         href="https://github.com/Lucas01SX"
@@ -36,7 +36,7 @@
     >
       <input type="hidden" name="access_key" value="b3ee9b6c-6b8b-431e-93b8-40fe48cb9a8c" />
       <div class="contact__field">
-        <label for="contact-name">Name</label>
+        <label for="contact-name">{{ t('contact.name') }}</label>
         <input
           id="contact-name"
           type="text"
@@ -47,7 +47,7 @@
         />
       </div>
       <div class="contact__field">
-        <label for="contact-email">Email</label>
+        <label for="contact-email">{{ t('contact.email') }}</label>
         <input
           id="contact-email"
           type="email"
@@ -58,7 +58,7 @@
         />
       </div>
       <div class="contact__field">
-        <label for="contact-message">Message</label>
+        <label for="contact-message">{{ t('contact.message') }}</label>
         <textarea
           id="contact-message"
           name="message"
@@ -67,7 +67,9 @@
           data-testid="field-message"
         ></textarea>
       </div>
-      <button type="submit" class="contact__submit" data-testid="form-submit">Send Message</button>
+      <button type="submit" class="contact__submit" data-testid="form-submit">
+        {{ t('contact.submit') }}
+      </button>
     </form>
   </div>
 </section>

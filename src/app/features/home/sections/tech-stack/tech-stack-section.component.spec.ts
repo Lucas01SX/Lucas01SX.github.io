@@ -1,5 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { TechStackSectionComponent } from './tech-stack-section.component';
+import { translocoTesting } from '../../../../../testing/transloco-testing';
 
 describe('TechStackSectionComponent', () => {
   let fixture: ComponentFixture<TechStackSectionComponent>;
@@ -7,7 +8,7 @@ describe('TechStackSectionComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [TechStackSectionComponent],
+      imports: [TechStackSectionComponent, translocoTesting],
     }).compileComponents();
 
     fixture = TestBed.createComponent(TechStackSectionComponent);

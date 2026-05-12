@@ -1,18 +1,9 @@
-<section id="about" class="about section">
+<section id="about" class="about section" *transloco="let t">
   <div class="container">
-    <h2 class="about__heading">About</h2>
+    <h2 class="about__heading">{{ t('about.heading') }}</h2>
     <div class="about__content">
-      <p class="about__bio">
-        I'm a backend developer focused on building APIs that are secure by design, easy to observe
-        in production, and maintainable over time. I work primarily with
-        <strong>.NET/C#</strong>, <strong>TypeScript/NestJS</strong>, and
-        <strong>Java/Spring Boot</strong>.
-      </p>
-      <p class="about__bio">
-        My approach is spec-first: I think through failure cases and invariants before writing a
-        line of code. I care about structured logging, correlation IDs, and making systems that
-        behave predictably under pressure.
-      </p>
+      <p class="about__bio" [innerHTML]="t('about.bio1')"></p>
+      <p class="about__bio" [innerHTML]="t('about.bio2')"></p>
     </div>
   </div>
 </section>

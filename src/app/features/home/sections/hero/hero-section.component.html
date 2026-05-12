@@ -1,16 +1,14 @@
-<section class="hero section">
+<section class="hero section" *transloco="let t">
   <div class="container">
     <h1 class="hero__name" data-testid="hero-name">Lucas Santana</h1>
-    <p class="hero__title" data-testid="hero-title">Backend Developer — .NET · TypeScript · Java</p>
-    <p class="hero__subtitle">
-      Building secure, observable, and maintainable APIs for real-world systems.
-    </p>
+    <p class="hero__title" data-testid="hero-title">{{ t('hero.title') }}</p>
+    <p class="hero__subtitle">{{ t('hero.subtitle') }}</p>
     <div class="hero__ctas">
       <a data-testid="cta-projects" routerLink="/projects" class="hero__cta hero__cta--primary">
-        View Projects
+        {{ t('hero.cta_projects') }}
       </a>
       <a data-testid="cta-contact" href="#contact" class="hero__cta hero__cta--secondary">
-        Contact
+        {{ t('hero.cta_contact') }}
       </a>
     </div>
   </div>

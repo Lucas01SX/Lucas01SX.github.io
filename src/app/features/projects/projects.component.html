@@ -1,12 +1,10 @@
-<div class="projects-page section">
+<div class="projects-page section" *transloco="let t">
   <div class="container">
-    <h1 class="projects-page__heading">Projects</h1>
-    <p class="projects-page__subtitle">
-      Same domain. Different stacks. Each one built to demonstrate architecture depth.
-    </p>
+    <h1 class="projects-page__heading">{{ t('projects_page.heading') }}</h1>
+    <p class="projects-page__subtitle">{{ t('projects_page.subtitle') }}</p>
 
     @if (projects().length === 0) {
-      <p class="projects-page__empty" data-testid="loading">Loading projects...</p>
+      <p class="projects-page__empty" data-testid="loading">{{ t('projects_page.loading') }}</p>
     } @else {
       <ul class="projects-page__grid" data-testid="project-list">
         @for (project of projects(); track project.slug) {
@@ -16,7 +14,7 @@
               <span
                 class="project-card__status project-card__status--{{ project.status }}"
                 data-testid="project-status"
-                >{{ project.status }}</span
+                >{{ t('projects_page.status.' + project.status) }}</span
               >
             </div>
             <h2 class="project-card__title">{{ project.title }}</h2>
@@ -30,9 +28,9 @@
               [routerLink]="['/projects', project.slug]"
               class="project-card__link"
               data-testid="project-link"
-              [attr.aria-label]="'View ' + project.title"
+              [attr.aria-label]="t('projects_page.aria_view') + ' ' + project.title"
             >
-              View Project
+              {{ t('projects_page.view_project') }}
             </a>
           </li>
         }
