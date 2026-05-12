@@ -9,6 +9,18 @@
   padding-block: var(--space-24);
 }
 
+// Tablet
+@media (max-width: 768px) {
+  :root {
+    --container-padding: var(--space-5);
+  }
+
+  .section {
+    padding-block: var(--space-20);
+  }
+}
+
+// Mobile
 @media (max-width: 640px) {
   :root {
     --container-padding: var(--space-4);
