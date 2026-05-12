@@ -1,19 +1,36 @@
-<header class="header">
+<header class="header" *transloco="let t">
   <a data-testid="logo" routerLink="/" class="header__logo">Lucas Santana</a>
 
   <nav class="header__nav" aria-label="Site navigation">
-    <a routerLink="/">Home</a>
-    <a routerLink="/projects">Projects</a>
-    <a href="#contact">Contact</a>
+    <a routerLink="/">{{ t('nav.home') }}</a>
+    <a routerLink="/projects">{{ t('nav.projects') }}</a>
+    <a href="#contact">{{ t('nav.contact') }}</a>
   </nav>
 
-  <button
-    data-testid="theme-toggle"
-    type="button"
-    class="header__theme-toggle"
-    (click)="toggleTheme()"
-    [attr.aria-label]="theme() === 'dark' ? 'Switch to light theme' : 'Switch to dark theme'"
-  >
-    {{ theme() === 'dark' ? 'Light' : 'Dark' }}
-  </button>
+  <div class="header__controls">
+    <div class="header__lang" data-testid="lang-toggle">
+      @for (lang of langs; track lang) {
+        <button
+          type="button"
+          class="header__lang-btn"
+          [class.header__lang-btn--active]="activeLang() === lang"
+          (click)="setLang(lang)"
+          [attr.aria-label]="'Switch to ' + lang"
+          [attr.aria-current]="activeLang() === lang ? 'true' : null"
+        >
+          {{ lang === 'pt-BR' ? 'PT' : lang.toUpperCase() }}
+        </button>
+      }
+    </div>
+
+    <button
+      data-testid="theme-toggle"
+      type="button"
+      class="header__theme-toggle"
+      (click)="toggleTheme()"
+      [attr.aria-label]="theme() === 'dark' ? t('theme.aria_to_light') : t('theme.aria_to_dark')"
+    >
+      {{ theme() === 'dark' ? t('theme.to_light') : t('theme.to_dark') }}
+    </button>
+  </div>
 </header>

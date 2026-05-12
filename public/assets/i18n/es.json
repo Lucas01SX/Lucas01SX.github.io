@@ -1,0 +1,72 @@
+{
+  "nav": {
+    "home": "Inicio",
+    "projects": "Proyectos",
+    "contact": "Contacto"
+  },
+  "theme": {
+    "to_light": "Claro",
+    "to_dark": "Oscuro",
+    "aria_to_light": "Cambiar a tema claro",
+    "aria_to_dark": "Cambiar a tema oscuro"
+  },
+  "hero": {
+    "title": "Desarrollador Backend — .NET · TypeScript · Java",
+    "subtitle": "Construyendo APIs seguras, observables y mantenibles para sistemas reales.",
+    "cta_projects": "Ver Proyectos",
+    "cta_contact": "Contacto"
+  },
+  "about": {
+    "heading": "Sobre mí",
+    "bio1": "Soy un desarrollador backend enfocado en construir APIs seguras por diseño, fáciles de observar en producción y mantenibles con el tiempo. Trabajo principalmente con <strong>.NET/C#</strong>, <strong>TypeScript/NestJS</strong> y <strong>Java/Spring Boot</strong>.",
+    "bio2": "Mi enfoque es spec-first: pienso en los casos de falla e invariantes antes de escribir una línea de código. Me importa el logging estructurado, los correlation IDs y los sistemas que se comportan de forma predecible bajo presión."
+  },
+  "stack": {
+    "heading": "Stack Tecnológico"
+  },
+  "approach": {
+    "heading": "Enfoque de Ingeniería",
+    "pillars": {
+      "security": {
+        "title": "Seguridad Primero",
+        "description": "Auth, validación de entrada y control de acceso están incorporados en cada capa — no añadidos como pensamientos tardíos."
+      },
+      "observability": {
+        "title": "Observabilidad por Diseño",
+        "description": "Logging estructurado, correlation IDs y respuestas de error significativas hacen que el debugging en producción sea manejable."
+      },
+      "spec": {
+        "title": "Spec Antes del Código",
+        "description": "Los casos de falla e invariantes se definen antes de la implementación. Los tests guían el diseño."
+      }
+    }
+  },
+  "projects_preview": {
+    "heading": "Proyectos",
+    "view_project": "Ver Proyecto",
+    "view_all": "Ver todos los proyectos",
+    "aria_view": "Ver"
+  },
+  "projects_page": {
+    "heading": "Proyectos",
+    "subtitle": "Mismo dominio. Diferentes stacks. Cada uno construido para demostrar profundidad arquitectónica.",
+    "loading": "Cargando proyectos...",
+    "view_project": "Ver Proyecto",
+    "aria_view": "Ver",
+    "status": {
+      "in-progress": "En Progreso",
+      "planned": "Planificado",
+      "complete": "Completo"
+    }
+  },
+  "contact": {
+    "heading": "Contacto",
+    "name": "Nombre",
+    "email": "Correo electrónico",
+    "message": "Mensaje",
+    "submit": "Enviar Mensaje"
+  },
+  "footer": {
+    "copy": "© {{ year }} Lucas Santana. Todos los derechos reservados."
+  }
+}
