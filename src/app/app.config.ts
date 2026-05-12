@@ -1,12 +1,15 @@
 import { ApplicationConfig, provideBrowserGlobalErrorListeners, isDevMode } from '@angular/core';
 import { provideRouter, withInMemoryScrolling } from '@angular/router';
-import { provideHttpClient } from '@angular/common/http';
+import { provideHttpClient, withFetch } from '@angular/common/http';
 import { provideTransloco } from '@jsverse/transloco';
 
 import { routes } from './app.routes';
 import { TranslocoHttpLoader } from './transloco-loader';
+import { provideClientHydration, withEventReplay } from '@angular/platform-browser';
 
 function resolveInitialLang(): string {
+  if (typeof window === 'undefined') return 'en';
+
   const stored = localStorage.getItem('lang');
   if (stored && ['en', 'pt-BR', 'es'].includes(stored)) return stored;
 
@@ -23,7 +26,7 @@ export const appConfig: ApplicationConfig = {
       routes,
       withInMemoryScrolling({ anchorScrolling: 'enabled', scrollPositionRestoration: 'enabled' }),
     ),
-    provideHttpClient(),
+    provideHttpClient(withFetch()),
     provideTransloco({
       config: {
         availableLangs: ['en', 'pt-BR', 'es'],
@@ -34,5 +37,6 @@ export const appConfig: ApplicationConfig = {
       },
       loader: TranslocoHttpLoader,
     }),
+    provideClientHydration(withEventReplay()),
   ],
 };
