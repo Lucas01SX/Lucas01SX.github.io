@@ -68,7 +68,7 @@
 
   &__submit {
     align-self: flex-start;
-    background-color: var(--color-accent);
+    background-color: var(--color-btn-primary);
     border: none;
     border-radius: var(--radius-md);
     color: #fff;
@@ -79,7 +79,7 @@
     transition: background-color var(--transition-fast);
 
     &:hover {
-      background-color: var(--color-accent-hover);
+      background-color: var(--color-btn-primary-hover);
     }
   }
 }

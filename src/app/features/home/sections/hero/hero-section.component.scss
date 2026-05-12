@@ -50,11 +50,11 @@
     transition: all var(--transition-fast);
 
     &--primary {
-      background-color: var(--color-accent);
+      background-color: var(--color-btn-primary);
       color: #fff;
 
       &:hover {
-        background-color: var(--color-accent-hover);
+        background-color: var(--color-btn-primary-hover);
         color: #fff;
       }
     }

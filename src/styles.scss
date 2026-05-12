@@ -1,3 +1,4 @@
+@use 'styles/fonts';
 @use 'styles/tokens';
 @use 'styles/typography';
 @use 'styles/layout';
@@ -67,4 +68,16 @@ a {
 code,
 pre {
   font-family: var(--font-mono);
+}
+
+// Light mode section separators — border-top on every section after the first
+[data-theme='light'] {
+  app-about-section,
+  app-engineering-approach-section,
+  app-tech-stack-section,
+  app-projects-preview-section,
+  app-contact-section {
+    display: block;
+    border-top: 1px solid var(--color-border);
+  }
 }

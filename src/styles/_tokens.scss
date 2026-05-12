@@ -54,6 +54,11 @@
   --color-accent: #3b82f6;
   --color-accent-hover: #2563eb;
   --color-accent-subtle: rgb(59 130 246 / 0.1);
+  --color-btn-primary: #2563eb;
+  --color-btn-primary-hover: #1d4ed8;
+  --color-btn-ui-bg: rgb(255 255 255 / 0.07);
+  --color-btn-ui-border: #2a2a3d;
+  --color-shadow-card: none;
   --color-success: #22c55e;
   --color-error: #ef4444;
   --color-code-bg: #1e1e2e;
@@ -62,12 +67,17 @@
 [data-theme='light'] {
   --color-bg: #f8fafc;
   --color-surface: #ffffff;
-  --color-border: #e2e8f0;
+  --color-border: #cbd5e1;
   --color-text-primary: #0f172a;
   --color-text-secondary: #475569;
   --color-accent: #2563eb;
   --color-accent-hover: #1d4ed8;
-  --color-accent-subtle: rgb(37 99 235 / 0.1);
+  --color-accent-subtle: rgb(37 99 235 / 0.12);
+  --color-btn-primary: #2563eb;
+  --color-btn-primary-hover: #1d4ed8;
+  --color-btn-ui-bg: #dce8f3;
+  --color-btn-ui-border: #9ab8ce;
+  --color-shadow-card: 0 1px 4px 0 rgb(0 0 0 / 0.09), 0 1px 2px -1px rgb(0 0 0 / 0.06);
   --color-success: #16a34a;
   --color-error: #dc2626;
   --color-code-bg: #f1f5f9;

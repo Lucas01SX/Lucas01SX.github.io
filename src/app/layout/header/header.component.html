@@ -4,7 +4,7 @@
   <nav class="header__nav" aria-label="Site navigation">
     <a routerLink="/">{{ t('nav.home') }}</a>
     <a routerLink="/projects">{{ t('nav.projects') }}</a>
-    <a href="#contact">{{ t('nav.contact') }}</a>
+    <a [routerLink]="['/']" fragment="contact">{{ t('nav.contact') }}</a>
   </nav>
 
   <div class="header__controls">
