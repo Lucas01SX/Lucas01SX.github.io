@@ -2,6 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { provideRouter } from '@angular/router';
 import { of } from 'rxjs';
 import { ProjectsComponent } from './projects.component';
+import { translocoTesting } from '../../../testing/transloco-testing';
 import { ProjectService } from '../../core/services/project.service';
 import { Project } from '../../core/models/project.model';
 
@@ -36,7 +37,7 @@ describe('ProjectsComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ProjectsComponent],
+      imports: [ProjectsComponent, translocoTesting],
       providers: [
         provideRouter([]),
         {

@@ -1,6 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 import { provideRouter } from '@angular/router';
 import { App } from './app';
+import { translocoTesting } from '../testing/transloco-testing';
 
 describe('App', () => {
   beforeEach(async () => {
@@ -8,7 +9,7 @@ describe('App', () => {
     document.documentElement.removeAttribute('data-theme');
 
     await TestBed.configureTestingModule({
-      imports: [App],
+      imports: [App, translocoTesting],
       providers: [provideRouter([])],
     }).compileComponents();
   });

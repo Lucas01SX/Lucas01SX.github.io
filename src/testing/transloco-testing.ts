@@ -1,0 +1,74 @@
+import { TranslocoTestingModule } from '@jsverse/transloco';
+
+const en = {
+  nav: { home: 'Home', projects: 'Projects', contact: 'Contact' },
+  theme: {
+    to_light: 'Light',
+    to_dark: 'Dark',
+    aria_to_light: 'Switch to light theme',
+    aria_to_dark: 'Switch to dark theme',
+  },
+  hero: {
+    title: 'Backend Developer — .NET · TypeScript · Java',
+    subtitle: 'Building secure, observable, and maintainable APIs for real-world systems.',
+    cta_projects: 'View Projects',
+    cta_contact: 'Contact',
+  },
+  about: {
+    heading: 'About',
+    bio1: "I'm a backend developer focused on building APIs that are secure by design, easy to observe in production, and maintainable over time. I work primarily with <strong>.NET/C#</strong>, <strong>TypeScript/NestJS</strong>, and <strong>Java/Spring Boot</strong>.",
+    bio2: 'My approach is spec-first: I think through failure cases and invariants before writing a line of code. I care about structured logging, correlation IDs, and making systems that behave predictably under pressure.',
+  },
+  stack: { heading: 'Tech Stack' },
+  approach: {
+    heading: 'Engineering Approach',
+    pillars: {
+      security: {
+        title: 'Security-First',
+        description:
+          'Auth, input validation, and access control are built into every layer — not added as afterthoughts.',
+      },
+      observability: {
+        title: 'Observability by Design',
+        description:
+          'Structured logging, correlation IDs, and meaningful error responses make production debugging tractable.',
+      },
+      spec: {
+        title: 'Spec Before Code',
+        description:
+          'Failure cases and invariants are defined before implementation. Tests drive the design.',
+      },
+    },
+  },
+  projects_preview: {
+    heading: 'Projects',
+    view_project: 'View Project',
+    view_all: 'View all projects',
+    aria_view: 'View',
+  },
+  projects_page: {
+    heading: 'Projects',
+    subtitle: 'Same domain. Different stacks. Each one built to demonstrate architecture depth.',
+    loading: 'Loading projects...',
+    view_project: 'View Project',
+    aria_view: 'View',
+    status: { 'in-progress': 'In Progress', planned: 'Planned', complete: 'Complete' },
+  },
+  contact: {
+    heading: 'Contact',
+    name: 'Name',
+    email: 'Email',
+    message: 'Message',
+    submit: 'Send Message',
+  },
+  footer: { copy: '© {{ year }} Lucas Santana. All rights reserved.' },
+};
+
+export const translocoTesting = TranslocoTestingModule.forRoot({
+  langs: { en },
+  translocoConfig: {
+    defaultLang: 'en',
+    availableLangs: ['en', 'pt-BR', 'es'],
+  },
+  preloadLangs: true,
+});

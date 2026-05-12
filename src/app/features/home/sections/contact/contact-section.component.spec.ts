@@ -1,5 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ContactSectionComponent } from './contact-section.component';
+import { translocoTesting } from '../../../../../testing/transloco-testing';
 
 describe('ContactSectionComponent', () => {
   let fixture: ComponentFixture<ContactSectionComponent>;
@@ -7,7 +8,7 @@ describe('ContactSectionComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ContactSectionComponent],
+      imports: [ContactSectionComponent, translocoTesting],
     }).compileComponents();
 
     fixture = TestBed.createComponent(ContactSectionComponent);

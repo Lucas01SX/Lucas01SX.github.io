@@ -2,6 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { provideRouter } from '@angular/router';
 import { HeaderComponent } from './header.component';
 import { ThemeService } from '../../core/services/theme.service';
+import { translocoTesting } from '../../../testing/transloco-testing';
 
 describe('HeaderComponent', () => {
   let fixture: ComponentFixture<HeaderComponent>;
@@ -12,7 +13,7 @@ describe('HeaderComponent', () => {
     document.documentElement.removeAttribute('data-theme');
 
     await TestBed.configureTestingModule({
-      imports: [HeaderComponent],
+      imports: [HeaderComponent, translocoTesting],
       providers: [provideRouter([])],
     }).compileComponents();
 
