@@ -64,7 +64,22 @@
     "name": "Name",
     "email": "Email",
     "message": "Message",
-    "submit": "Send Message"
+    "submit": "Send Message",
+    "submitting": "Sending...",
+    "success": "Message sent! I'll get back to you soon.",
+    "error_send": "Something went wrong. Please try again.",
+    "error": {
+      "name_required": "Name is required.",
+      "name_min": "Name must be at least 2 characters.",
+      "name_max": "Name cannot exceed 100 characters.",
+      "name_pattern": "Name can only contain letters, spaces, hyphens, and apostrophes.",
+      "email_required": "Email is required.",
+      "email_invalid": "Please enter a valid email address.",
+      "email_max": "Email cannot exceed 254 characters.",
+      "message_required": "Message is required.",
+      "message_min": "Message must be at least 10 characters.",
+      "message_max": "Message cannot exceed 2000 characters."
+    }
   },
   "footer": {
     "copy": "© {{ year }} Lucas Santana. All rights reserved."

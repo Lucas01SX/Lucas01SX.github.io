@@ -1,6 +1,7 @@
 <section id="contact" class="contact section" *transloco="let t">
   <div class="container">
     <h2 class="contact__heading">{{ t('contact.heading') }}</h2>
+
     <div class="contact__links">
       <a
         href="https://github.com/Lucas01SX"
@@ -28,48 +29,125 @@
         >lukassantana351@gmail.com</a
       >
     </div>
-    <form
-      class="contact__form"
-      data-testid="contact-form"
-      action="https://api.web3forms.com/submit"
-      method="POST"
-    >
-      <input type="hidden" name="access_key" value="b3ee9b6c-6b8b-431e-93b8-40fe48cb9a8c" />
-      <div class="contact__field">
-        <label for="contact-name">{{ t('contact.name') }}</label>
+
+    @if (state() === 'success') {
+      <div class="contact__success" role="alert" data-testid="form-success">
+        {{ t('contact.success') }}
+      </div>
+    } @else {
+      <form
+        class="contact__form"
+        data-testid="contact-form"
+        [formGroup]="form"
+        (ngSubmit)="submit()"
+        novalidate
+      >
+        <!-- Honeypot: invisible to humans, bots fill it -->
         <input
-          id="contact-name"
+          #honeypot
           type="text"
-          name="name"
-          required
-          autocomplete="name"
-          data-testid="field-name"
+          name="website"
+          tabindex="-1"
+          aria-hidden="true"
+          autocomplete="off"
+          class="contact__honeypot"
         />
-      </div>
-      <div class="contact__field">
-        <label for="contact-email">{{ t('contact.email') }}</label>
-        <input
-          id="contact-email"
-          type="email"
-          name="email"
-          required
-          autocomplete="email"
-          data-testid="field-email"
-        />
-      </div>
-      <div class="contact__field">
-        <label for="contact-message">{{ t('contact.message') }}</label>
-        <textarea
-          id="contact-message"
-          name="message"
-          required
-          rows="5"
-          data-testid="field-message"
-        ></textarea>
-      </div>
-      <button type="submit" class="contact__submit" data-testid="form-submit">
-        {{ t('contact.submit') }}
-      </button>
-    </form>
+
+        <div class="contact__field">
+          <label for="contact-name">{{ t('contact.name') }}</label>
+          <input
+            id="contact-name"
+            type="text"
+            formControlName="name"
+            autocomplete="name"
+            maxlength="100"
+            data-testid="field-name"
+            [attr.aria-invalid]="showError('name') ? 'true' : null"
+          />
+          @if (showError('name')) {
+            <span class="contact__error" role="alert" data-testid="error-name">
+              @if (nameCtrl.hasError('required')) {
+                {{ t('contact.error.name_required') }}
+              } @else if (nameCtrl.hasError('minlength')) {
+                {{ t('contact.error.name_min') }}
+              } @else if (nameCtrl.hasError('maxlength')) {
+                {{ t('contact.error.name_max') }}
+              } @else if (nameCtrl.hasError('namePattern')) {
+                {{ t('contact.error.name_pattern') }}
+              }
+            </span>
+          }
+        </div>
+
+        <div class="contact__field">
+          <label for="contact-email">{{ t('contact.email') }}</label>
+          <input
+            id="contact-email"
+            type="email"
+            formControlName="email"
+            autocomplete="email"
+            maxlength="254"
+            data-testid="field-email"
+            [attr.aria-invalid]="showError('email') ? 'true' : null"
+          />
+          @if (showError('email')) {
+            <span class="contact__error" role="alert" data-testid="error-email">
+              @if (emailCtrl.hasError('required')) {
+                {{ t('contact.error.email_required') }}
+              } @else if (emailCtrl.hasError('email')) {
+                {{ t('contact.error.email_invalid') }}
+              } @else if (emailCtrl.hasError('maxlength')) {
+                {{ t('contact.error.email_max') }}
+              }
+            </span>
+          }
+        </div>
+
+        <div class="contact__field">
+          <label for="contact-message">{{ t('contact.message') }}</label>
+          <textarea
+            id="contact-message"
+            formControlName="message"
+            rows="5"
+            maxlength="2000"
+            data-testid="field-message"
+            [attr.aria-invalid]="showError('message') ? 'true' : null"
+          ></textarea>
+          <div class="contact__meta">
+            @if (showError('message')) {
+              <span class="contact__error" role="alert" data-testid="error-message">
+                @if (messageCtrl.hasError('required')) {
+                  {{ t('contact.error.message_required') }}
+                } @else if (messageCtrl.hasError('minlength')) {
+                  {{ t('contact.error.message_min') }}
+                } @else if (messageCtrl.hasError('maxlength')) {
+                  {{ t('contact.error.message_max') }}
+                }
+              </span>
+            } @else {
+              <span></span>
+            }
+            <span class="contact__char-count" aria-live="polite">{{ messageLength }}/2000</span>
+          </div>
+        </div>
+
+        <div class="contact__footer">
+          <button
+            type="submit"
+            class="contact__submit"
+            data-testid="form-submit"
+            [disabled]="state() === 'submitting'"
+          >
+            {{ state() === 'submitting' ? t('contact.submitting') : t('contact.submit') }}
+          </button>
+
+          @if (state() === 'error') {
+            <span class="contact__error contact__error--send" role="alert" data-testid="form-error">
+              {{ t('contact.error_send') }}
+            </span>
+          }
+        </div>
+      </form>
+    }
   </div>
 </section>
