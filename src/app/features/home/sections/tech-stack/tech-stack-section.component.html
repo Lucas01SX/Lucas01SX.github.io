@@ -1,6 +1,6 @@
-<section class="stack section">
+<section class="stack section" *transloco="let t">
   <div class="container">
-    <h2 class="stack__heading">Tech Stack</h2>
+    <h2 class="stack__heading">{{ t('stack.heading') }}</h2>
     <div class="stack__grid">
       @for (category of categories; track category.name) {
         <div class="stack__category" data-testid="stack-category">

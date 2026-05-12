@@ -1,6 +1,6 @@
-<section class="projects-preview section">
+<section class="projects-preview section" *transloco="let t">
   <div class="container">
-    <h2 class="projects-preview__heading">Projects</h2>
+    <h2 class="projects-preview__heading">{{ t('projects_preview.heading') }}</h2>
     <ul class="projects-preview__grid" data-testid="project-cards">
       @for (project of projects; track project.slug) {
         <li class="project-card" data-testid="project-card">
@@ -15,15 +15,15 @@
             [routerLink]="['/projects', project.slug]"
             class="project-card__link"
             data-testid="project-link"
-            [attr.aria-label]="'View ' + project.title"
+            [attr.aria-label]="t('projects_preview.aria_view') + ' ' + project.title"
           >
-            View Project
+            {{ t('projects_preview.view_project') }}
           </a>
         </li>
       }
     </ul>
     <a routerLink="/projects" class="projects-preview__all" data-testid="all-projects-link">
-      View all projects
+      {{ t('projects_preview.view_all') }}
     </a>
   </div>
 </section>

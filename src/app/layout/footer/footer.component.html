@@ -1,5 +1,5 @@
-<footer class="footer">
-  <p class="footer__copy">&copy; {{ currentYear }} Lucas Santana. All rights reserved.</p>
+<footer class="footer" *transloco="let t">
+  <p class="footer__copy">{{ t('footer.copy', { year: currentYear }) }}</p>
 
   <div class="footer__social">
     <a

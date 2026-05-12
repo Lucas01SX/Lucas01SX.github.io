@@ -1,11 +1,11 @@
-<section class="approach section">
+<section class="approach section" *transloco="let t">
   <div class="container">
-    <h2 class="approach__heading">Engineering Approach</h2>
+    <h2 class="approach__heading">{{ t('approach.heading') }}</h2>
     <ul class="approach__pillars" data-testid="pillars">
-      @for (pillar of pillars; track pillar.title) {
+      @for (key of pillarKeys; track key) {
         <li class="approach__pillar">
-          <h3 class="approach__pillar-title">{{ pillar.title }}</h3>
-          <p class="approach__pillar-desc">{{ pillar.description }}</p>
+          <h3 class="approach__pillar-title">{{ t('approach.pillars.' + key + '.title') }}</h3>
+          <p class="approach__pillar-desc">{{ t('approach.pillars.' + key + '.description') }}</p>
         </li>
       }
     </ul>

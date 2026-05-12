@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
+import { TranslocoDirective } from '@jsverse/transloco';
 
 @Component({
   selector: 'app-tech-stack-section',
+  imports: [TranslocoDirective],
   templateUrl: './tech-stack-section.component.html',
   styleUrl: './tech-stack-section.component.scss',
 })
