@@ -2,17 +2,17 @@
   {
     "slug": "helpdesk-dotnet",
     "title": "Helpdesk API (.NET)",
-    "shortDescription": "Helpdesk ticket system built with Clean Architecture, EF Core, and PostgreSQL.",
-    "description": "Full-featured helpdesk domain built in C# .NET 8. Implements a ticket state machine (Open → In Progress → Resolved / Cancelled) with role-based access control, SLA deadline tracking, domain events, and structured logging. Refresh token rotation with family invalidation. Auth audit events.",
-    "stack": ["C#", ".NET 8", "EF Core", "PostgreSQL", "Docker", "MSTest"],
+    "shortDescription": "Helpdesk ticket system built with Modular Monolith, Clean Architecture, EF Core, and PostgreSQL.",
+    "description": "Helpdesk domain built in C# .NET 10 as a Modular Monolith. Implements a ticket state machine (Open → In Progress → Resolved / Cancelled) with role-based access control, SLA deadline tracking, domain events, and structured logging. Refresh token rotation with family invalidation. Auth audit events. Integration tests via TestContainers.",
+    "stack": ["C#", ".NET 10", "EF Core", "PostgreSQL", "Docker", "xUnit", "TestContainers"],
     "category": "Backend API",
     "status": "in-progress",
     "architecture": {
-      "summary": "Clean Architecture with four layers: Domain, Application, Infrastructure, and API. Domain layer has zero external dependencies. State transitions enforced at domain layer only. Use Cases injected directly via DI — no command bus.",
-      "diagram": "graph TD\n  API[API Layer] --> APP[Application / Use Cases]\n  APP --> DOM[Domain]\n  APP --> INF[Infrastructure]\n  INF --> DOM\n  INF --> DB[(PostgreSQL)]"
+      "summary": "Modular Monolith with Clean Architecture per module. Four modules: Tickets (core domain), Identity (auth + sessions), SLA (deadline engine + scoring), Notifications (contracts). Domain layer has zero infrastructure dependencies. State transitions enforced at domain layer only. Use Cases injected directly via DI — no Mediator, no command bus.",
+      "diagram": "graph TD\n  API[Helpdesk.API] --> TKT[Tickets Module]\n  API --> IDN[Identity Module]\n  API --> SLA[SLA Module]\n  API --> NTF[Notifications Module]\n  TKT --> SHR[Helpdesk.Shared]\n  IDN --> SHR\n  SLA --> SHR\n  NTF --> SHR\n  TKT --> DOM_T[Domain]\n  TKT --> APP_T[Application / Use Cases]\n  TKT --> INF_T[Infrastructure]\n  INF_T --> DB[(PostgreSQL)]"
     },
     "links": {
-      "github": "https://github.com/Lucas01SX"
+      "github": "https://github.com/Lucas01SX/helpdesk-platform-dotnet"
     }
   },
   {
