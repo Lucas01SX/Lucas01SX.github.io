@@ -51,11 +51,11 @@
 
     &--primary {
       background-color: var(--color-btn-primary);
-      color: #fff;
+      color: var(--color-on-accent);
 
       &:hover {
         background-color: var(--color-btn-primary-hover);
-        color: #fff;
+        color: var(--color-on-accent);
       }
     }
 

@@ -1,6 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { toSignal } from '@angular/core/rxjs-interop';
 import { RouterLink } from '@angular/router';
 import { TranslocoDirective } from '@jsverse/transloco';
+import { ProjectService } from '../../../../core/services/project.service';
 
 @Component({
   selector: 'app-projects-preview-section',
@@ -9,25 +11,6 @@ import { TranslocoDirective } from '@jsverse/transloco';
   styleUrl: './projects-preview-section.component.scss',
 })
 export class ProjectsPreviewSectionComponent {
-  readonly projects = [
-    {
-      slug: 'helpdesk-dotnet',
-      title: 'Helpdesk API (.NET)',
-      description:
-        'Full helpdesk domain built in C# with Clean Architecture, EF Core, and PostgreSQL.',
-      stack: ['C#', '.NET', 'EF Core', 'PostgreSQL'],
-    },
-    {
-      slug: 'helpdesk-nestjs',
-      title: 'Helpdesk API (NestJS)',
-      description: 'Same domain reimplemented in TypeScript using Fastify, Prisma, and BullMQ.',
-      stack: ['TypeScript', 'NestJS', 'Fastify', 'Prisma'],
-    },
-    {
-      slug: 'helpdesk-java',
-      title: 'Helpdesk API (Java)',
-      description: 'Java implementation with Spring Boot, JPA, and JUnit 5 test coverage.',
-      stack: ['Java', 'Spring Boot', 'JUnit 5'],
-    },
-  ];
+  private readonly projectService = inject(ProjectService);
+  readonly projects = toSignal(this.projectService.getAll(), { initialValue: [] });
 }

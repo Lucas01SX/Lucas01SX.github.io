@@ -1,26 +1,10 @@
 import { Component, ElementRef, inject, signal, ViewChild } from '@angular/core';
-import {
-  AbstractControl,
-  FormBuilder,
-  ReactiveFormsModule,
-  ValidationErrors,
-  Validators,
-} from '@angular/forms';
+import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { TranslocoDirective } from '@jsverse/transloco';
+import { namePattern, notBlank } from '../../../../core/validators/custom-validators';
 
 type SubmitState = 'idle' | 'submitting' | 'success' | 'error';
-
-function namePattern(control: AbstractControl): ValidationErrors | null {
-  const val = (control.value as string) ?? '';
-  if (!val) return null;
-  return /^[a-zA-ZÀ-ÖØ-öø-ÿ\s\-'.]+$/.test(val) ? null : { namePattern: true };
-}
-
-function notBlank(control: AbstractControl): ValidationErrors | null {
-  const val = (control.value as string) ?? '';
-  return val.trim().length > 0 ? null : { required: true };
-}
 
 @Component({
   selector: 'app-contact-section',
