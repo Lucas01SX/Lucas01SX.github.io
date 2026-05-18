@@ -18,7 +18,7 @@
   },
   "about": {
     "heading": "Sobre",
-    "bio1": "Sou um desenvolvedor backend focado em construir APIs seguras por design, fáceis de observar em produção e sustentáveis ao longo do tempo. Trabalho principalmente com <strong>.NET/C#</strong>, <strong>TypeScript/NestJS</strong> e <strong>Java/Spring Boot</strong>.",
+    "bio1": "Sou um desenvolvedor backend focado em construir APIs seguras por design, fáceis de observar em produção e sustentáveis ao longo do tempo. Trabalho principalmente com .NET/C#, TypeScript/NestJS e Java/Spring Boot.",
     "bio2": "Minha abordagem é spec-first: penso nos casos de falha e invariantes antes de escrever uma linha de código. Me preocupo com logging estruturado, correlation IDs e sistemas que se comportam de forma previsível sob pressão."
   },
   "stack": {

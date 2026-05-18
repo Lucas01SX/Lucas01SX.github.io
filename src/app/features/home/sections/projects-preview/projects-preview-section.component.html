@@ -2,10 +2,10 @@
   <div class="container">
     <h2 class="projects-preview__heading">{{ t('projects_preview.heading') }}</h2>
     <ul class="projects-preview__grid" data-testid="project-cards">
-      @for (project of projects; track project.slug) {
+      @for (project of projects(); track project.slug) {
         <li class="project-card" data-testid="project-card">
           <h3 class="project-card__title">{{ project.title }}</h3>
-          <p class="project-card__description">{{ project.description }}</p>
+          <p class="project-card__description">{{ project.shortDescription }}</p>
           <ul class="project-card__stack">
             @for (tech of project.stack; track tech) {
               <li class="project-card__tech">{{ tech }}</li>

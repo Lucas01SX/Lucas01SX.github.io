@@ -50,7 +50,7 @@
     font-weight: var(--weight-semibold);
     color: var(--color-accent);
     text-transform: uppercase;
-    letter-spacing: 0.08em;
+    letter-spacing: var(--letter-spacing-wide);
   }
 
   &__status {
@@ -60,17 +60,17 @@
     border-radius: var(--radius-full);
 
     &--in-progress {
-      background-color: rgb(59 130 246 / 0.15);
+      background-color: var(--color-status-in-progress-bg);
       color: var(--color-accent);
     }
 
     &--planned {
-      background-color: rgb(148 163 184 / 0.15);
+      background-color: var(--color-status-planned-bg);
       color: var(--color-text-secondary);
     }
 
     &--complete {
-      background-color: rgb(34 197 94 / 0.15);
+      background-color: var(--color-status-complete-bg);
       color: var(--color-success);
     }
   }

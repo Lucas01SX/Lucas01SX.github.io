@@ -43,6 +43,18 @@
   // Layout
   --container-max: 1100px;
   --container-padding: var(--space-6);
+
+  // Typography extras
+  --letter-spacing-wide: 0.08em;
+
+  // Static colors (theme-independent)
+  --color-on-accent: #fff;
+
+  // Status badge backgrounds (auto-adapt to theme via color-mix)
+  --color-status-in-progress-bg: color-mix(in srgb, var(--color-accent) 15%, transparent);
+  --color-status-planned-bg: color-mix(in srgb, var(--color-text-secondary) 15%, transparent);
+  --color-status-complete-bg: color-mix(in srgb, var(--color-success) 15%, transparent);
+  --color-success-subtle: color-mix(in srgb, var(--color-success) 10%, transparent);
 }
 
 [data-theme='dark'] {
