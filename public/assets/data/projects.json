@@ -3,10 +3,20 @@
     "slug": "helpdesk-dotnet",
     "title": "Helpdesk API (.NET)",
     "shortDescription": "Helpdesk ticket system built with Modular Monolith, Clean Architecture, EF Core, and PostgreSQL.",
-    "description": "Helpdesk domain built in C# .NET 10 as a Modular Monolith. Implements a ticket state machine (Open → In Progress → Resolved / Cancelled) with role-based access control, SLA deadline tracking, domain events, and structured logging. Refresh token rotation with family invalidation. Auth audit events. Integration tests via TestContainers.",
-    "stack": ["C#", ".NET 10", "EF Core", "PostgreSQL", "Docker", "xUnit", "TestContainers"],
+    "description": "Helpdesk domain built in C# .NET 10 as a Modular Monolith. Implements a ticket state machine (Open → In Progress → Resolved / Cancelled) with role-based access control, SLA deadline tracking, domain events, and structured logging. Refresh token rotation with Argon2id and family invalidation. Auth audit events. 193 tests: 59 unit, 128 integration (TestContainers + real PostgreSQL), 6 architecture. API documentation via Scalar.",
+    "stack": [
+      "C#",
+      ".NET 10",
+      "EF Core",
+      "PostgreSQL",
+      "Docker",
+      "xUnit",
+      "TestContainers",
+      "Serilog",
+      "Scalar"
+    ],
     "category": "Backend API",
-    "status": "in-progress",
+    "status": "complete",
     "architecture": {
       "summary": "Modular Monolith with Clean Architecture per module. Four modules: Tickets (core domain), Identity (auth + sessions), SLA (deadline engine + scoring), Notifications (contracts). Domain layer has zero infrastructure dependencies. State transitions enforced at domain layer only. Use Cases injected directly via DI — no Mediator, no command bus.",
       "diagram": "graph TD\n  API[Helpdesk.API] --> TKT[Tickets Module]\n  API --> IDN[Identity Module]\n  API --> SLA[SLA Module]\n  API --> NTF[Notifications Module]\n  TKT --> SHR[Helpdesk.Shared]\n  IDN --> SHR\n  SLA --> SHR\n  NTF --> SHR\n  TKT --> DOM_T[Domain]\n  TKT --> APP_T[Application / Use Cases]\n  TKT --> INF_T[Infrastructure]\n  INF_T --> DB[(PostgreSQL)]"
