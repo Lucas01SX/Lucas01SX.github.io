@@ -83,5 +83,28 @@
   },
   "footer": {
     "copy": "© {{ year }} Lucas Santana. Todos los derechos reservados."
+  },
+  "projects": {
+    "helpdesk-dotnet": {
+      "shortDescription": "Sistema de tickets de helpdesk con Monolito Modular, Clean Architecture, EF Core y PostgreSQL.",
+      "description": "Dominio de helpdesk construido en C# .NET 10 como Monolito Modular. Implementa una máquina de estados para tickets (Abierto → En Progreso → Resuelto / Cancelado) con control de acceso por rol, seguimiento de SLA, eventos de dominio y logging estructurado. Rotación de refresh token con Argon2id e invalidación de familia. Auditoría de eventos de autenticación. 193 tests: 59 unitarios, 128 de integración (TestContainers + PostgreSQL real), 6 de arquitectura. Documentación de la API via Scalar.",
+      "architectureSummary": "Monolito Modular con Clean Architecture por módulo. Cuatro módulos: Tickets (dominio principal), Identity (autenticación + sesiones), SLA (motor de plazos + puntuación), Notifications (contratos). La capa de dominio no tiene dependencias de infraestructura. Transiciones de estado aplicadas solo en la capa de dominio. Use Cases inyectados directamente via DI — sin Mediator, sin command bus."
+    },
+    "helpdesk-nestjs": {
+      "shortDescription": "El mismo dominio de helpdesk reimplementado en TypeScript con NestJS, Fastify, Prisma y EventEmitter2.",
+      "description": "Implementación en TypeScript del dominio de helpdesk en NestJS + Fastify. Usa Prisma como ORM, EventEmitter2 para eventos de dominio (despachados tras la persistencia) y Vitest + TestContainers para tests de integración con PostgreSQL real. 248 tests que cubren el conjunto completo de funcionalidades: tickets, SLA, eventos de auditoría, adjuntos y autenticación con rotación de JWT y Argon2id. Paridad de funcionalidades con la versión .NET.",
+      "architectureSummary": "Estructura NestJS modular con módulos dedicados por área de dominio. Use Cases inyectados directamente via DI — sin Mediator, sin command bus. Lógica de dominio aislada del framework. EventEmitter2 despacha eventos síncronamente tras la persistencia."
+    },
+    "helpdesk-java": {
+      "shortDescription": "Implementación Java con Spring Boot, JPA y cobertura de tests con JUnit 5.",
+      "description": "Implementación Java del dominio de helpdesk usando Spring Boot 3 y Spring Data JPA. Aplica las mismas decisiones arquitectónicas — Clean Architecture, invariantes de dominio spec-first, autorización por rol — en un stack empresarial fuertemente tipado.",
+      "architectureSummary": "Arquitectura en capas siguiendo las convenciones de Spring Boot. Patrón Repository via Spring Data JPA. Invariantes de dominio aplicadas en la capa de servicio. JUnit 5 para toda la cobertura de reglas de negocio."
+    }
+  },
+  "project_detail": {
+    "tech_stack": "Stack Tecnológico",
+    "architecture": "Arquitectura",
+    "view_on_github": "Ver en GitHub",
+    "not_found": "Proyecto no encontrado."
   }
 }

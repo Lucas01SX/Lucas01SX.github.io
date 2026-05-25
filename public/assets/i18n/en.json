@@ -83,5 +83,28 @@
   },
   "footer": {
     "copy": "© {{ year }} Lucas Santana. All rights reserved."
+  },
+  "projects": {
+    "helpdesk-dotnet": {
+      "shortDescription": "Helpdesk ticket system built with Modular Monolith, Clean Architecture, EF Core, and PostgreSQL.",
+      "description": "Helpdesk domain built in C# .NET 10 as a Modular Monolith. Implements a ticket state machine (Open → In Progress → Resolved / Cancelled) with role-based access control, SLA deadline tracking, domain events, and structured logging. Refresh token rotation with Argon2id and family invalidation. Auth audit events. 193 tests: 59 unit, 128 integration (TestContainers + real PostgreSQL), 6 architecture. API documentation via Scalar.",
+      "architectureSummary": "Modular Monolith with Clean Architecture per module. Four modules: Tickets (core domain), Identity (auth + sessions), SLA (deadline engine + scoring), Notifications (contracts). Domain layer has zero infrastructure dependencies. State transitions enforced at domain layer only. Use Cases injected directly via DI — no Mediator, no command bus."
+    },
+    "helpdesk-nestjs": {
+      "shortDescription": "Same helpdesk domain reimplemented in TypeScript using NestJS, Fastify, Prisma, and EventEmitter2.",
+      "description": "TypeScript implementation of the helpdesk domain on NestJS + Fastify. Uses Prisma as ORM, EventEmitter2 for domain events (dispatched after persistence), and Vitest + TestContainers for integration tests against a real PostgreSQL instance. 248 tests covering the full feature set: tickets, SLA, audit events, attachments, and auth with JWT rotation and Argon2id. Feature-complete with the .NET version.",
+      "architectureSummary": "Modular NestJS structure with dedicated modules per domain area. Use Cases injected directly via DI — no Mediator, no command bus. Domain logic isolated from the framework. EventEmitter2 dispatches events synchronously after persistence."
+    },
+    "helpdesk-java": {
+      "shortDescription": "Java implementation with Spring Boot, JPA, and JUnit 5 test coverage.",
+      "description": "Java implementation of the helpdesk domain using Spring Boot 3 and Spring Data JPA. Applies the same architectural decisions — Clean Architecture, spec-first domain invariants, role-based authorization — in a strongly-typed enterprise stack.",
+      "architectureSummary": "Layered architecture following Spring Boot conventions. Repository pattern via Spring Data JPA. Domain invariants enforced in the service layer. JUnit 5 for all business rule coverage."
+    }
+  },
+  "project_detail": {
+    "tech_stack": "Tech Stack",
+    "architecture": "Architecture",
+    "view_on_github": "View on GitHub",
+    "not_found": "Project not found."
   }
 }

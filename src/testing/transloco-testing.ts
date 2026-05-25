@@ -62,6 +62,44 @@ const en = {
     submit: 'Send Message',
   },
   footer: { copy: '© {{ year }} Lucas Santana. All rights reserved.' },
+  projects: {
+    'helpdesk-dotnet': {
+      shortDescription:
+        'Helpdesk ticket system built with Modular Monolith, Clean Architecture, EF Core, and PostgreSQL.',
+      description: 'Full description of the .NET project.',
+      architectureSummary: 'Clean Architecture summary.',
+    },
+    'helpdesk-nestjs': {
+      shortDescription:
+        'Same helpdesk domain reimplemented in TypeScript using NestJS, Fastify, Prisma, and EventEmitter2.',
+      description: 'Full description of the NestJS project.',
+      architectureSummary: 'Modular NestJS architecture summary.',
+    },
+    'helpdesk-java': {
+      shortDescription: 'Java implementation with Spring Boot, JPA, and JUnit 5 test coverage.',
+      description: 'Full description of the Java project.',
+      architectureSummary: 'Spring Boot layered architecture summary.',
+    },
+    'project-a': {
+      shortDescription: 'Short A',
+      description: 'Description A',
+      architectureSummary: 'Arch A',
+    },
+    'project-b': {
+      shortDescription: 'Short B',
+      description: 'Description B',
+      architectureSummary: 'Arch B',
+    },
+    p1: { shortDescription: 'Desc 1', description: '', architectureSummary: '' },
+    p2: { shortDescription: 'Desc 2', description: '', architectureSummary: '' },
+    p3: { shortDescription: 'Desc 3', description: '', architectureSummary: '' },
+  },
+  project_detail: {
+    tech_stack: 'Tech Stack',
+    architecture: 'Architecture',
+    view_on_github: 'View on GitHub',
+    not_found: 'Project not found.',
+  },
 };
 
 export const translocoTesting = TranslocoTestingModule.forRoot({
