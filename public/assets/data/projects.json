@@ -31,7 +31,7 @@
       "Domain events": true,
       "TestContainers": true,
       "Scalar docs": true,
-      "EventEmitter": false
+      "EventEmitter2": false
     },
     "architecture": {
       "summary": "Modular Monolith with Clean Architecture per module. Four modules: Tickets (core domain), Identity (auth + sessions), SLA (deadline engine + scoring), Notifications (contracts). Domain layer has zero infrastructure dependencies. State transitions enforced at domain layer only. Use Cases injected directly via DI — no Mediator, no command bus.",
@@ -96,8 +96,8 @@
       "SLA engine": true,
       "Domain events": true,
       "TestContainers": true,
-      "Scalar docs": false,
-      "EventEmitter": true
+      "Scalar docs": true,
+      "EventEmitter2": true
     },
     "architecture": {
       "summary": "Modular NestJS structure with dedicated modules per domain area. Use Cases injected directly via DI — no Mediator, no command bus. Domain logic isolated from the framework. EventEmitter2 dispatches events synchronously after persistence.",
@@ -120,7 +120,7 @@
       ]
     },
     "links": {
-      "github": "https://github.com/Lucas01SX"
+      "github": "https://github.com/Lucas01SX/helpdesk-platform-nestjs"
     }
   },
   {
@@ -145,7 +145,7 @@
       "Domain events": false,
       "TestContainers": false,
       "Scalar docs": false,
-      "EventEmitter": false
+      "EventEmitter2": false
     },
     "architecture": {
       "summary": "Layered architecture following Spring Boot conventions. Repository pattern via Spring Data JPA. Domain invariants enforced in the service layer. JUnit 5 for all business rule coverage.",

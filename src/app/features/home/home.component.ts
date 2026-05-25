@@ -4,7 +4,6 @@ import { AboutSectionComponent } from './sections/about/about-section.component'
 import { EngineeringApproachSectionComponent } from './sections/engineering-approach/engineering-approach-section.component';
 import { TechStackSectionComponent } from './sections/tech-stack/tech-stack-section.component';
 import { ProjectsPreviewSectionComponent } from './sections/projects-preview/projects-preview-section.component';
-import { ContactSectionComponent } from './sections/contact/contact-section.component';
 
 @Component({
   selector: 'app-home',
@@ -15,7 +14,6 @@ import { ContactSectionComponent } from './sections/contact/contact-section.comp
     EngineeringApproachSectionComponent,
     TechStackSectionComponent,
     ProjectsPreviewSectionComponent,
-    ContactSectionComponent,
   ],
   templateUrl: './home.component.html',
 })
