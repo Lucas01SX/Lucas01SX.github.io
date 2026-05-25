@@ -11,12 +11,15 @@
     "aria_to_dark": "Mudar para tema escuro"
   },
   "hero": {
+    "eyebrow": "BACKEND ENGINEER · DISPONÍVEL PARA PROJETOS",
     "title": "Desenvolvedor Backend — .NET · TypeScript · Java",
-    "subtitle": "Construindo APIs seguras, observáveis e sustentáveis para sistemas reais.",
+    "subtitle": "Construindo APIs seguras por design, observáveis em produção e sustentáveis ao longo do tempo. Spec-first, com testes guiando o design.",
     "cta_projects": "Ver Projetos",
     "cta_contact": "Contato"
   },
   "about": {
+    "rail_label": "01 / SOBRE",
+    "rail_meta": "Backend\nAPIs · Sistemas Distribuídos\n\nBaseado no Brasil",
     "heading": "Sobre",
     "bio1": "Sou um desenvolvedor backend focado em construir APIs seguras por design, fáceis de observar em produção e sustentáveis ao longo do tempo. Trabalho principalmente com .NET/C#, TypeScript/NestJS e Java/Spring Boot.",
     "bio2": "Minha abordagem é spec-first: penso nos casos de falha e invariantes antes de escrever uma linha de código. Me preocupo com logging estruturado, correlation IDs e sistemas que se comportam de forma previsível sob pressão."
@@ -24,8 +27,13 @@
   "stack": {
     "heading": "Stack Tecnológica"
   },
+  "tech_stack": {
+    "kicker": "03 / STACK",
+    "heading": "Tecnologias que uso no dia a dia."
+  },
   "approach": {
-    "heading": "Abordagem de Engenharia",
+    "kicker": "02 / ABORDAGEM",
+    "heading": "Princípios que guiam cada linha de código.",
     "pillars": {
       "security": {
         "title": "Segurança em Primeiro Lugar",
@@ -42,14 +50,17 @@
     }
   },
   "projects_preview": {
-    "heading": "Projetos",
+    "kicker": "04 / PROJETOS",
+    "heading": "Mesmo domínio. Stacks diferentes.",
+    "sub": "Três implementações do mesmo sistema de helpdesk, cada uma construída para demonstrar profundidade arquitetural em sua stack.",
     "view_project": "Ver Projeto",
     "view_all": "Ver todos os projetos",
     "aria_view": "Ver"
   },
   "projects_page": {
-    "heading": "Projetos",
-    "subtitle": "Mesmo domínio. Stacks diferentes. Cada um construído para demonstrar profundidade arquitetural.",
+    "kicker": "PROJETOS · 3 IMPLEMENTAÇÕES",
+    "heading": "Mesmo domínio. Stacks diferentes.",
+    "subtitle": "Cada implementação prova o mesmo conjunto de regras de negócio — máquina de estados de tickets, SLA, auth — usando ferramentas e padrões idiomáticos da sua stack. Comparados lado a lado.",
     "loading": "Carregando projetos...",
     "view_project": "Ver Projeto",
     "aria_view": "Ver",
@@ -59,15 +70,35 @@
       "complete": "Concluído"
     }
   },
+  "compare": {
+    "kicker": "COMPARAÇÃO · FEATURE PARITY",
+    "heading": "O que cada uma entrega.",
+    "sub": "As três versões compartilham o mesmo domínio. As diferenças estão em como a stack expressa as decisões — ORM, eventos, ferramentas de teste.",
+    "feature": "Recurso"
+  },
   "contact": {
-    "heading": "Contato",
+    "kicker": "CONTATO",
+    "heading": "Vamos conversar.",
+    "sub": "Interessado em colaborar, contratar ou apenas trocar uma ideia sobre arquitetura backend? Respondo em até 48h úteis.",
     "name": "Nome",
+    "name_placeholder": "Como você se chama?",
     "email": "E-mail",
+    "email_placeholder": "voce@exemplo.com",
     "message": "Mensagem",
+    "message_placeholder": "Sobre o que você quer falar?",
+    "send": "Enviar mensagem",
     "submit": "Enviar Mensagem",
+    "sending": "Enviando...",
     "submitting": "Enviando...",
+    "sent": "Mensagem enviada",
     "success": "Mensagem enviada! Retornarei em breve.",
+    "error_generic": "Algo deu errado. Tente novamente.",
     "error_send": "Algo deu errado. Tente novamente.",
+    "errors": {
+      "name": "Por favor informe um nome válido (2–100 caracteres).",
+      "email": "Por favor informe um e-mail válido.",
+      "message": "A mensagem deve ter entre 10 e 2000 caracteres."
+    },
     "error": {
       "name_required": "Nome é obrigatório.",
       "name_min": "O nome deve ter pelo menos 2 caracteres.",
@@ -87,7 +118,7 @@
   "projects": {
     "helpdesk-dotnet": {
       "shortDescription": "Sistema de tickets de helpdesk com Monolito Modular, Clean Architecture, EF Core e PostgreSQL.",
-      "description": "Domínio de helpdesk construído em C# .NET 10 como Monolito Modular. Implementa uma máquina de estados para tickets (Aberto → Em Andamento → Resolvido / Cancelado) com controle de acesso por papel, rastreamento de SLA, eventos de domínio e logging estruturado. Rotação de refresh token com Argon2id e invalidação de família. Auditoria de eventos de autenticação. 193 testes: 59 unitários, 128 de integração (TestContainers + PostgreSQL real), 6 de arquitetura. Documentação da API via Scalar.",
+      "description": "Domínio de helpdesk construído em C# .NET 10 como Monolito Modular. Implementa uma máquina de estados para tickets (Aberto → Em Andamento → Resolvido / Cancelado) com controle de acesso por papel, rastreamento de SLA, eventos de domínio e logging estruturado. Rotação de refresh token com Argon2id e invalidação de família. Auditoria de eventos de autenticação. Documentação da API via Scalar.",
       "architectureSummary": "Monolito Modular com Clean Architecture por módulo. Quatro módulos: Tickets (domínio principal), Identity (autenticação + sessões), SLA (engine de prazo + pontuação), Notifications (contratos). A camada de domínio não tem dependências de infraestrutura. Transições de estado aplicadas apenas na camada de domínio. Use Cases injetados diretamente via DI — sem Mediator, sem command bus."
     },
     "helpdesk-nestjs": {
@@ -103,7 +134,10 @@
   },
   "project_detail": {
     "tech_stack": "Stack Tecnológica",
-    "architecture": "Arquitetura",
+    "architecture": "ARQUITETURA",
+    "architecture_title": "Como o sistema é estruturado.",
+    "back_to_projects": "Projetos",
+    "other_projects": "Outros projetos",
     "view_on_github": "Ver no GitHub",
     "not_found": "Projeto não encontrado."
   }

@@ -3,12 +3,14 @@ import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { TranslocoDirective } from '@jsverse/transloco';
 import { namePattern, notBlank } from '../../../../core/validators/custom-validators';
+import { RevealDirective } from '../../../../shared/directives/reveal.directive';
 
 type SubmitState = 'idle' | 'submitting' | 'success' | 'error';
 
 @Component({
   selector: 'app-contact-section',
-  imports: [ReactiveFormsModule, TranslocoDirective],
+  standalone: true,
+  imports: [ReactiveFormsModule, TranslocoDirective, RevealDirective],
   templateUrl: './contact-section.component.html',
   styleUrl: './contact-section.component.scss',
 })

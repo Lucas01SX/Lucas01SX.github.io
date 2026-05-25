@@ -1,38 +1,5 @@
-.approach {
-  background-color: var(--color-surface);
-
-  &__heading {
-    font-size: var(--text-2xl);
-    font-weight: var(--weight-semibold);
-    color: var(--color-text-primary);
-    margin-bottom: var(--space-8);
-  }
-
-  &__pillars {
-    list-style: none;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
-    gap: var(--space-6);
-  }
-
-  &__pillar {
-    padding: var(--space-6);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-lg);
-    border-left: 3px solid var(--color-accent);
-    box-shadow: var(--color-shadow-card);
-  }
-
-  &__pillar-title {
-    font-size: var(--text-lg);
-    font-weight: var(--weight-semibold);
-    color: var(--color-text-primary);
-    margin-bottom: var(--space-3);
-  }
-
-  &__pillar-desc {
-    font-size: var(--text-base);
-    color: var(--color-text-secondary);
-    line-height: var(--leading-normal);
-  }
+// All styles for .pillar / .pillars live in src/styles/_components.scss as global utilities.
+// The .approach wrapper itself doesn't need component-scoped styles anymore.
+:host {
+  display: block;
 }

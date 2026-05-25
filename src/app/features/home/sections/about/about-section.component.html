@@ -1,9 +1,21 @@
 <section id="about" class="about section" *transloco="let t">
   <div class="container">
-    <h2 class="about__heading">{{ t('about.heading') }}</h2>
-    <div class="about__content">
-      <p class="about__bio">{{ t('about.bio1') }}</p>
-      <p class="about__bio">{{ t('about.bio2') }}</p>
+    <div class="split">
+      <aside class="split__rail">
+        <div class="split__rail-label">{{ t('about.rail_label') }}</div>
+        <div class="split__rail-meta">
+          {{ t('about.rail_meta') }}
+        </div>
+      </aside>
+
+      <div class="about__content">
+        <p class="about__bio" appReveal>
+          {{ t('about.bio1') }}
+        </p>
+        <p class="about__bio" appReveal [revealDelay]="120">
+          {{ t('about.bio2') }}
+        </p>
+      </div>
     </div>
   </div>
 </section>

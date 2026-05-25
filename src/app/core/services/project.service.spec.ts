@@ -13,7 +13,8 @@ const mockProjects: Project[] = [
     stack: ['TypeScript'],
     category: 'Backend API',
     status: 'complete',
-    architecture: { summary: 'Arch A', diagram: 'graph TD; A-->B' },
+    primaryLang: 'TypeScript',
+    architecture: { summary: 'Arch A', nodes: [], edges: [] },
     links: { github: 'https://github.com/test' },
   },
   {
@@ -24,7 +25,8 @@ const mockProjects: Project[] = [
     stack: ['C#'],
     category: 'Backend API',
     status: 'planned',
-    architecture: { summary: 'Arch B', diagram: 'graph TD; C-->D' },
+    primaryLang: 'Java',
+    architecture: { summary: 'Arch B', nodes: [], edges: [] },
     links: {},
   },
 ];

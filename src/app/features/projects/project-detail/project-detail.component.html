@@ -1,49 +1,104 @@
 <ng-container *transloco="let t">
   @if (project(); as p) {
-    <article class="detail section">
-      <div class="container">
-        <header class="detail__header">
-          <span class="detail__category">{{ p.category }}</span>
-          <h1 class="detail__title" data-testid="project-title">{{ p.title }}</h1>
-          <span
-            class="detail__status detail__status--{{ p.status }}"
-            data-testid="project-status"
-            >{{ t('projects_page.status.' + p.status) }}</span
-          >
-        </header>
+    <article class="detail">
+      <header class="detail__hero">
+        <div class="container">
+          <nav class="detail__breadcrumb" appReveal>
+            <a routerLink="/projects">← {{ t('project_detail.back_to_projects') }}</a>
+            <span>/</span>
+            <span style="color: var(--text-2)">{{ p.slug }}</span>
+          </nav>
 
-        <p class="detail__description" data-testid="project-description">
-          {{ t('projects.' + p.slug + '.description') }}
-        </p>
-
-        <section class="detail__stack" data-testid="stack-section">
-          <h2 class="detail__section-heading">{{ t('project_detail.tech_stack') }}</h2>
-          <ul class="detail__stack-list">
-            @for (tech of p.stack; track tech) {
-              <li class="detail__tech">{{ tech }}</li>
-            }
-          </ul>
-        </section>
-
-        <section class="detail__architecture" data-testid="architecture-section">
-          <h2 class="detail__section-heading">{{ t('project_detail.architecture') }}</h2>
-          <p class="detail__arch-summary">{{ t('projects.' + p.slug + '.architectureSummary') }}</p>
-          <app-mermaid-diagram [definition]="p.architecture.diagram" />
-        </section>
-
-        @if (p.links.github) {
-          <div class="detail__links">
-            <a
-              [href]="p.links.github"
-              class="detail__github-link"
-              data-testid="github-link"
-              target="_blank"
-              rel="noopener noreferrer"
-              >{{ t('project_detail.view_on_github') }}</a
+          <div class="detail__meta" appReveal [revealDelay]="80">
+            <span class="proj-card__cat" style="color: var(--accent)">{{ p.category }}</span>
+            <span
+              class="status"
+              [class.status--complete]="p.status === 'complete'"
+              [class.status--planned]="p.status === 'planned'"
+              [class.status--in-progress]="p.status === 'in-progress'"
+              data-testid="project-status"
+              >{{ t('projects_page.status.' + p.status) }}</span
             >
+            <span class="chip" style="background: transparent">{{ p.primaryLang }}</span>
           </div>
-        }
-      </div>
+
+          <h1 class="detail__title" data-testid="project-title" appReveal [revealDelay]="160">
+            {{ p.title }}
+          </h1>
+
+          <p class="detail__lede" data-testid="project-description" appReveal [revealDelay]="240">
+            {{ t('projects.' + p.slug + '.description') }}
+          </p>
+
+          <div class="detail__actions" appReveal [revealDelay]="320">
+            @if (p.links.github) {
+              <a
+                [href]="p.links.github"
+                class="btn btn--primary"
+                data-testid="github-link"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {{ t('project_detail.view_on_github') }} <span class="arrow">↗</span>
+              </a>
+            }
+            <a routerLink="/projects" class="btn btn--ghost">
+              {{ t('project_detail.other_projects') }}
+            </a>
+          </div>
+        </div>
+      </header>
+
+      @if (p.metrics && p.metrics.length > 0) {
+        <section class="section" style="padding-block: var(--space-12)">
+          <div class="container">
+            <div class="stats-grid" appReveal data-testid="metrics-section">
+              @for (m of p.metrics; track m.label) {
+                <div class="stat-big">
+                  <div class="stat-big__value">{{ m.value }}</div>
+                  <div class="stat-big__label">{{ m.label }}</div>
+                </div>
+              }
+            </div>
+          </div>
+        </section>
+      }
+
+      <section class="section" style="padding-top: 0" data-testid="architecture-section">
+        <div class="container">
+          <div class="split">
+            <aside class="split__rail">
+              <div class="split__rail-label">{{ t('project_detail.tech_stack') }}</div>
+              <ul class="tech-tags" data-testid="stack-list" style="margin-top: var(--space-3)">
+                @for (tech of p.stack; track tech) {
+                  <li class="chip">{{ tech }}</li>
+                }
+              </ul>
+            </aside>
+
+            <div>
+              <div class="sec-head" appReveal>
+                <div class="sec-head__kicker">{{ t('project_detail.architecture') }}</div>
+                <h2 class="sec-head__title">{{ t('project_detail.architecture_title') }}</h2>
+                <p class="sec-head__sub">{{ t('projects.' + p.slug + '.architectureSummary') }}</p>
+              </div>
+
+              <div class="arch-card" appReveal>
+                <div class="arch-card__head">
+                  <div class="arch-card__dots" aria-hidden="true">
+                    <span></span><span></span><span></span>
+                  </div>
+                  <div class="arch-card__title">architecture · {{ p.slug }}.svg</div>
+                  <div style="width: 30px"></div>
+                </div>
+                <div class="arch-card__body">
+                  <app-arch-diagram [nodes]="p.architecture.nodes" [edges]="p.architecture.edges" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
     </article>
   } @else {
     <div class="detail-not-found section">

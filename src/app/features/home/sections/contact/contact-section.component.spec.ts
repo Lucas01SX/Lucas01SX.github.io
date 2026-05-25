@@ -1,4 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { provideHttpClient } from '@angular/common/http';
+import { provideHttpClientTesting } from '@angular/common/http/testing';
 import { ContactSectionComponent } from './contact-section.component';
 import { translocoTesting } from '../../../../../testing/transloco-testing';
 
@@ -9,6 +11,7 @@ describe('ContactSectionComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [ContactSectionComponent, translocoTesting],
+      providers: [provideHttpClient(), provideHttpClientTesting()],
     }).compileComponents();
 
     fixture = TestBed.createComponent(ContactSectionComponent);
@@ -25,19 +28,19 @@ describe('ContactSectionComponent', () => {
   });
 
   it('should render a GitHub link', () => {
-    const link = compiled.querySelector('[data-testid="contact-github"]');
+    const link = compiled.querySelector('[data-testid="channel-github"]');
     expect(link).not.toBeNull();
     expect(link?.getAttribute('href')).toContain('github.com/Lucas01SX');
   });
 
   it('should render a LinkedIn link', () => {
-    const link = compiled.querySelector('[data-testid="contact-linkedin"]');
+    const link = compiled.querySelector('[data-testid="channel-linkedin"]');
     expect(link).not.toBeNull();
     expect(link?.getAttribute('href')).toContain('linkedin.com/in/lucas-dev-dotnet');
   });
 
   it('should render an email link', () => {
-    const link = compiled.querySelector('[data-testid="contact-email"]');
+    const link = compiled.querySelector('[data-testid="channel-email"]');
     expect(link).not.toBeNull();
     expect(link?.getAttribute('href')).toContain('mailto:');
   });
@@ -47,19 +50,19 @@ describe('ContactSectionComponent', () => {
   });
 
   it('should render a name input field', () => {
-    expect(compiled.querySelector('[data-testid="field-name"]')).not.toBeNull();
+    expect(compiled.querySelector('[data-testid="contact-name"]')).not.toBeNull();
   });
 
   it('should render an email input field', () => {
-    expect(compiled.querySelector('[data-testid="field-email"]')).not.toBeNull();
+    expect(compiled.querySelector('[data-testid="contact-email"]')).not.toBeNull();
   });
 
   it('should render a message textarea', () => {
-    expect(compiled.querySelector('[data-testid="field-message"]')).not.toBeNull();
+    expect(compiled.querySelector('[data-testid="contact-message"]')).not.toBeNull();
   });
 
   it('should render a submit button', () => {
-    const btn = compiled.querySelector('[data-testid="form-submit"]');
+    const btn = compiled.querySelector('[data-testid="contact-submit"]');
     expect(btn).not.toBeNull();
     expect(btn?.getAttribute('type')).toBe('submit');
   });

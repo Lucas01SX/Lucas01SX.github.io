@@ -1,13 +1,27 @@
-<section class="hero section" *transloco="let t">
-  <div class="container">
-    <h1 class="hero__name" data-testid="hero-name">Lucas Santana</h1>
-    <p class="hero__title" data-testid="hero-title">{{ t('hero.title') }}</p>
-    <p class="hero__subtitle">{{ t('hero.subtitle') }}</p>
-    <div class="hero__ctas">
-      <a data-testid="cta-projects" routerLink="/projects" class="hero__cta hero__cta--primary">
-        {{ t('hero.cta_projects') }}
+<section class="hero" *transloco="let t">
+  <div class="hero__bg" aria-hidden="true"></div>
+  <div class="container hero__inner">
+    <div class="hero__eyebrow" appReveal>
+      <span>{{ t('hero.eyebrow') }}</span>
+    </div>
+
+    <h1 class="hero__name" data-testid="hero-name" appReveal [revealDelay]="80">
+      Lucas<br />Santana
+    </h1>
+
+    <p class="hero__role" data-testid="hero-title" appReveal [revealDelay]="160">
+      <b>.NET</b><span class="dot">·</span><b>TypeScript</b><span class="dot">·</span><b>Java</b>
+    </p>
+
+    <p class="hero__lede" appReveal [revealDelay]="240">
+      {{ t('hero.subtitle') }}
+    </p>
+
+    <div class="hero__ctas" appReveal [revealDelay]="320">
+      <a data-testid="cta-projects" routerLink="/projects" class="btn btn--primary">
+        {{ t('hero.cta_projects') }} <span class="arrow">→</span>
       </a>
-      <a data-testid="cta-contact" href="#contact" class="hero__cta hero__cta--secondary">
+      <a data-testid="cta-contact" href="#contact" class="btn btn--ghost">
         {{ t('hero.cta_contact') }}
       </a>
     </div>

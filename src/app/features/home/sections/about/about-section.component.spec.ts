@@ -20,8 +20,8 @@ describe('AboutSectionComponent', () => {
     expect(fixture.componentInstance).toBeTruthy();
   });
 
-  it('should render an "About" heading', () => {
-    expect(compiled.querySelector('h2')?.textContent?.trim()).toBe('About');
+  it('should render the section rail label', () => {
+    expect(compiled.textContent).toContain('01 / ABOUT');
   });
 
   it('should describe a "developer" role, not "engineer"', () => {

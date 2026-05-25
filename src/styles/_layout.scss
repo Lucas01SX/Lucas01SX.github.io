@@ -1,3 +1,8 @@
+// ────────────────────────────────────────────────────────────
+// Layout utilities — wider container + asymmetric split
+// REPLACES existing src/styles/_layout.scss
+// ────────────────────────────────────────────────────────────
+
 .container {
   max-width: var(--container-max);
   margin-inline: auto;
@@ -6,10 +11,79 @@
 }
 
 .section {
-  padding-block: var(--space-24);
+  padding-block: clamp(var(--space-16), 10vw, var(--space-32));
+}
+
+// Asymmetric two-column layout: meta rail (left) + main content (right).
+// Use on About, Project Detail (stack/arch column), Contact, etc.
+.split {
+  display: grid;
+  grid-template-columns: var(--rail) 1fr;
+  gap: clamp(var(--space-8), 5vw, var(--space-16));
+  align-items: start;
+
+  &__rail {
+    position: sticky;
+    top: 90px;
+  }
+
+  &__rail-label {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--text-3);
+    margin-bottom: var(--space-3);
+  }
+
+  &__rail-meta {
+    font-family: var(--font-mono);
+    font-size: var(--text-sm);
+    color: var(--text-2);
+    line-height: var(--leading-loose);
+  }
+}
+
+// Section headers — consistent system across all sections
+.sec-head {
+  display: grid;
+  gap: var(--space-3);
+  margin-bottom: var(--space-12);
+
+  &__kicker {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+
+  &__title {
+    font-size: var(--text-3xl);
+    letter-spacing: -0.03em;
+    max-width: 22ch;
+    line-height: var(--leading-tight);
+  }
+
+  &__sub {
+    max-width: 60ch;
+    color: var(--text-2);
+    font-size: var(--text-lg);
+    line-height: var(--leading-snug);
+  }
 }
 
 // Tablet
+@media (max-width: 900px) {
+  .split {
+    grid-template-columns: 1fr;
+
+    &__rail {
+      position: static;
+    }
+  }
+}
+
 @media (max-width: 768px) {
   :root {
     --container-padding: var(--space-5);

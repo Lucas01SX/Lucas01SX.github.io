@@ -1,15 +1,16 @@
 import { Component, inject } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { map, switchMap } from 'rxjs';
 import { TranslocoDirective } from '@jsverse/transloco';
 import { ProjectService } from '../../../core/services/project.service';
-import { MermaidDiagramComponent } from '../../../shared/components/mermaid-diagram/mermaid-diagram.component';
+import { ArchDiagramComponent } from '../../../shared/components/arch-diagram/arch-diagram.component';
+import { RevealDirective } from '../../../shared/directives/reveal.directive';
 
 @Component({
   selector: 'app-project-detail',
   standalone: true,
-  imports: [MermaidDiagramComponent, TranslocoDirective],
+  imports: [ArchDiagramComponent, TranslocoDirective, RouterLink, RevealDirective],
   templateUrl: './project-detail.component.html',
   styleUrl: './project-detail.component.scss',
 })

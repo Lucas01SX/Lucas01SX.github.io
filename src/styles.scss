@@ -1,7 +1,13 @@
+// ────────────────────────────────────────────────────────────
+// Global stylesheet — REPLACES src/styles.scss
+// Adds: import for the new _components.scss
+// ────────────────────────────────────────────────────────────
+
 @use 'styles/fonts';
 @use 'styles/tokens';
 @use 'styles/typography';
 @use 'styles/layout';
+@use 'styles/components'; // NEW — shared classes (.btn, .pillar, .proj-card, .compare, etc.)
 
 *,
 *::before,
@@ -19,25 +25,37 @@ html {
 }
 
 body {
-  background-color: var(--color-bg);
-  color: var(--color-text-primary);
+  background-color: var(--bg);
+  color: var(--text);
   min-height: 100vh;
   min-height: 100dvh;
   overflow-x: hidden;
   scrollbar-gutter: stable;
+  transition:
+    background-color var(--t-base),
+    color var(--t-base);
 }
 
 a {
-  color: var(--color-accent);
+  color: var(--accent);
   text-decoration: none;
 
   &:hover {
-    color: var(--color-accent-hover);
+    color: var(--accent-2);
   }
 }
 
+// Buttons reset (Tweaks/IconButtons inherit this safely)
+button {
+  font: inherit;
+  background: transparent;
+  border: 0;
+  color: inherit;
+  cursor: pointer;
+}
+
 :focus-visible {
-  outline: 2px solid var(--color-accent);
+  outline: 2px solid var(--accent);
   outline-offset: 3px;
   border-radius: 2px;
 }
@@ -57,8 +75,8 @@ a {
     width: auto;
     height: auto;
     padding: 0.5rem 1rem;
-    background: var(--color-accent);
-    color: var(--color-bg);
+    background: var(--accent);
+    color: var(--color-on-accent);
     z-index: 9999;
     border-radius: 4px;
     font-weight: 600;
@@ -70,7 +88,7 @@ pre {
   font-family: var(--font-mono);
 }
 
-// Light mode section separators — border-top on every section after the first
+// Light mode section separators — keep behavior from previous design
 [data-theme='light'] {
   app-about-section,
   app-engineering-approach-section,
@@ -78,6 +96,6 @@ pre {
   app-projects-preview-section,
   app-contact-section {
     display: block;
-    border-top: 1px solid var(--color-border);
+    border-top: 1px solid var(--border);
   }
 }

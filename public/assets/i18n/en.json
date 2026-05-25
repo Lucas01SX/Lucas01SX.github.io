@@ -11,12 +11,15 @@
     "aria_to_dark": "Switch to dark theme"
   },
   "hero": {
+    "eyebrow": "BACKEND ENGINEER · AVAILABLE FOR PROJECTS",
     "title": "Backend Developer — .NET · TypeScript · Java",
-    "subtitle": "Building secure, observable, and maintainable APIs for real-world systems.",
+    "subtitle": "Building secure, observable, and maintainable APIs for real-world systems. Spec-first, with tests driving the design.",
     "cta_projects": "View Projects",
     "cta_contact": "Contact"
   },
   "about": {
+    "rail_label": "01 / ABOUT",
+    "rail_meta": "Backend\nAPIs · Distributed Systems\n\nBased in Brazil",
     "heading": "About",
     "bio1": "I'm a backend developer focused on building APIs that are secure by design, easy to observe in production, and maintainable over time. I work primarily with .NET/C#, TypeScript/NestJS, and Java/Spring Boot.",
     "bio2": "My approach is spec-first: I think through failure cases and invariants before writing a line of code. I care about structured logging, correlation IDs, and making systems that behave predictably under pressure."
@@ -24,8 +27,13 @@
   "stack": {
     "heading": "Tech Stack"
   },
+  "tech_stack": {
+    "kicker": "03 / STACK",
+    "heading": "Technologies I use every day."
+  },
   "approach": {
-    "heading": "Engineering Approach",
+    "kicker": "02 / APPROACH",
+    "heading": "Principles behind every line of code.",
     "pillars": {
       "security": {
         "title": "Security-First",
@@ -42,14 +50,17 @@
     }
   },
   "projects_preview": {
-    "heading": "Projects",
+    "kicker": "04 / PROJECTS",
+    "heading": "Same domain. Different stacks.",
+    "sub": "Three implementations of the same helpdesk system, each built to demonstrate architectural depth in its stack.",
     "view_project": "View Project",
     "view_all": "View all projects",
     "aria_view": "View"
   },
   "projects_page": {
-    "heading": "Projects",
-    "subtitle": "Same domain. Different stacks. Each one built to demonstrate architecture depth.",
+    "kicker": "PROJECTS · 3 IMPLEMENTATIONS",
+    "heading": "Same domain. Different stacks.",
+    "subtitle": "Each implementation proves the same set of business rules — ticket state machine, SLA, auth — using idiomatic tools and patterns for its stack. Compared side by side.",
     "loading": "Loading projects...",
     "view_project": "View Project",
     "aria_view": "View",
@@ -59,15 +70,35 @@
       "complete": "Complete"
     }
   },
+  "compare": {
+    "kicker": "COMPARISON · FEATURE PARITY",
+    "heading": "What each one delivers.",
+    "sub": "All three versions share the same domain. The differences lie in how each stack expresses the decisions — ORM, events, testing tools.",
+    "feature": "Feature"
+  },
   "contact": {
-    "heading": "Contact",
+    "kicker": "CONTACT",
+    "heading": "Let's talk.",
+    "sub": "Interested in collaborating, hiring, or just exchanging ideas about backend architecture? I reply within 48 business hours.",
     "name": "Name",
+    "name_placeholder": "What's your name?",
     "email": "Email",
+    "email_placeholder": "you@example.com",
     "message": "Message",
+    "message_placeholder": "What do you want to talk about?",
+    "send": "Send message",
     "submit": "Send Message",
+    "sending": "Sending...",
     "submitting": "Sending...",
+    "sent": "Message sent",
     "success": "Message sent! I'll get back to you soon.",
+    "error_generic": "Something went wrong. Please try again.",
     "error_send": "Something went wrong. Please try again.",
+    "errors": {
+      "name": "Please enter a valid name (2–100 characters).",
+      "email": "Please enter a valid email address.",
+      "message": "Message must be between 10 and 2000 characters."
+    },
     "error": {
       "name_required": "Name is required.",
       "name_min": "Name must be at least 2 characters.",
@@ -103,7 +134,10 @@
   },
   "project_detail": {
     "tech_stack": "Tech Stack",
-    "architecture": "Architecture",
+    "architecture": "ARCHITECTURE",
+    "architecture_title": "How the system is structured.",
+    "back_to_projects": "Projects",
+    "other_projects": "Other projects",
     "view_on_github": "View on GitHub",
     "not_found": "Project not found."
   }

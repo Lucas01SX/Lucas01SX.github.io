@@ -1,25 +1,29 @@
-.about {
-  &__heading {
-    font-size: var(--text-2xl);
-    font-weight: var(--weight-semibold);
-    color: var(--color-text-primary);
-    margin-bottom: var(--space-8);
-  }
+:host {
+  display: block;
+}
 
+.about {
   &__content {
-    max-width: 720px;
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-5);
+    // Constrains paragraph line length for readability, but no longer
+    // restricts within an already-narrow container — the wider --container-max
+    // does the heavy lifting now.
+    max-width: 65ch;
   }
 
   &__bio {
-    font-size: var(--text-lg);
-    color: var(--color-text-secondary);
-    line-height: var(--leading-normal);
+    font-size: clamp(var(--text-lg), 1.5vw, var(--text-xl));
+    line-height: var(--leading-snug);
+    color: var(--text);
+    margin-bottom: var(--space-6);
+    letter-spacing: -0.01em;
 
-    strong {
-      color: var(--color-text-primary);
+    &:last-child {
+      color: var(--text-2);
+    }
+
+    strong,
+    b {
+      color: var(--text);
       font-weight: var(--weight-medium);
     }
   }

@@ -15,7 +15,8 @@ const mockProjects: Project[] = [
     stack: ['TypeScript', 'NestJS'],
     category: 'Backend API',
     status: 'complete',
-    architecture: { summary: 'Arch A', diagram: 'graph TD; A-->B' },
+    primaryLang: 'TypeScript',
+    architecture: { summary: 'Arch A', nodes: [], edges: [] },
     links: { github: 'https://github.com/test' },
   },
   {
@@ -26,7 +27,8 @@ const mockProjects: Project[] = [
     stack: ['C#', '.NET'],
     category: 'Backend API',
     status: 'in-progress',
-    architecture: { summary: 'Arch B', diagram: 'graph TD; C-->D' },
+    primaryLang: '.NET',
+    architecture: { summary: 'Arch B', nodes: [], edges: [] },
     links: {},
   },
 ];
@@ -57,7 +59,9 @@ describe('ProjectsComponent', () => {
   });
 
   it('should render a page heading', () => {
-    expect(compiled.querySelector('h1')?.textContent?.trim()).toBe('Projects');
+    expect(compiled.querySelector('h1')?.textContent?.trim()).toBe(
+      'Same domain. Different stacks.',
+    );
   });
 
   it('should render a card for each project', () => {
@@ -71,7 +75,7 @@ describe('ProjectsComponent', () => {
   });
 
   it('should render the project title in each card', () => {
-    const titles = Array.from(compiled.querySelectorAll('.project-card__title')).map((el) =>
+    const titles = Array.from(compiled.querySelectorAll('.proj-card__title')).map((el) =>
       el.textContent?.trim(),
     );
     expect(titles).toContain('Project A');

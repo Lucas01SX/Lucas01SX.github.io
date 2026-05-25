@@ -23,21 +23,22 @@ describe('HeroSectionComponent', () => {
   });
 
   it('should render the name "Lucas Santana"', () => {
-    expect(compiled.querySelector('[data-testid="hero-name"]')?.textContent?.trim()).toBe(
-      'Lucas Santana',
-    );
+    const nameEl = compiled.querySelector('[data-testid="hero-name"]');
+    const text = nameEl?.textContent?.replace(/\s+/g, ' ').trim() ?? '';
+    expect(text).toContain('Lucas');
+    expect(text).toContain('Santana');
   });
 
-  it('should render a title containing "Backend Developer"', () => {
-    expect(compiled.querySelector('[data-testid="hero-title"]')?.textContent).toContain(
-      'Backend Developer',
-    );
+  it('should render tech stack in the role line', () => {
+    const roleEl = compiled.querySelector('[data-testid="hero-title"]');
+    expect(roleEl?.textContent).toContain('.NET');
+    expect(roleEl?.textContent).toContain('TypeScript');
   });
 
   it('should render a "View Projects" CTA', () => {
     const cta = compiled.querySelector('[data-testid="cta-projects"]');
     expect(cta).not.toBeNull();
-    expect(cta?.textContent?.trim()).toBe('View Projects');
+    expect(cta?.textContent?.trim()).toContain('View Projects');
   });
 
   it('should render a "Contact" CTA linking to #contact', () => {

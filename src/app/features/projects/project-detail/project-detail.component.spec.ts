@@ -1,12 +1,3 @@
-import { vi } from 'vitest';
-
-vi.mock('mermaid', () => ({
-  default: {
-    initialize: vi.fn(),
-    render: vi.fn().mockResolvedValue({ svg: '<svg></svg>' }),
-  },
-}));
-
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { convertToParamMap } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
@@ -23,10 +14,21 @@ const mockProject: Project = {
   description: 'Full description of the project.',
   stack: ['C#', '.NET 8', 'PostgreSQL'],
   category: 'Backend API',
-  status: 'in-progress',
+  status: 'complete',
+  primaryLang: '.NET',
+  metrics: [
+    { value: '193', label: 'Testes' },
+    { value: '59', label: 'Unitários' },
+    { value: '128', label: 'Integração' },
+    { value: '6', label: 'Arquitetura' },
+  ],
   architecture: {
     summary: 'Clean Architecture summary.',
-    diagram: 'graph TD; A-->B',
+    nodes: [
+      { id: 'api', label: 'API', x: 50, y: 10, type: 'entry' },
+      { id: 'db', label: 'PostgreSQL', x: 50, y: 80, type: 'db' },
+    ],
+    edges: [['api', 'db']],
   },
   links: { github: 'https://github.com/Lucas01SX' },
 };
@@ -74,13 +76,18 @@ describe('ProjectDetailComponent', () => {
   });
 
   it('should render the tech stack section', () => {
-    expect(compiled.querySelector('[data-testid="stack-section"]')).not.toBeNull();
+    expect(compiled.querySelector('[data-testid="stack-list"]')).not.toBeNull();
     expect(compiled.textContent).toContain('C#');
   });
 
   it('should render the architecture section', () => {
     expect(compiled.querySelector('[data-testid="architecture-section"]')).not.toBeNull();
-    expect(compiled.textContent).toContain('Clean Architecture summary.'); // from transloco-testing mock
+    expect(compiled.textContent).toContain('Clean Architecture summary.');
+  });
+
+  it('should render the metrics grid', () => {
+    expect(compiled.querySelector('[data-testid="metrics-section"]')).not.toBeNull();
+    expect(compiled.textContent).toContain('193');
   });
 
   it('should render a GitHub link', () => {
@@ -89,8 +96,8 @@ describe('ProjectDetailComponent', () => {
     expect(link?.getAttribute('href')).toContain('github.com');
   });
 
-  it('should render a mermaid diagram component', () => {
-    expect(compiled.querySelector('app-mermaid-diagram')).not.toBeNull();
+  it('should render an arch-diagram component', () => {
+    expect(compiled.querySelector('app-arch-diagram')).not.toBeNull();
   });
 });
 

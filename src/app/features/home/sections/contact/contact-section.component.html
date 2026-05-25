@@ -1,153 +1,144 @@
 <section id="contact" class="contact section" *transloco="let t">
   <div class="container">
-    <h2 class="contact__heading">{{ t('contact.heading') }}</h2>
+    <div class="contact-grid">
+      <aside class="contact-info" appReveal>
+        <div class="sec-head__kicker">{{ t('contact.kicker') }}</div>
+        <h2 class="contact-info__title">{{ t('contact.heading') }}</h2>
+        <p class="contact-info__lede">{{ t('contact.sub') }}</p>
 
-    <div class="contact__links">
-      <a
-        href="https://github.com/Lucas01SX"
-        aria-label="GitHub"
-        class="contact__link"
-        data-testid="contact-github"
-        target="_blank"
-        rel="noopener noreferrer"
-        >GitHub</a
-      >
-      <a
-        href="https://www.linkedin.com/in/lucas-dev-dotnet"
-        aria-label="LinkedIn"
-        class="contact__link"
-        data-testid="contact-linkedin"
-        target="_blank"
-        rel="noopener noreferrer"
-        >LinkedIn</a
-      >
-      <a
-        href="mailto:lukassantana351@gmail.com"
-        aria-label="Email"
-        class="contact__link"
-        data-testid="contact-email"
-        >lukassantana351@gmail.com</a
-      >
-    </div>
+        <ul class="contact-channels">
+          <li>
+            <a
+              href="https://github.com/Lucas01SX"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="contact-channel"
+              data-testid="channel-github"
+            >
+              <span class="contact-channel__kind">GitHub</span>
+              <span class="contact-channel__label">&#64;Lucas01SX</span>
+              <span class="contact-channel__arrow">↗</span>
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://www.linkedin.com/in/lucas-dev-dotnet"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="contact-channel"
+              data-testid="channel-linkedin"
+            >
+              <span class="contact-channel__kind">LinkedIn</span>
+              <span class="contact-channel__label">/in/lucas-dev-dotnet</span>
+              <span class="contact-channel__arrow">↗</span>
+            </a>
+          </li>
+          <li>
+            <a
+              href="mailto:lukassantana351&#64;gmail.com"
+              class="contact-channel"
+              data-testid="channel-email"
+            >
+              <span class="contact-channel__kind">Email</span>
+              <span class="contact-channel__label">lukassantana351&#64;gmail.com</span>
+              <span class="contact-channel__arrow">↗</span>
+            </a>
+          </li>
+        </ul>
+      </aside>
 
-    @if (state() === 'success') {
-      <div class="contact__success" role="alert" data-testid="form-success">
-        {{ t('contact.success') }}
-      </div>
-    } @else {
       <form
-        class="contact__form"
-        data-testid="contact-form"
         [formGroup]="form"
         (ngSubmit)="submit()"
         novalidate
+        class="form"
+        appReveal
+        [revealDelay]="120"
+        data-testid="contact-form"
       >
-        <!-- Honeypot: invisible to humans, bots fill it -->
         <input
           #honeypot
           type="text"
-          name="website"
+          name="company"
+          autocomplete="off"
           tabindex="-1"
           aria-hidden="true"
-          autocomplete="off"
-          class="contact__honeypot"
+          style="position: absolute; left: -9999px; opacity: 0"
         />
 
-        <div class="contact__field">
-          <label for="contact-name">{{ t('contact.name') }}</label>
+        <div class="field">
+          <label for="contact-name" class="field__label">{{ t('contact.name') }}</label>
           <input
             id="contact-name"
             type="text"
             formControlName="name"
-            autocomplete="name"
-            maxlength="100"
-            data-testid="field-name"
-            [attr.aria-invalid]="showError('name') ? 'true' : null"
+            class="field__input"
+            [attr.aria-invalid]="showError('name')"
+            data-testid="contact-name"
+            [placeholder]="t('contact.name_placeholder')"
           />
           @if (showError('name')) {
-            <span class="contact__error" role="alert" data-testid="error-name">
-              @if (nameCtrl.hasError('required')) {
-                {{ t('contact.error.name_required') }}
-              } @else if (nameCtrl.hasError('minlength')) {
-                {{ t('contact.error.name_min') }}
-              } @else if (nameCtrl.hasError('maxlength')) {
-                {{ t('contact.error.name_max') }}
-              } @else if (nameCtrl.hasError('namePattern')) {
-                {{ t('contact.error.name_pattern') }}
-              }
-            </span>
+            <small class="field__error">{{ t('contact.errors.name') }}</small>
           }
         </div>
 
-        <div class="contact__field">
-          <label for="contact-email">{{ t('contact.email') }}</label>
+        <div class="field">
+          <label for="contact-email" class="field__label">{{ t('contact.email') }}</label>
           <input
             id="contact-email"
             type="email"
             formControlName="email"
-            autocomplete="email"
-            maxlength="254"
-            data-testid="field-email"
-            [attr.aria-invalid]="showError('email') ? 'true' : null"
+            class="field__input"
+            [attr.aria-invalid]="showError('email')"
+            data-testid="contact-email"
+            [placeholder]="t('contact.email_placeholder')"
           />
           @if (showError('email')) {
-            <span class="contact__error" role="alert" data-testid="error-email">
-              @if (emailCtrl.hasError('required')) {
-                {{ t('contact.error.email_required') }}
-              } @else if (emailCtrl.hasError('email')) {
-                {{ t('contact.error.email_invalid') }}
-              } @else if (emailCtrl.hasError('maxlength')) {
-                {{ t('contact.error.email_max') }}
-              }
-            </span>
+            <small class="field__error">{{ t('contact.errors.email') }}</small>
           }
         </div>
 
-        <div class="contact__field">
-          <label for="contact-message">{{ t('contact.message') }}</label>
+        <div class="field">
+          <label for="contact-message" class="field__label">{{ t('contact.message') }}</label>
           <textarea
             id="contact-message"
             formControlName="message"
-            rows="5"
+            class="field__textarea"
             maxlength="2000"
-            data-testid="field-message"
-            [attr.aria-invalid]="showError('message') ? 'true' : null"
+            [attr.aria-invalid]="showError('message')"
+            data-testid="contact-message"
+            [placeholder]="t('contact.message_placeholder')"
           ></textarea>
-          <div class="contact__meta">
-            @if (showError('message')) {
-              <span class="contact__error" role="alert" data-testid="error-message">
-                @if (messageCtrl.hasError('required')) {
-                  {{ t('contact.error.message_required') }}
-                } @else if (messageCtrl.hasError('minlength')) {
-                  {{ t('contact.error.message_min') }}
-                } @else if (messageCtrl.hasError('maxlength')) {
-                  {{ t('contact.error.message_max') }}
-                }
-              </span>
-            } @else {
-              <span></span>
-            }
-            <span class="contact__char-count" aria-live="polite">{{ messageLength }}/2000</span>
-          </div>
-        </div>
-
-        <div class="contact__footer">
-          <button
-            type="submit"
-            class="contact__submit"
-            data-testid="form-submit"
-            [disabled]="state() === 'submitting'"
-          >
-            {{ state() === 'submitting' ? t('contact.submitting') : t('contact.submit') }}
-          </button>
-
-          @if (state() === 'error') {
-            <span class="contact__error contact__error--send" role="alert" data-testid="form-error">
-              {{ t('contact.error_send') }}
-            </span>
+          <div class="field__count">{{ messageLength }}/2000</div>
+          @if (showError('message')) {
+            <small class="field__error">{{ t('contact.errors.message') }}</small>
           }
         </div>
+
+        <button
+          type="submit"
+          class="btn btn--accent"
+          [disabled]="state() === 'submitting'"
+          data-testid="contact-submit"
+          style="align-self: flex-start"
+        >
+          @switch (state()) {
+            @case ('submitting') {
+              {{ t('contact.sending') }}
+            }
+            @case ('success') {
+              {{ t('contact.sent') }} ✓
+            }
+            @default {
+              {{ t('contact.send') }} <span class="arrow">→</span>
+            }
+          }
+        </button>
+
+        @if (state() === 'error') {
+          <p class="field__error" role="alert">{{ t('contact.error_generic') }}</p>
+        }
       </form>
-    }
+    </div>
   </div>
 </section>
