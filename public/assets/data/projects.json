@@ -28,14 +28,23 @@
   {
     "slug": "helpdesk-nestjs",
     "title": "Helpdesk API (NestJS)",
-    "shortDescription": "Same helpdesk domain reimplemented in TypeScript using Fastify, Prisma, and BullMQ.",
-    "description": "TypeScript implementation of the same helpdesk domain. Uses Fastify for performance, Prisma as ORM, BullMQ for async event processing, and Vitest for testing. Demonstrates that domain invariants survive a complete stack change.",
-    "stack": ["TypeScript", "NestJS", "Fastify", "Prisma", "PostgreSQL", "BullMQ", "Vitest"],
+    "shortDescription": "Same helpdesk domain reimplemented in TypeScript using NestJS, Fastify, Prisma, and EventEmitter2.",
+    "description": "TypeScript implementation of the helpdesk domain on NestJS + Fastify. Uses Prisma as ORM, EventEmitter2 for domain events (dispatched after persistence), and Vitest + TestContainers for integration tests against a real PostgreSQL instance. 248 tests covering the full feature set: tickets, SLA, audit events, attachments, and auth with JWT rotation and Argon2id. Feature-complete with the .NET version.",
+    "stack": [
+      "TypeScript",
+      "NestJS",
+      "Fastify",
+      "Prisma",
+      "PostgreSQL",
+      "EventEmitter2",
+      "Vitest",
+      "TestContainers"
+    ],
     "category": "Backend API",
-    "status": "planned",
+    "status": "complete",
     "architecture": {
-      "summary": "Modular NestJS structure with dedicated modules per domain area. Domain logic isolated from the framework. BullMQ handles async event dispatch after persistence.",
-      "diagram": "graph TD\n  API[Fastify / NestJS] --> MOD[Domain Modules]\n  MOD --> DOM[Domain Layer]\n  MOD --> PRI[Prisma ORM]\n  PRI --> DB[(PostgreSQL)]\n  MOD --> BULL[BullMQ]\n  BULL --> WORKER[Event Workers]"
+      "summary": "Modular NestJS structure with dedicated modules per domain area. Use Cases injected directly via DI — no Mediator, no command bus. Domain logic isolated from the framework. EventEmitter2 dispatches events synchronously after persistence.",
+      "diagram": "graph TD\n  API[Fastify / NestJS] --> MOD[Domain Modules]\n  MOD --> DOM[Domain Layer]\n  MOD --> PRI[Prisma ORM]\n  PRI --> DB[(PostgreSQL)]\n  MOD --> EVT[EventEmitter2]\n  EVT --> HND[Event Listeners]"
     },
     "links": {
       "github": "https://github.com/Lucas01SX"

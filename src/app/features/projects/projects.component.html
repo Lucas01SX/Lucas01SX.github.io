@@ -18,7 +18,9 @@
               >
             </div>
             <h2 class="project-card__title">{{ project.title }}</h2>
-            <p class="project-card__description">{{ project.shortDescription }}</p>
+            <p class="project-card__description">
+              {{ t('projects.' + project.slug + '.shortDescription') }}
+            </p>
             <ul class="project-card__stack">
               @for (tech of project.stack; track tech) {
                 <li class="project-card__tech">{{ tech }}</li>

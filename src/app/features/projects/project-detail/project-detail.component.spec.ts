@@ -14,6 +14,7 @@ import { of } from 'rxjs';
 import { ProjectDetailComponent } from './project-detail.component';
 import { ProjectService } from '../../../core/services/project.service';
 import { Project } from '../../../core/models/project.model';
+import { translocoTesting } from '../../../../testing/transloco-testing';
 
 const mockProject: Project = {
   slug: 'helpdesk-dotnet',
@@ -36,7 +37,7 @@ describe('ProjectDetailComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ProjectDetailComponent],
+      imports: [ProjectDetailComponent, translocoTesting],
       providers: [
         {
           provide: ActivatedRoute,
@@ -68,7 +69,7 @@ describe('ProjectDetailComponent', () => {
 
   it('should render the project description', () => {
     expect(compiled.querySelector('[data-testid="project-description"]')?.textContent?.trim()).toBe(
-      'Full description of the project.',
+      'Full description of the .NET project.',
     );
   });
 
@@ -79,7 +80,7 @@ describe('ProjectDetailComponent', () => {
 
   it('should render the architecture section', () => {
     expect(compiled.querySelector('[data-testid="architecture-section"]')).not.toBeNull();
-    expect(compiled.textContent).toContain('Clean Architecture summary.');
+    expect(compiled.textContent).toContain('Clean Architecture summary.'); // from transloco-testing mock
   });
 
   it('should render a GitHub link', () => {
@@ -99,7 +100,7 @@ describe('ProjectDetailComponent — project not found', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ProjectDetailComponent],
+      imports: [ProjectDetailComponent, translocoTesting],
       providers: [
         {
           provide: ActivatedRoute,
