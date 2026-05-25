@@ -1,0 +1,17 @@
+:host {
+  display: block;
+  width: 100%;
+}
+
+.arch-svg {
+  width: 100%;
+  max-width: 840px;
+  height: auto;
+  overflow: visible;
+  display: block;
+  margin-inline: auto;
+
+  &__text {
+    font-family: var(--font-mono);
+  }
+}

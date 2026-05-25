@@ -1,42 +1,92 @@
-<div class="projects-page section" *transloco="let t">
-  <div class="container">
-    <h1 class="projects-page__heading">{{ t('projects_page.heading') }}</h1>
-    <p class="projects-page__subtitle">{{ t('projects_page.subtitle') }}</p>
+<div class="projects-page" *transloco="let t">
+  <section class="section" style="padding-bottom: 0">
+    <div class="container">
+      <div class="sec-head" appReveal style="margin-bottom: var(--space-8)">
+        <div class="sec-head__kicker">{{ t('projects_page.kicker') }}</div>
+        <h1 class="sec-head__title" style="font-size: var(--text-4xl); max-width: 28ch">
+          {{ t('projects_page.heading') }}
+        </h1>
+        <p class="sec-head__sub">{{ t('projects_page.subtitle') }}</p>
+      </div>
+    </div>
+  </section>
 
-    @if (projects().length === 0) {
-      <p class="projects-page__empty" data-testid="loading">{{ t('projects_page.loading') }}</p>
-    } @else {
-      <ul class="projects-page__grid" data-testid="project-list">
-        @for (project of projects(); track project.slug) {
-          <li class="project-card" data-testid="project-card">
-            <div class="project-card__header">
-              <span class="project-card__category">{{ project.category }}</span>
-              <span
-                class="project-card__status project-card__status--{{ project.status }}"
-                data-testid="project-status"
-                >{{ t('projects_page.status.' + project.status) }}</span
-              >
-            </div>
-            <h2 class="project-card__title">{{ project.title }}</h2>
-            <p class="project-card__description">
-              {{ t('projects.' + project.slug + '.shortDescription') }}
-            </p>
-            <ul class="project-card__stack">
-              @for (tech of project.stack; track tech) {
-                <li class="project-card__tech">{{ tech }}</li>
-              }
-            </ul>
-            <a
-              [routerLink]="['/projects', project.slug]"
-              class="project-card__link"
-              data-testid="project-link"
-              [attr.aria-label]="t('projects_page.aria_view') + ' ' + project.title"
+  <section class="section" style="padding-block: var(--space-12)">
+    <div class="container">
+      @if (projects().length === 0) {
+        <p class="projects-page__empty" data-testid="loading">{{ t('projects_page.loading') }}</p>
+      } @else {
+        <ul class="projects-grid" data-testid="project-list">
+          @for (project of projects(); track project.slug; let i = $index) {
+            <li
+              class="proj-card"
+              data-testid="project-card"
+              appReveal
+              [revealDelay]="i * 80"
+              (mousemove)="onCardMove($event)"
             >
-              {{ t('projects_page.view_project') }}
-            </a>
-          </li>
-        }
-      </ul>
-    }
-  </div>
+              <div class="proj-card__head">
+                <span class="proj-card__cat">{{ project.category }}</span>
+                <span
+                  class="status"
+                  [class.status--complete]="project.status === 'complete'"
+                  [class.status--planned]="project.status === 'planned'"
+                  [class.status--in-progress]="project.status === 'in-progress'"
+                  data-testid="project-status"
+                  >{{ t('projects_page.status.' + project.status) }}</span
+                >
+              </div>
+
+              <h2 class="proj-card__title">{{ project.title }}</h2>
+
+              <p class="proj-card__desc">
+                {{ t('projects.' + project.slug + '.shortDescription') }}
+              </p>
+
+              @if (project.status !== 'planned' && project.metrics && project.metrics.length > 0) {
+                <div class="proj-card__stats">
+                  @for (m of project.metrics.slice(0, 2); track m.label) {
+                    <div class="stat">
+                      <span class="stat__value">{{ m.value }}</span>
+                      <span class="stat__label">{{ m.label }}</span>
+                    </div>
+                  }
+                </div>
+              }
+
+              <ul class="tech-tags">
+                @for (tech of project.stack; track tech) {
+                  <li class="tech">{{ tech }}</li>
+                }
+              </ul>
+
+              <a
+                [routerLink]="['/projects', project.slug]"
+                class="proj-card__link"
+                data-testid="project-link"
+                [attr.aria-label]="t('projects_page.aria_view') + ' ' + project.title"
+              >
+                {{ t('projects_page.view_project') }} <span class="arrow">→</span>
+              </a>
+            </li>
+          }
+        </ul>
+      }
+    </div>
+  </section>
+
+  @if (projects().length > 0) {
+    <section class="section" style="padding-top: 0">
+      <div class="container">
+        <div class="sec-head" appReveal>
+          <div class="sec-head__kicker">{{ t('compare.kicker') }}</div>
+          <h2 class="sec-head__title">{{ t('compare.heading') }}</h2>
+          <p class="sec-head__sub">{{ t('compare.sub') }}</p>
+        </div>
+        <div appReveal>
+          <app-projects-compare [projects]="projects()" />
+        </div>
+      </div>
+    </section>
+  }
 </div>

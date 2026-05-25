@@ -1,13 +1,17 @@
-<section class="stack section" *transloco="let t">
+<section class="tech-stack section" *transloco="let t">
   <div class="container">
-    <h2 class="stack__heading">{{ t('stack.heading') }}</h2>
-    <div class="stack__grid">
-      @for (category of categories; track category.name) {
-        <div class="stack__category" data-testid="stack-category">
-          <h3 class="stack__category-name">{{ category.name }}</h3>
-          <ul class="stack__items">
-            @for (item of category.items; track item) {
-              <li class="stack__item">{{ item }}</li>
+    <div class="sec-head" appReveal>
+      <div class="sec-head__kicker">{{ t('tech_stack.kicker') }}</div>
+      <h2 class="sec-head__title">{{ t('tech_stack.heading') }}</h2>
+    </div>
+
+    <div class="stack-cols">
+      @for (cat of categories; track cat.name; let i = $index) {
+        <div class="stack-col" appReveal [revealDelay]="i * 80" data-testid="stack-category">
+          <div class="stack-col__label">{{ cat.name }}</div>
+          <ul class="stack-col__list">
+            @for (item of cat.items; track item) {
+              <li class="stack-col__item">{{ item }}</li>
             }
           </ul>
         </div>

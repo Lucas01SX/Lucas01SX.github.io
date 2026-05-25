@@ -11,12 +11,15 @@
     "aria_to_dark": "Cambiar a tema oscuro"
   },
   "hero": {
+    "eyebrow": "BACKEND ENGINEER · DISPONIBLE PARA PROYECTOS",
     "title": "Desarrollador Backend — .NET · TypeScript · Java",
-    "subtitle": "Construyendo APIs seguras, observables y mantenibles para sistemas reales.",
+    "subtitle": "Construyendo APIs seguras, observables y mantenibles para sistemas reales. Spec-first, con tests guiando el diseño.",
     "cta_projects": "Ver Proyectos",
     "cta_contact": "Contacto"
   },
   "about": {
+    "rail_label": "01 / SOBRE",
+    "rail_meta": "Backend\nAPIs · Sistemas Distribuidos\n\nBasado en Brasil",
     "heading": "Sobre mí",
     "bio1": "Soy un desarrollador backend enfocado en construir APIs seguras por diseño, fáciles de observar en producción y mantenibles con el tiempo. Trabajo principalmente con .NET/C#, TypeScript/NestJS y Java/Spring Boot.",
     "bio2": "Mi enfoque es spec-first: pienso en los casos de falla e invariantes antes de escribir una línea de código. Me importa el logging estructurado, los correlation IDs y los sistemas que se comportan de forma predecible bajo presión."
@@ -24,8 +27,13 @@
   "stack": {
     "heading": "Stack Tecnológico"
   },
+  "tech_stack": {
+    "kicker": "03 / STACK",
+    "heading": "Tecnologías que uso cada día."
+  },
   "approach": {
-    "heading": "Enfoque de Ingeniería",
+    "kicker": "02 / ENFOQUE",
+    "heading": "Principios detrás de cada línea de código.",
     "pillars": {
       "security": {
         "title": "Seguridad Primero",
@@ -42,14 +50,17 @@
     }
   },
   "projects_preview": {
-    "heading": "Proyectos",
+    "kicker": "04 / PROYECTOS",
+    "heading": "Mismo dominio. Diferentes stacks.",
+    "sub": "Tres implementaciones del mismo sistema de helpdesk, cada una construida para demostrar profundidad arquitectónica en su stack.",
     "view_project": "Ver Proyecto",
     "view_all": "Ver todos los proyectos",
     "aria_view": "Ver"
   },
   "projects_page": {
-    "heading": "Proyectos",
-    "subtitle": "Mismo dominio. Diferentes stacks. Cada uno construido para demostrar profundidad arquitectónica.",
+    "kicker": "PROYECTOS · 3 IMPLEMENTACIONES",
+    "heading": "Mismo dominio. Diferentes stacks.",
+    "subtitle": "Cada implementación prueba el mismo conjunto de reglas de negocio — máquina de estados de tickets, SLA, auth — usando herramientas y patrones idiomáticos de su stack. Comparados lado a lado.",
     "loading": "Cargando proyectos...",
     "view_project": "Ver Proyecto",
     "aria_view": "Ver",
@@ -59,15 +70,35 @@
       "complete": "Completo"
     }
   },
+  "compare": {
+    "kicker": "COMPARACIÓN · FEATURE PARITY",
+    "heading": "Lo que cada uno entrega.",
+    "sub": "Las tres versiones comparten el mismo dominio. Las diferencias están en cómo cada stack expresa las decisiones — ORM, eventos, herramientas de testing.",
+    "feature": "Recurso"
+  },
   "contact": {
-    "heading": "Contacto",
+    "kicker": "CONTACTO",
+    "heading": "Hablemos.",
+    "sub": "¿Interesado en colaborar, contratar o simplemente intercambiar ideas sobre arquitectura backend? Respondo en 48 horas hábiles.",
     "name": "Nombre",
+    "name_placeholder": "¿Cómo te llamas?",
     "email": "Correo electrónico",
+    "email_placeholder": "tu@ejemplo.com",
     "message": "Mensaje",
+    "message_placeholder": "¿De qué quieres hablar?",
+    "send": "Enviar mensaje",
     "submit": "Enviar Mensaje",
+    "sending": "Enviando...",
     "submitting": "Enviando...",
+    "sent": "Mensaje enviado",
     "success": "¡Mensaje enviado! Me pondré en contacto pronto.",
+    "error_generic": "Algo salió mal. Por favor, inténtalo de nuevo.",
     "error_send": "Algo salió mal. Por favor, inténtalo de nuevo.",
+    "errors": {
+      "name": "Ingresa un nombre válido (2–100 caracteres).",
+      "email": "Ingresa una dirección de correo electrónico válida.",
+      "message": "El mensaje debe tener entre 10 y 2000 caracteres."
+    },
     "error": {
       "name_required": "El nombre es obligatorio.",
       "name_min": "El nombre debe tener al menos 2 caracteres.",
@@ -103,7 +134,10 @@
   },
   "project_detail": {
     "tech_stack": "Stack Tecnológico",
-    "architecture": "Arquitectura",
+    "architecture": "ARQUITECTURA",
+    "architecture_title": "Cómo está estructurado el sistema.",
+    "back_to_projects": "Proyectos",
+    "other_projects": "Otros proyectos",
     "view_on_github": "Ver en GitHub",
     "not_found": "Proyecto no encontrado."
   }

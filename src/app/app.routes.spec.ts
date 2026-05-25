@@ -1,30 +1,36 @@
 import { routes } from './app.routes';
 
 describe('App Routes', () => {
-  it('should have exactly 4 routes defined', () => {
-    expect(routes.length).toBe(4);
+  it('should have exactly 5 routes defined', () => {
+    expect(routes.length).toBe(5);
   });
 
   it('should have root path pointing to HomeComponent (lazy)', () => {
-    const route = routes.find(r => r.path === '');
+    const route = routes.find((r) => r.path === '');
     expect(route).toBeDefined();
     expect(route?.loadComponent).toBeDefined();
   });
 
   it('should have /projects path pointing to ProjectsComponent (lazy)', () => {
-    const route = routes.find(r => r.path === 'projects');
+    const route = routes.find((r) => r.path === 'projects');
     expect(route).toBeDefined();
     expect(route?.loadComponent).toBeDefined();
   });
 
   it('should have /projects/:slug path pointing to ProjectDetailComponent (lazy)', () => {
-    const route = routes.find(r => r.path === 'projects/:slug');
+    const route = routes.find((r) => r.path === 'projects/:slug');
+    expect(route).toBeDefined();
+    expect(route?.loadComponent).toBeDefined();
+  });
+
+  it('should have /contact path pointing to ContactComponent (lazy)', () => {
+    const route = routes.find((r) => r.path === 'contact');
     expect(route).toBeDefined();
     expect(route?.loadComponent).toBeDefined();
   });
 
   it('should have wildcard route pointing to NotFoundComponent (lazy)', () => {
-    const route = routes.find(r => r.path === '**');
+    const route = routes.find((r) => r.path === '**');
     expect(route).toBeDefined();
     expect(route?.loadComponent).toBeDefined();
   });

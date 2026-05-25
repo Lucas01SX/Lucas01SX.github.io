@@ -1,31 +1,75 @@
 <section class="projects-preview section" *transloco="let t">
   <div class="container">
-    <h2 class="projects-preview__heading">{{ t('projects_preview.heading') }}</h2>
-    <ul class="projects-preview__grid" data-testid="project-cards">
-      @for (project of projects(); track project.slug) {
-        <li class="project-card" data-testid="project-card">
-          <h3 class="project-card__title">{{ project.title }}</h3>
-          <p class="project-card__description">
+    <div class="sec-head" appReveal>
+      <div class="sec-head__kicker">{{ t('projects_preview.kicker') }}</div>
+      <h2 class="sec-head__title">{{ t('projects_preview.heading') }}</h2>
+      <p class="sec-head__sub">{{ t('projects_preview.sub') }}</p>
+    </div>
+
+    <ul class="projects-grid" data-testid="project-cards">
+      @for (project of projects(); track project.slug; let i = $index) {
+        <li
+          class="proj-card"
+          data-testid="project-card"
+          appReveal
+          [revealDelay]="i * 80"
+          (mousemove)="onCardMove($event)"
+        >
+          <div class="proj-card__head">
+            <span class="proj-card__cat">{{ project.category }}</span>
+            <span
+              class="status"
+              [class.status--complete]="project.status === 'complete'"
+              [class.status--planned]="project.status === 'planned'"
+              [class.status--in-progress]="project.status === 'in-progress'"
+              data-testid="project-status"
+              >{{ t('projects_page.status.' + project.status) }}</span
+            >
+          </div>
+
+          <h3 class="proj-card__title">{{ project.title }}</h3>
+
+          <p class="proj-card__desc">
             {{ t('projects.' + project.slug + '.shortDescription') }}
           </p>
-          <ul class="project-card__stack">
+
+          @if (project.status !== 'planned' && project.metrics && project.metrics.length > 0) {
+            <div class="proj-card__stats">
+              @for (m of project.metrics.slice(0, 2); track m.label) {
+                <div class="stat">
+                  <span class="stat__value">{{ m.value }}</span>
+                  <span class="stat__label">{{ m.label }}</span>
+                </div>
+              }
+            </div>
+          }
+
+          <ul class="tech-tags">
             @for (tech of project.stack; track tech) {
-              <li class="project-card__tech">{{ tech }}</li>
+              <li class="tech">{{ tech }}</li>
             }
           </ul>
+
           <a
             [routerLink]="['/projects', project.slug]"
-            class="project-card__link"
+            class="proj-card__link"
             data-testid="project-link"
             [attr.aria-label]="t('projects_preview.aria_view') + ' ' + project.title"
           >
-            {{ t('projects_preview.view_project') }}
+            {{ t('projects_preview.view_project') }} <span class="arrow">→</span>
           </a>
         </li>
       }
     </ul>
-    <a routerLink="/projects" class="projects-preview__all" data-testid="all-projects-link">
-      {{ t('projects_preview.view_all') }}
+
+    <a
+      routerLink="/projects"
+      class="btn btn--ghost projects-preview__all"
+      data-testid="all-projects-link"
+      appReveal
+      [revealDelay]="300"
+    >
+      {{ t('projects_preview.view_all') }} <span class="arrow">→</span>
     </a>
   </div>
 </section>

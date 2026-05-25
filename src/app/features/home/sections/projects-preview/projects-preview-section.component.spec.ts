@@ -15,7 +15,8 @@ const mockProjects: Project[] = [
     stack: ['TypeScript'],
     category: 'API',
     status: 'in-progress',
-    architecture: { summary: '', diagram: '' },
+    primaryLang: 'TypeScript',
+    architecture: { summary: '', nodes: [], edges: [] },
     links: {},
   },
   {
@@ -26,7 +27,8 @@ const mockProjects: Project[] = [
     stack: ['C#'],
     category: 'API',
     status: 'planned',
-    architecture: { summary: '', diagram: '' },
+    primaryLang: '.NET',
+    architecture: { summary: '', nodes: [], edges: [] },
     links: {},
   },
   {
@@ -37,7 +39,8 @@ const mockProjects: Project[] = [
     stack: ['Java'],
     category: 'API',
     status: 'planned',
-    architecture: { summary: '', diagram: '' },
+    primaryLang: 'Java',
+    architecture: { summary: '', nodes: [], edges: [] },
     links: {},
   },
 ];
@@ -64,8 +67,10 @@ describe('ProjectsPreviewSectionComponent', () => {
     expect(fixture.componentInstance).toBeTruthy();
   });
 
-  it('should render a "Projects" heading', () => {
-    expect(compiled.querySelector('h2')?.textContent?.trim()).toBe('Projects');
+  it('should render the section heading', () => {
+    expect(compiled.querySelector('h2')?.textContent?.trim()).toBe(
+      'Same domain. Different stacks.',
+    );
   });
 
   it('should render exactly 3 project cards', () => {

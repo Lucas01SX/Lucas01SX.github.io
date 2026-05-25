@@ -1,19 +1,30 @@
-// Type scale — Major Third (1.25)
+// ────────────────────────────────────────────────────────────
+// Typography scale — fluid clamps for hi-density displays
+// REPLACES existing src/styles/_typography.scss
+// ────────────────────────────────────────────────────────────
+
 :root {
-  --text-xs: 0.64rem;
-  --text-sm: 0.8rem;
+  // Fluid type scale (mobile → desktop via clamp)
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
   --text-base: 1rem;
-  --text-lg: 1.25rem;
-  --text-xl: 1.563rem;
-  --text-2xl: 1.953rem;
-  --text-3xl: 2.441rem;
-  --text-4xl: 3.052rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.375rem;
+  --text-2xl: 1.75rem;
+  --text-3xl: clamp(2rem, 1.5rem + 1.5vw, 2.75rem);
+  --text-4xl: clamp(2.5rem, 1.5rem + 3vw, 4rem);
+  --text-5xl: clamp(3rem, 2rem + 4vw, 5.5rem);
+  --text-display: clamp(4rem, 3rem + 5vw, 7.5rem);
 
-  --leading-tight: 1.2;
-  --leading-snug: 1.375;
-  --leading-base: 1.4;
-  --leading-normal: 1.6;
+  // Line heights
+  --leading-tight: 1.1;
+  --leading-snug: 1.3;
+  --leading-base: 1.5;
+  --leading-loose: 1.7;
+  // Legacy aliases
+  --leading-normal: var(--leading-base);
 
+  // Weights
   --weight-regular: 400;
   --weight-medium: 500;
   --weight-semibold: 600;

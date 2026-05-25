@@ -3,14 +3,24 @@ import { toSignal } from '@angular/core/rxjs-interop';
 import { RouterLink } from '@angular/router';
 import { TranslocoDirective } from '@jsverse/transloco';
 import { ProjectService } from '../../../../core/services/project.service';
+import { RevealDirective } from '../../../../shared/directives/reveal.directive';
 
 @Component({
   selector: 'app-projects-preview-section',
-  imports: [RouterLink, TranslocoDirective],
+  standalone: true,
+  imports: [RouterLink, TranslocoDirective, RevealDirective],
   templateUrl: './projects-preview-section.component.html',
   styleUrl: './projects-preview-section.component.scss',
 })
 export class ProjectsPreviewSectionComponent {
   private readonly projectService = inject(ProjectService);
   readonly projects = toSignal(this.projectService.getAll(), { initialValue: [] });
+
+  /** Track mouse on the card so the radial-glow ::after follows the cursor. */
+  onCardMove(event: MouseEvent): void {
+    const card = event.currentTarget as HTMLElement;
+    const rect = card.getBoundingClientRect();
+    card.style.setProperty('--mx', `${event.clientX - rect.left}px`);
+    card.style.setProperty('--my', `${event.clientY - rect.top}px`);
+  }
 }

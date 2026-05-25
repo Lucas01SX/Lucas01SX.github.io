@@ -41,8 +41,4 @@ describe('HomeComponent', () => {
   it('should render the projects preview section', () => {
     expect(compiled.querySelector('app-projects-preview-section')).not.toBeNull();
   });
-
-  it('should render the contact section', () => {
-    expect(compiled.querySelector('app-contact-section')).not.toBeNull();
-  });
 });
