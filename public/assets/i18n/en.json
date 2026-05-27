@@ -74,7 +74,12 @@
     "kicker": "COMPARISON · FEATURE PARITY",
     "heading": "What each one delivers.",
     "sub": "All three versions share the same domain. The differences lie in how each stack expresses the decisions — ORM, events, testing tools.",
-    "feature": "Feature"
+    "feature": "Feature",
+    "row_status": "Status",
+    "row_tests": "Tests",
+    "row_orm": "ORM / Persistence",
+    "tests_unit": "{{ count }} tests",
+    "check_yes": "yes"
   },
   "contact": {
     "kicker": "CONTACT",
@@ -111,6 +116,11 @@
       "message_min": "Message must be at least 10 characters.",
       "message_max": "Message cannot exceed 2000 characters."
     }
+  },
+  "not_found": {
+    "heading": "Page not found.",
+    "sub": "The page you're looking for doesn't exist or has been moved.",
+    "back": "Back to Home"
   },
   "footer": {
     "copy": "© {{ year }} Lucas Santana. All rights reserved."

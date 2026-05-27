@@ -17,6 +17,9 @@ export class LanguageService {
 
   setLang(lang: Lang): void {
     this.transloco.setActiveLang(lang);
-    if (this.isBrowser) localStorage.setItem('lang', lang);
+    if (this.isBrowser) {
+      localStorage.setItem('lang', lang);
+      document.documentElement.lang = lang;
+    }
   }
 }

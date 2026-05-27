@@ -1,4 +1,4 @@
-import { ArchNode, ArchEdge } from '../../shared/components/arch-diagram/arch-diagram.component';
+import { ArchNode, ArchEdge } from '../../shared/components/arch-diagram/arch-diagram.types';
 
 export type ProjectStatus = 'complete' | 'in-progress' | 'planned';
 

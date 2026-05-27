@@ -2,9 +2,28 @@
   <a data-testid="logo" routerLink="/" class="header__logo">Lucas Santana</a>
 
   <nav class="header__nav" aria-label="Site navigation">
-    <a routerLink="/">{{ t('nav.home') }}</a>
-    <a routerLink="/projects">{{ t('nav.projects') }}</a>
-    <a routerLink="/contact">{{ t('nav.contact') }}</a>
+    <a
+      routerLink="/"
+      routerLinkActive="header__nav-link--active"
+      [routerLinkActiveOptions]="{ exact: true }"
+      #homeLink="routerLinkActive"
+      [attr.aria-current]="homeLink.isActive ? 'page' : null"
+      >{{ t('nav.home') }}</a
+    >
+    <a
+      routerLink="/projects"
+      routerLinkActive="header__nav-link--active"
+      #projectsLink="routerLinkActive"
+      [attr.aria-current]="projectsLink.isActive ? 'page' : null"
+      >{{ t('nav.projects') }}</a
+    >
+    <a
+      routerLink="/contact"
+      routerLinkActive="header__nav-link--active"
+      #contactLink="routerLinkActive"
+      [attr.aria-current]="contactLink.isActive ? 'page' : null"
+      >{{ t('nav.contact') }}</a
+    >
   </nav>
 
   <div class="header__controls">
