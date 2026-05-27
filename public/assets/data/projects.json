@@ -134,7 +134,7 @@
     "primaryLang": "Java",
     "metrics": [
       { "value": "—", "label": "Status" },
-      { "value": "Q3", "label": "Previsto" },
+      { "value": "Q3", "label": "ETA" },
       { "value": "JPA", "label": "ORM" },
       { "value": "5", "label": "JUnit" }
     ],

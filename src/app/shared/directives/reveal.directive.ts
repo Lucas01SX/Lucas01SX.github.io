@@ -1,12 +1,3 @@
-// ────────────────────────────────────────────────────────────
-// Reveal directive — fade-in on scroll via IntersectionObserver
-// NEW FILE: src/app/shared/directives/reveal.directive.ts
-//
-// Usage in templates:
-//   <h2 appReveal>Heading</h2>
-//   <div appReveal [revealDelay]="120">…</div>
-// ────────────────────────────────────────────────────────────
-
 import {
   AfterViewInit,
   Directive,

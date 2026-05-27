@@ -552,6 +552,11 @@
   &__dash {
     color: var(--text-3);
   }
+  &__text {
+    font-family: var(--font-mono);
+    font-size: var(--text-sm);
+    color: var(--text);
+  }
 }
 
 @media (max-width: 900px) {
