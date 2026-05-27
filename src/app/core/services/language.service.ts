@@ -15,8 +15,17 @@ export class LanguageService {
     initialValue: this.transloco.getActiveLang() as Lang,
   });
 
+  constructor() {
+    if (this.isBrowser) {
+      document.documentElement.lang = this.transloco.getActiveLang();
+    }
+  }
+
   setLang(lang: Lang): void {
     this.transloco.setActiveLang(lang);
-    if (this.isBrowser) localStorage.setItem('lang', lang);
+    if (this.isBrowser) {
+      localStorage.setItem('lang', lang);
+      document.documentElement.lang = lang;
+    }
   }
 }

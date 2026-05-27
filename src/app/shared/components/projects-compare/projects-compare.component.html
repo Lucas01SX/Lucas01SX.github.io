@@ -17,7 +17,7 @@
           <div class="compare__cell">
             @switch (cell.kind) {
               @case ('check') {
-                <span class="compare__check" aria-label="sim">
+                <span class="compare__check" [attr.aria-label]="t('compare.check_yes')">
                   <svg
                     width="16"
                     height="16"
@@ -45,14 +45,7 @@
                 >
               }
               @default {
-                <span
-                  style="
-                    font-family: var(--font-mono);
-                    font-size: var(--text-sm);
-                    color: var(--text);
-                  "
-                  >{{ cell.value }}</span
-                >
+                <span class="compare__text">{{ cell.value }}</span>
               }
             }
           </div>

@@ -1,28 +1,7 @@
-// ────────────────────────────────────────────────────────────
-// ArchDiagramComponent — stylized SVG architecture diagram
-// REPLACES the mermaid-diagram component
-//
-// New files:
-//   src/app/shared/components/arch-diagram/arch-diagram.component.ts
-//   src/app/shared/components/arch-diagram/arch-diagram.component.html
-//   src/app/shared/components/arch-diagram/arch-diagram.component.scss
-//
-// The Project model gains `architecture.nodes` and `architecture.edges` —
-// see handoff/src/app/core/models/project.model.ts and the updated
-// public/assets/data/projects.json.
-// ────────────────────────────────────────────────────────────
-
 import { ChangeDetectionStrategy, Component, Input, computed, signal } from '@angular/core';
+import { ArchNode, ArchEdge } from '../../../core/models/arch-diagram.types';
 
-export interface ArchNode {
-  id: string;
-  label: string;
-  x: number; // percent (0–100, can overflow up to ±10)
-  y: number; // percent (0–100)
-  type?: 'entry' | 'shared' | 'db' | 'default';
-}
-
-export type ArchEdge = [from: string, to: string];
+export type { ArchNode, ArchEdge };
 
 interface RenderedNode extends ArchNode {
   w: number;

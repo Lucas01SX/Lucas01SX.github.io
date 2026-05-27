@@ -1,12 +1,12 @@
 import { Component, inject } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { RouterLink, RouterLinkActive } from '@angular/router';
 import { TranslocoDirective } from '@jsverse/transloco';
 import { ThemeService } from '../../core/services/theme.service';
-import { LanguageService, AVAILABLE_LANGS, Lang } from '../../services/language.service';
+import { LanguageService, AVAILABLE_LANGS, Lang } from '../../core/services/language.service';
 
 @Component({
   selector: 'app-header',
-  imports: [RouterLink, TranslocoDirective],
+  imports: [RouterLink, RouterLinkActive, TranslocoDirective],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
 })

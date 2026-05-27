@@ -48,7 +48,7 @@
                   @for (m of project.metrics.slice(0, 2); track m.label) {
                     <div class="stat">
                       <span class="stat__value">{{ m.value }}</span>
-                      <span class="stat__label">{{ m.label }}</span>
+                      <span class="stat__label">{{ t(m.label) }}</span>
                     </div>
                   }
                 </div>

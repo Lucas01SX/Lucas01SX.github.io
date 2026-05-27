@@ -1,10 +1,4 @@
-// ────────────────────────────────────────────────────────────
-// Project model — adds `metrics`, `features`, `primaryLang`,
-// `architecture.nodes` + `architecture.edges` (replaces mermaid `diagram`)
-// REPLACES src/app/core/models/project.model.ts
-// ────────────────────────────────────────────────────────────
-
-import { ArchNode, ArchEdge } from '../../shared/components/arch-diagram/arch-diagram.component';
+import { ArchNode, ArchEdge } from './arch-diagram.types';
 
 export type ProjectStatus = 'complete' | 'in-progress' | 'planned';
 

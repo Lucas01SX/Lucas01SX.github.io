@@ -1,9 +1,9 @@
 import { Component, ElementRef, inject, signal, ViewChild } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
-import { HttpClient } from '@angular/common/http';
 import { TranslocoDirective } from '@jsverse/transloco';
-import { namePattern, notBlank } from '../../../../core/validators/custom-validators';
-import { RevealDirective } from '../../../../shared/directives/reveal.directive';
+import { namePattern, notBlank } from '../../core/validators/custom-validators';
+import { RevealDirective } from '../../shared/directives/reveal.directive';
+import { ContactService } from './contact.service';
 
 type SubmitState = 'idle' | 'submitting' | 'success' | 'error';
 
@@ -18,7 +18,7 @@ export class ContactSectionComponent {
   @ViewChild('honeypot') private honeypot!: ElementRef<HTMLInputElement>;
 
   private readonly fb = inject(FormBuilder);
-  private readonly http = inject(HttpClient);
+  private readonly contactService = inject(ContactService);
 
   readonly state = signal<SubmitState>('idle');
   readonly submitted = signal(false);
@@ -61,13 +61,8 @@ export class ContactSectionComponent {
     const { name, email, message } = this.form.value;
     this.state.set('submitting');
 
-    this.http
-      .post<{ success: boolean }>('https://api.web3forms.com/submit', {
-        access_key: 'b3ee9b6c-6b8b-431e-93b8-40fe48cb9a8c',
-        name: name!.trim(),
-        email: email!.trim(),
-        message: message!.trim(),
-      })
+    this.contactService
+      .send({ name: name!.trim(), email: email!.trim(), message: message!.trim() })
       .subscribe({
         next: (res) => {
           if (res.success) {

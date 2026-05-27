@@ -74,7 +74,12 @@
     "kicker": "COMPARAÇÃO · FEATURE PARITY",
     "heading": "O que cada uma entrega.",
     "sub": "As três versões compartilham o mesmo domínio. As diferenças estão em como a stack expressa as decisões — ORM, eventos, ferramentas de teste.",
-    "feature": "Recurso"
+    "feature": "Recurso",
+    "row_status": "Status",
+    "row_tests": "Testes",
+    "row_orm": "ORM / Persistência",
+    "tests_unit": "{{ count }} testes",
+    "check_yes": "sim"
   },
   "contact": {
     "kicker": "CONTATO",
@@ -112,6 +117,11 @@
       "message_max": "A mensagem não pode exceder 2000 caracteres."
     }
   },
+  "not_found": {
+    "heading": "Página não encontrada.",
+    "sub": "A página que você está procurando não existe ou foi movida.",
+    "back": "Voltar ao Início"
+  },
   "footer": {
     "copy": "© {{ year }} Lucas Santana. Todos os direitos reservados."
   },
@@ -131,6 +141,19 @@
       "description": "Implementação Java do domínio de helpdesk usando Spring Boot 3 e Spring Data JPA. Aplica as mesmas decisões arquiteturais — Clean Architecture, invariantes de domínio spec-first, autorização por papel — em uma stack enterprise fortemente tipada.",
       "architectureSummary": "Arquitetura em camadas seguindo as convenções do Spring Boot. Padrão Repository via Spring Data JPA. Invariantes de domínio aplicadas na camada de serviço. JUnit 5 para toda a cobertura de regras de negócio."
     }
+  },
+  "metrics": {
+    "tests": "Testes",
+    "unit_tests": "Unitários",
+    "integration": "Integração",
+    "architecture": "Arquitetura",
+    "parity_pct": "% paridade",
+    "modules": "Módulos",
+    "orms": "ORMs",
+    "status": "Status",
+    "eta": "ETA",
+    "orm": "ORM",
+    "junit": "JUnit"
   },
   "project_detail": {
     "tech_stack": "Stack Tecnológica",

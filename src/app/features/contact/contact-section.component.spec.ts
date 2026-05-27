@@ -1,17 +1,21 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { provideHttpClient } from '@angular/common/http';
-import { provideHttpClientTesting } from '@angular/common/http/testing';
+import { of, throwError } from 'rxjs';
+import { vi } from 'vitest';
 import { ContactSectionComponent } from './contact-section.component';
-import { translocoTesting } from '../../../../../testing/transloco-testing';
+import { ContactService } from './contact.service';
+import { translocoTesting } from '../../../testing/transloco-testing';
 
 describe('ContactSectionComponent', () => {
   let fixture: ComponentFixture<ContactSectionComponent>;
   let compiled: HTMLElement;
+  let sendSpy: ReturnType<typeof vi.fn>;
 
   beforeEach(async () => {
+    sendSpy = vi.fn().mockReturnValue(of({ success: true }));
+
     await TestBed.configureTestingModule({
       imports: [ContactSectionComponent, translocoTesting],
-      providers: [provideHttpClient(), provideHttpClientTesting()],
+      providers: [{ provide: ContactService, useValue: { send: sendSpy } }],
     }).compileComponents();
 
     fixture = TestBed.createComponent(ContactSectionComponent);
@@ -65,5 +69,39 @@ describe('ContactSectionComponent', () => {
     const btn = compiled.querySelector('[data-testid="contact-submit"]');
     expect(btn).not.toBeNull();
     expect(btn?.getAttribute('type')).toBe('submit');
+  });
+
+  it('should show error state when form is submitted empty', () => {
+    const btn = compiled.querySelector<HTMLButtonElement>('[data-testid="contact-submit"]');
+    btn?.click();
+    fixture.detectChanges();
+    const nameInput = compiled.querySelector('[data-testid="contact-name"]');
+    expect(nameInput?.getAttribute('aria-invalid')).toBe('true');
+  });
+
+  it('should transition to success state on valid submission', () => {
+    const comp = fixture.componentInstance;
+    comp.form.setValue({ name: 'Lucas', email: 'lucas@test.com', message: 'Hello there world!' });
+    comp.submit();
+    fixture.detectChanges();
+    expect(comp.state()).toBe('success');
+  });
+
+  it('should transition to error state when send returns success: false', () => {
+    sendSpy.mockReturnValue(of({ success: false }));
+    const comp = fixture.componentInstance;
+    comp.form.setValue({ name: 'Lucas', email: 'lucas@test.com', message: 'Hello there world!' });
+    comp.submit();
+    fixture.detectChanges();
+    expect(comp.state()).toBe('error');
+  });
+
+  it('should transition to error state when send throws an HTTP error', () => {
+    sendSpy.mockReturnValue(throwError(() => new Error('network error')));
+    const comp = fixture.componentInstance;
+    comp.form.setValue({ name: 'Lucas', email: 'lucas@test.com', message: 'Hello there world!' });
+    comp.submit();
+    fixture.detectChanges();
+    expect(comp.state()).toBe('error');
   });
 });

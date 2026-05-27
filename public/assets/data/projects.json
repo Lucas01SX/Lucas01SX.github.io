@@ -19,10 +19,10 @@
     "status": "complete",
     "primaryLang": ".NET",
     "metrics": [
-      { "value": "193", "label": "Testes" },
-      { "value": "59", "label": "Unitários" },
-      { "value": "128", "label": "Integração" },
-      { "value": "6", "label": "Arquitetura" }
+      { "value": "193", "label": "metrics.tests" },
+      { "value": "59", "label": "metrics.unit_tests" },
+      { "value": "128", "label": "metrics.integration" },
+      { "value": "6", "label": "metrics.architecture" }
     ],
     "features": {
       "Auth + JWT rotation": true,
@@ -85,10 +85,10 @@
     "status": "complete",
     "primaryLang": "TypeScript",
     "metrics": [
-      { "value": "248", "label": "Testes" },
-      { "value": "100", "label": "% paridade" },
-      { "value": "8", "label": "Módulos" },
-      { "value": "2", "label": "ORMs" }
+      { "value": "248", "label": "metrics.tests" },
+      { "value": "100", "label": "metrics.parity_pct" },
+      { "value": "8", "label": "metrics.modules" },
+      { "value": "2", "label": "metrics.orms" }
     ],
     "features": {
       "Auth + JWT rotation": true,
@@ -133,10 +133,10 @@
     "status": "planned",
     "primaryLang": "Java",
     "metrics": [
-      { "value": "—", "label": "Status" },
-      { "value": "Q3", "label": "Previsto" },
-      { "value": "JPA", "label": "ORM" },
-      { "value": "5", "label": "JUnit" }
+      { "value": "—", "label": "metrics.status" },
+      { "value": "Q3", "label": "metrics.eta" },
+      { "value": "JPA", "label": "metrics.orm" },
+      { "value": "5", "label": "metrics.junit" }
     ],
     "features": {
       "Auth + JWT rotation": true,

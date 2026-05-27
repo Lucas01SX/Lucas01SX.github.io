@@ -17,6 +17,21 @@
   }
 }
 
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    transition: none;
+    transform: none;
+    opacity: 1;
+  }
+
+  .btn,
+  .pillar,
+  .proj-card,
+  .stack-col__item {
+    transition: none;
+  }
+}
+
 // ─── Buttons ──────────────────────────────────────────────
 .btn {
   display: inline-flex;
@@ -551,6 +566,11 @@
   }
   &__dash {
     color: var(--text-3);
+  }
+  &__text {
+    font-family: var(--font-mono);
+    font-size: var(--text-sm);
+    color: var(--text);
   }
 }
 
