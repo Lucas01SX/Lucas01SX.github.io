@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input, computed, signal } from '@angular/core';
-import { ArchNode, ArchEdge } from './arch-diagram.types';
+import { ArchNode, ArchEdge } from '../../../core/models/arch-diagram.types';
 
 export type { ArchNode, ArchEdge };
 

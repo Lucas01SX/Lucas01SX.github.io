@@ -30,7 +30,7 @@
     padding: var(--space-1) var(--space-2);
     border-radius: var(--radius-full);
     line-height: var(--leading-base);
-    transition: all var(--transition-fast);
+    transition: all var(--t-fast);
 
     &:hover {
       background: var(--color-btn-ui-bg);
@@ -60,10 +60,15 @@
       color: var(--color-text-secondary);
       font-size: var(--text-sm);
       font-weight: var(--weight-medium);
-      transition: color var(--transition-fast);
+      transition: color var(--t-fast);
 
       &:hover {
         color: var(--color-text-primary);
+      }
+
+      &.header__nav-link--active {
+        color: var(--accent);
+        font-weight: var(--weight-semibold);
       }
     }
   }
@@ -77,7 +82,7 @@
     font-size: var(--text-sm);
     font-weight: var(--weight-medium);
     padding: var(--space-1) var(--space-3);
-    transition: all var(--transition-fast);
+    transition: all var(--t-fast);
     white-space: nowrap;
 
     &:hover {

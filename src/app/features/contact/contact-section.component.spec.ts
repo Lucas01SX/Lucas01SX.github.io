@@ -1,5 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { of } from 'rxjs';
+import { of, throwError } from 'rxjs';
+import { vi } from 'vitest';
 import { ContactSectionComponent } from './contact-section.component';
 import { ContactService } from './contact.service';
 import { translocoTesting } from '../../../testing/transloco-testing';
@@ -7,15 +8,14 @@ import { translocoTesting } from '../../../testing/transloco-testing';
 describe('ContactSectionComponent', () => {
   let fixture: ComponentFixture<ContactSectionComponent>;
   let compiled: HTMLElement;
-
-  const contactServiceMock: Partial<ContactService> = {
-    send: () => of({ success: true }),
-  };
+  let sendSpy: ReturnType<typeof vi.fn>;
 
   beforeEach(async () => {
+    sendSpy = vi.fn().mockReturnValue(of({ success: true }));
+
     await TestBed.configureTestingModule({
       imports: [ContactSectionComponent, translocoTesting],
-      providers: [{ provide: ContactService, useValue: contactServiceMock }],
+      providers: [{ provide: ContactService, useValue: { send: sendSpy } }],
     }).compileComponents();
 
     fixture = TestBed.createComponent(ContactSectionComponent);
@@ -85,5 +85,23 @@ describe('ContactSectionComponent', () => {
     comp.submit();
     fixture.detectChanges();
     expect(comp.state()).toBe('success');
+  });
+
+  it('should transition to error state when send returns success: false', () => {
+    sendSpy.mockReturnValue(of({ success: false }));
+    const comp = fixture.componentInstance;
+    comp.form.setValue({ name: 'Lucas', email: 'lucas@test.com', message: 'Hello there world!' });
+    comp.submit();
+    fixture.detectChanges();
+    expect(comp.state()).toBe('error');
+  });
+
+  it('should transition to error state when send throws an HTTP error', () => {
+    sendSpy.mockReturnValue(throwError(() => new Error('network error')));
+    const comp = fixture.componentInstance;
+    comp.form.setValue({ name: 'Lucas', email: 'lucas@test.com', message: 'Hello there world!' });
+    comp.submit();
+    fixture.detectChanges();
+    expect(comp.state()).toBe('error');
   });
 });
