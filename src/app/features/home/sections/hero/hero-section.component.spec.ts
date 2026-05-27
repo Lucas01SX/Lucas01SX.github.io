@@ -41,9 +41,9 @@ describe('HeroSectionComponent', () => {
     expect(cta?.textContent?.trim()).toContain('View Projects');
   });
 
-  it('should render a "Contact" CTA linking to #contact', () => {
+  it('should render a "Contact" CTA linking to /contact', () => {
     const cta = compiled.querySelector('[data-testid="cta-contact"]');
     expect(cta).not.toBeNull();
-    expect(cta?.getAttribute('href')).toBe('#contact');
+    expect(cta?.getAttribute('href')).toBe('/contact');
   });
 });

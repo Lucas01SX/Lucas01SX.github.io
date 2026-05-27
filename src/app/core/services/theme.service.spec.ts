@@ -1,4 +1,5 @@
 import { TestBed } from '@angular/core/testing';
+import { vi } from 'vitest';
 import { ThemeService } from './theme.service';
 
 describe('ThemeService', () => {
@@ -7,6 +8,7 @@ describe('ThemeService', () => {
   beforeEach(() => {
     localStorage.clear();
     document.documentElement.removeAttribute('data-theme');
+    vi.unstubAllGlobals();
     TestBed.configureTestingModule({});
     service = TestBed.inject(ThemeService);
   });
@@ -46,5 +48,45 @@ describe('ThemeService', () => {
     expect(document.documentElement.getAttribute('data-theme')).toBe('dark');
     service.toggleTheme();
     expect(document.documentElement.getAttribute('data-theme')).toBe('light');
+  });
+
+  it('should default to light when OS prefers light and localStorage is empty', () => {
+    vi.stubGlobal(
+      'matchMedia',
+      vi.fn().mockImplementation((query: string) => ({
+        matches: query === '(prefers-color-scheme: light)',
+        media: query,
+        onchange: null,
+        addListener: vi.fn(),
+        removeListener: vi.fn(),
+        addEventListener: vi.fn(),
+        removeEventListener: vi.fn(),
+        dispatchEvent: vi.fn(),
+      })),
+    );
+    TestBed.resetTestingModule();
+    TestBed.configureTestingModule({});
+    const fresh = TestBed.inject(ThemeService);
+    expect(fresh.theme()).toBe('light');
+  });
+
+  it('should default to dark when OS prefers dark and localStorage is empty', () => {
+    vi.stubGlobal(
+      'matchMedia',
+      vi.fn().mockImplementation((query: string) => ({
+        matches: query === '(prefers-color-scheme: dark)',
+        media: query,
+        onchange: null,
+        addListener: vi.fn(),
+        removeListener: vi.fn(),
+        addEventListener: vi.fn(),
+        removeEventListener: vi.fn(),
+        dispatchEvent: vi.fn(),
+      })),
+    );
+    TestBed.resetTestingModule();
+    TestBed.configureTestingModule({});
+    const fresh = TestBed.inject(ThemeService);
+    expect(fresh.theme()).toBe('dark');
   });
 });

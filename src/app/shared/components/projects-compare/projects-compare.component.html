@@ -4,8 +4,10 @@
       <div class="compare__cell compare__cell--label">{{ t('compare.feature') }}</div>
       @for (p of _projects(); track p.slug) {
         <div class="compare__cell compare__cell--head">
-          <span>{{ p.title.replace('Helpdesk API ', '') }}</span>
-          <span class="compare__lang">{{ p.primaryLang }}</span>
+          <span>{{
+            p.framework || p.title.replace('Helpdesk API ', '').replace(/[()]/g, '')
+          }}</span>
+          <span class="compare__lang">{{ p.language || p.primaryLang }}</span>
         </div>
       }
     </div>

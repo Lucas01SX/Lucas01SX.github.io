@@ -8,7 +8,7 @@ import { TranslocoHttpLoader } from './transloco-loader';
 import { provideClientHydration, withEventReplay } from '@angular/platform-browser';
 
 function resolveInitialLang(): string {
-  if (typeof window === 'undefined') return 'en';
+  if (typeof window === 'undefined') return 'pt-BR';
 
   const stored = localStorage.getItem('lang');
   if (stored && ['en', 'pt-BR', 'es'].includes(stored)) return stored;
@@ -16,7 +16,8 @@ function resolveInitialLang(): string {
   const browser = navigator.language;
   if (browser.startsWith('pt')) return 'pt-BR';
   if (browser.startsWith('es')) return 'es';
-  return 'en';
+  if (browser.startsWith('en')) return 'en';
+  return 'pt-BR';
 }
 
 export const appConfig: ApplicationConfig = {
@@ -24,14 +25,17 @@ export const appConfig: ApplicationConfig = {
     provideBrowserGlobalErrorListeners(),
     provideRouter(
       routes,
-      withInMemoryScrolling({ anchorScrolling: 'enabled', scrollPositionRestoration: 'enabled' }),
+      withInMemoryScrolling({
+        anchorScrolling: 'enabled',
+        scrollPositionRestoration: 'enabled',
+      }),
     ),
     provideHttpClient(withFetch()),
     provideTransloco({
       config: {
         availableLangs: ['en', 'pt-BR', 'es'],
         defaultLang: resolveInitialLang(),
-        fallbackLang: 'en',
+        fallbackLang: 'pt-BR',
         reRenderOnLangChange: true,
         prodMode: !isDevMode(),
       },
