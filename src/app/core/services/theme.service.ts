@@ -12,6 +12,7 @@ export class ThemeService {
 
   constructor() {
     this.applyTheme(this._theme());
+    this.watchSystemPreference();
   }
 
   toggleTheme(): void {
@@ -24,7 +25,23 @@ export class ThemeService {
   private loadTheme(): Theme {
     if (!this.isBrowser) return 'dark';
     const saved = localStorage.getItem('theme');
-    return saved === 'light' ? 'light' : 'dark';
+    if (saved === 'light' || saved === 'dark') return saved;
+    const prefersLight =
+      typeof window.matchMedia === 'function' &&
+      window.matchMedia('(prefers-color-scheme: light)').matches;
+    return prefersLight ? 'light' : 'dark';
+  }
+
+  private watchSystemPreference(): void {
+    if (!this.isBrowser || typeof window.matchMedia !== 'function') return;
+    const mq = window.matchMedia('(prefers-color-scheme: dark)');
+    const handler = (ev: MediaQueryListEvent) => {
+      if (localStorage.getItem('theme')) return;
+      const next: Theme = ev.matches ? 'dark' : 'light';
+      this._theme.set(next);
+      this.applyTheme(next);
+    };
+    mq.addEventListener?.('change', handler);
   }
 
   private applyTheme(theme: Theme): void {

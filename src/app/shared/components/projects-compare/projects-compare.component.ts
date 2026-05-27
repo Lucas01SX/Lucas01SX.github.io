@@ -39,7 +39,7 @@ export class ProjectsCompareComponent {
   });
 
   readonly rows = computed<ComparisonRow[]>(() => {
-    this.lang(); // reactive dependency — recomputes on language change
+    this.lang(); // reactive dep on language change
     const t = (key: string, params?: Record<string, unknown>) =>
       this.transloco.translate(key, params);
     const projects = this._projects();
@@ -58,11 +58,19 @@ export class ProjectsCompareComponent {
     out.push({
       label: t('compare.row_tests'),
       cells: projects.map((p) => {
-        const testsMetric = p.metrics?.find((m) => /^\d+$/.test(m.value));
-        const total = testsMetric?.value ?? '—';
+        if (p.status === 'planned') {
+          return { kind: 'text' as const, value: '—' };
+        }
+        const testsMetric = p.metrics?.find(
+          (m) => m.label === 'metrics.tests' || /\.tests$/i.test(m.label),
+        );
+        const total = testsMetric?.value;
+        if (!total || total === '—') {
+          return { kind: 'text' as const, value: '—' };
+        }
         return {
-          kind: 'text',
-          value: total !== '—' ? t('compare.tests_unit', { count: total }) : '—',
+          kind: 'text' as const,
+          value: t('compare.tests_unit', { count: total }),
         };
       }),
     });
@@ -71,7 +79,7 @@ export class ProjectsCompareComponent {
       label: t('compare.row_orm'),
       cells: projects.map((p) => {
         const orm = p.stack.find((s) => /Core|Prisma|JPA/.test(s)) ?? '—';
-        return { kind: 'text', value: orm };
+        return { kind: 'text' as const, value: orm };
       }),
     });
 
@@ -79,7 +87,7 @@ export class ProjectsCompareComponent {
       out.push({
         label: key,
         cells: projects.map((p) => ({
-          kind: p.features?.[key] ? 'check' : 'dash',
+          kind: p.features?.[key] ? ('check' as const) : ('dash' as const),
         })),
       });
     }

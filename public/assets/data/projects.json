@@ -17,7 +17,9 @@
     ],
     "category": "Backend API",
     "status": "complete",
-    "primaryLang": ".NET",
+    "primaryLang": "C#",
+    "language": "C#",
+    "framework": ".NET",
     "metrics": [
       { "value": "193", "label": "metrics.tests" },
       { "value": "59", "label": "metrics.unit_tests" },
@@ -84,6 +86,8 @@
     "category": "Backend API",
     "status": "complete",
     "primaryLang": "TypeScript",
+    "language": "TypeScript",
+    "framework": "NestJS",
     "metrics": [
       { "value": "248", "label": "metrics.tests" },
       { "value": "100", "label": "metrics.parity_pct" },
@@ -132,6 +136,8 @@
     "category": "Backend API",
     "status": "planned",
     "primaryLang": "Java",
+    "language": "Java",
+    "framework": "Spring Boot",
     "metrics": [
       { "value": "—", "label": "metrics.status" },
       { "value": "Q3", "label": "metrics.eta" },
