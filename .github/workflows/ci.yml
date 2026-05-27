@@ -8,12 +8,15 @@ on:
 
 jobs:
   build-lint-test:
+    name: Build & Test
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v4
 
-      - uses: actions/setup-node@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
         with:
           node-version: 22
           cache: 'npm'
@@ -29,3 +32,10 @@ jobs:
 
       - name: Build
         run: npm run build
+
+      - name: Audit
+        # @angular/platform-server GHSA-rfh7-fxqc-q52v (high/SSRF) cannot be fixed until
+        # @angular/build and @angular/ssr release 21.2.13+. This site uses static prerendering
+        # only — no live SSR server — so the SSRF is not exploitable in production.
+        # Revert to --audit-level=high once @angular/build >= 21.2.13 is available.
+        run: npm audit --audit-level=critical
