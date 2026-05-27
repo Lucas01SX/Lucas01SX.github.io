@@ -142,6 +142,19 @@
       "architectureSummary": "Arquitectura en capas siguiendo las convenciones de Spring Boot. Patrón Repository via Spring Data JPA. Invariantes de dominio aplicadas en la capa de servicio. JUnit 5 para toda la cobertura de reglas de negocio."
     }
   },
+  "metrics": {
+    "tests": "Tests",
+    "unit_tests": "Unitarios",
+    "integration": "Integración",
+    "architecture": "Arquitectura",
+    "parity_pct": "% paridad",
+    "modules": "Módulos",
+    "orms": "ORMs",
+    "status": "Estado",
+    "eta": "ETA",
+    "orm": "ORM",
+    "junit": "JUnit"
+  },
   "project_detail": {
     "tech_stack": "Stack Tecnológico",
     "architecture": "ARQUITECTURA",

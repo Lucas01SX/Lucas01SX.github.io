@@ -142,6 +142,19 @@
       "architectureSummary": "Layered architecture following Spring Boot conventions. Repository pattern via Spring Data JPA. Domain invariants enforced in the service layer. JUnit 5 for all business rule coverage."
     }
   },
+  "metrics": {
+    "tests": "Tests",
+    "unit_tests": "Unit tests",
+    "integration": "Integration",
+    "architecture": "Architecture",
+    "parity_pct": "% parity",
+    "modules": "Modules",
+    "orms": "ORMs",
+    "status": "Status",
+    "eta": "ETA",
+    "orm": "ORM",
+    "junit": "JUnit"
+  },
   "project_detail": {
     "tech_stack": "Tech Stack",
     "architecture": "ARCHITECTURE",

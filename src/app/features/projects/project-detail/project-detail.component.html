@@ -56,7 +56,7 @@
               @for (m of p.metrics; track m.label) {
                 <div class="stat-big">
                   <div class="stat-big__value">{{ m.value }}</div>
-                  <div class="stat-big__label">{{ m.label }}</div>
+                  <div class="stat-big__label">{{ t(m.label) }}</div>
                 </div>
               }
             </div>

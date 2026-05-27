@@ -142,6 +142,19 @@
       "architectureSummary": "Arquitetura em camadas seguindo as convenções do Spring Boot. Padrão Repository via Spring Data JPA. Invariantes de domínio aplicadas na camada de serviço. JUnit 5 para toda a cobertura de regras de negócio."
     }
   },
+  "metrics": {
+    "tests": "Testes",
+    "unit_tests": "Unitários",
+    "integration": "Integração",
+    "architecture": "Arquitetura",
+    "parity_pct": "% paridade",
+    "modules": "Módulos",
+    "orms": "ORMs",
+    "status": "Status",
+    "eta": "ETA",
+    "orm": "ORM",
+    "junit": "JUnit"
+  },
   "project_detail": {
     "tech_stack": "Stack Tecnológica",
     "architecture": "ARQUITETURA",
