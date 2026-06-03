@@ -12,7 +12,7 @@ const mockProjects: Project[] = [
     title: 'Project A',
     shortDescription: 'Short A',
     description: 'Description A',
-    stack: ['TypeScript', 'NestJS'],
+    stack: ['Angular', 'TypeScript'],
     category: 'Backend API',
     status: 'complete',
     primaryLang: 'TypeScript',
@@ -59,9 +59,7 @@ describe('ProjectsComponent', () => {
   });
 
   it('should render a page heading', () => {
-    expect(compiled.querySelector('h1')?.textContent?.trim()).toBe(
-      'Same domain. Different stacks.',
-    );
+    expect(compiled.querySelector('h1')?.textContent?.trim()).toBe('From API to interface.');
   });
 
   it('should render a card for each project', () => {
