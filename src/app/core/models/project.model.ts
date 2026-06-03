@@ -18,9 +18,9 @@ export interface Project {
   status: ProjectStatus;
   /** @deprecated prefer `language` + `framework`. Kept for backward compatibility. */
   primaryLang: string;
-  /** Programming language (e.g. "C#", "TypeScript", "Java"). Used by compare header. */
+  /** Programming language (e.g. "C#", "TypeScript"). */
   language?: string;
-  /** Primary framework (e.g. ".NET", "NestJS", "Spring Boot"). Used by compare header. */
+  /** Primary framework (e.g. ".NET", "Angular"). */
   framework?: string;
   metrics?: ProjectMetric[];
   features?: Record<string, boolean>;
