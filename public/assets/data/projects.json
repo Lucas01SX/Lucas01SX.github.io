@@ -26,15 +26,6 @@
       { "value": "128", "label": "metrics.integration" },
       { "value": "6", "label": "metrics.architecture" }
     ],
-    "features": {
-      "Auth + JWT rotation": true,
-      "Argon2id": true,
-      "SLA engine": true,
-      "Domain events": true,
-      "TestContainers": true,
-      "Scalar docs": true,
-      "EventEmitter2": false
-    },
     "architecture": {
       "summary": "Modular Monolith with Clean Architecture per module. Four modules: Tickets (core domain), Identity (auth + sessions), SLA (deadline engine + scoring), Notifications (contracts). Domain layer has zero infrastructure dependencies. State transitions enforced at domain layer only. Use Cases injected directly via DI — no Mediator, no command bus.",
       "nodes": [
@@ -64,113 +55,40 @@
         ["inf", "db"]
       ]
     },
-    "links": {
-      "github": "https://github.com/Lucas01SX/helpdesk-platform-dotnet"
-    }
+    "links": { "github": "https://github.com/Lucas01SX/helpdesk-platform-dotnet" }
   },
   {
-    "slug": "helpdesk-nestjs",
-    "title": "Helpdesk API (NestJS)",
-    "shortDescription": "Same helpdesk domain reimplemented in TypeScript using NestJS, Fastify, Prisma, and EventEmitter2.",
-    "description": "TypeScript implementation of the helpdesk domain on NestJS + Fastify. Uses Prisma as ORM, EventEmitter2 for domain events (dispatched after persistence), and Vitest + TestContainers for integration tests against a real PostgreSQL instance. 248 tests covering the full feature set: tickets, SLA, audit events, attachments, and auth with JWT rotation and Argon2id. Feature-complete with the .NET version.",
-    "stack": [
-      "TypeScript",
-      "NestJS",
-      "Fastify",
-      "Prisma",
-      "PostgreSQL",
-      "EventEmitter2",
-      "Vitest",
-      "TestContainers"
-    ],
-    "category": "Backend API",
-    "status": "complete",
+    "slug": "helpdesk-web",
+    "title": "Helpdesk Web (Angular)",
+    "shortDescription": "Angular web client for the .NET helpdesk API — ticket management, SLA dashboards, and authentication.",
+    "description": "Single-page Angular application that consumes the .NET helpdesk API. Standalone components and signals, typed HTTP services, route guards for role-based access, and a reactive UI for the ticket lifecycle, SLA tracking, and authentication. Currently in design — planned as the front end for the existing .NET backend.",
+    "stack": ["Angular", "TypeScript", "RxJS", "Signals", "SCSS", "Vitest"],
+    "category": "Web Client",
+    "status": "planned",
     "primaryLang": "TypeScript",
     "language": "TypeScript",
-    "framework": "NestJS",
-    "metrics": [
-      { "value": "248", "label": "metrics.tests" },
-      { "value": "100", "label": "metrics.parity_pct" },
-      { "value": "8", "label": "metrics.modules" },
-      { "value": "2", "label": "metrics.orms" }
-    ],
-    "features": {
-      "Auth + JWT rotation": true,
-      "Argon2id": true,
-      "SLA engine": true,
-      "Domain events": true,
-      "TestContainers": true,
-      "Scalar docs": true,
-      "EventEmitter2": true
-    },
+    "framework": "Angular",
     "architecture": {
-      "summary": "Modular NestJS structure with dedicated modules per domain area. Use Cases injected directly via DI — no Mediator, no command bus. Domain logic isolated from the framework. EventEmitter2 dispatches events synchronously after persistence.",
+      "summary": "Angular SPA with standalone components and signal-based state. Feature pages talk to typed core services over the HTTP client, which calls the .NET API. Router guards enforce role-based access.",
       "nodes": [
-        { "id": "api", "label": "Fastify / NestJS", "x": 50, "y": 8, "type": "entry" },
-        { "id": "mod", "label": "Domain Modules", "x": 50, "y": 30 },
-        { "id": "dom", "label": "Domain Layer", "x": 18, "y": 55 },
-        { "id": "pri", "label": "Prisma ORM", "x": 50, "y": 55 },
-        { "id": "evt", "label": "EventEmitter2", "x": 82, "y": 55 },
-        { "id": "db", "label": "PostgreSQL", "x": 50, "y": 80, "type": "db" },
-        { "id": "hnd", "label": "Event Listeners", "x": 82, "y": 80 }
+        { "id": "app", "label": "Angular SPA", "x": 50, "y": 8, "type": "entry" },
+        { "id": "rt", "label": "Router + Guards", "x": 50, "y": 30 },
+        { "id": "pg", "label": "Feature Pages", "x": 20, "y": 54 },
+        { "id": "svc", "label": "Core Services", "x": 50, "y": 54 },
+        { "id": "st", "label": "Signal Store", "x": 80, "y": 54 },
+        { "id": "http", "label": "HTTP Client", "x": 50, "y": 74 },
+        { "id": "api", "label": ".NET API", "x": 50, "y": 92, "type": "db" }
       ],
       "edges": [
-        ["api", "mod"],
-        ["mod", "dom"],
-        ["mod", "pri"],
-        ["mod", "evt"],
-        ["pri", "db"],
-        ["evt", "hnd"]
+        ["app", "rt"],
+        ["rt", "pg"],
+        ["rt", "svc"],
+        ["pg", "svc"],
+        ["svc", "st"],
+        ["svc", "http"],
+        ["http", "api"]
       ]
     },
-    "links": {
-      "github": "https://github.com/Lucas01SX/helpdesk-platform-nestjs"
-    }
-  },
-  {
-    "slug": "helpdesk-java",
-    "title": "Helpdesk API (Java)",
-    "shortDescription": "Java implementation with Spring Boot, JPA, and JUnit 5 test coverage.",
-    "description": "Java implementation of the helpdesk domain using Spring Boot 3 and Spring Data JPA. Applies the same architectural decisions — Clean Architecture, spec-first domain invariants, role-based authorization — in a strongly-typed enterprise stack.",
-    "stack": ["Java", "Spring Boot 3", "Spring Data JPA", "PostgreSQL", "JUnit 5"],
-    "category": "Backend API",
-    "status": "planned",
-    "primaryLang": "Java",
-    "language": "Java",
-    "framework": "Spring Boot",
-    "metrics": [
-      { "value": "—", "label": "metrics.status" },
-      { "value": "Q3", "label": "metrics.eta" },
-      { "value": "JPA", "label": "metrics.orm" },
-      { "value": "5", "label": "metrics.junit" }
-    ],
-    "features": {
-      "Auth + JWT rotation": true,
-      "Argon2id": true,
-      "SLA engine": true,
-      "Domain events": false,
-      "TestContainers": false,
-      "Scalar docs": false,
-      "EventEmitter2": false
-    },
-    "architecture": {
-      "summary": "Layered architecture following Spring Boot conventions. Repository pattern via Spring Data JPA. Domain invariants enforced in the service layer. JUnit 5 for all business rule coverage.",
-      "nodes": [
-        { "id": "ctl", "label": "Controllers", "x": 50, "y": 10, "type": "entry" },
-        { "id": "svc", "label": "Service Layer", "x": 50, "y": 35 },
-        { "id": "dom", "label": "Domain", "x": 28, "y": 60 },
-        { "id": "rep", "label": "Repository", "x": 72, "y": 60 },
-        { "id": "db", "label": "PostgreSQL", "x": 72, "y": 85, "type": "db" }
-      ],
-      "edges": [
-        ["ctl", "svc"],
-        ["svc", "dom"],
-        ["svc", "rep"],
-        ["rep", "db"]
-      ]
-    },
-    "links": {
-      "github": "https://github.com/Lucas01SX"
-    }
+    "links": {}
   }
 ]
