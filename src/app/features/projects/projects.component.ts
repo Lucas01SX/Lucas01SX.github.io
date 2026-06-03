@@ -4,12 +4,11 @@ import { toSignal } from '@angular/core/rxjs-interop';
 import { TranslocoDirective } from '@jsverse/transloco';
 import { ProjectService } from '../../core/services/project.service';
 import { RevealDirective } from '../../shared/directives/reveal.directive';
-import { ProjectsCompareComponent } from '../../shared/components/projects-compare/projects-compare.component';
 
 @Component({
   selector: 'app-projects',
   standalone: true,
-  imports: [RouterLink, TranslocoDirective, RevealDirective, ProjectsCompareComponent],
+  imports: [RouterLink, TranslocoDirective, RevealDirective],
   templateUrl: './projects.component.html',
   styleUrl: './projects.component.scss',
 })

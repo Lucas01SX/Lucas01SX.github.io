@@ -1,6 +1,6 @@
 # Lucas Santana — Portfolio
 
-Angular 21 portfolio showcasing backend architecture depth across .NET, TypeScript/NestJS, and Java stacks.
+Angular 21 portfolio showcasing a full-stack helpdesk platform — a C# .NET backend and an Angular web client.
 
 **Live:** https://lucas01sx.github.io
 
@@ -61,10 +61,10 @@ src/app/
 │   └── services/      ← ProjectService (HTTP), ThemeService (signals)
 ├── features/
 │   ├── home/          ← Landing page with 6 sections
-│   └── projects/      ← Project list + detail with Mermaid diagrams
+│   └── projects/      ← Project list + detail with architecture diagrams
 ├── layout/            ← Header (theme toggle, nav) and Footer
 └── shared/
-    └── components/    ← MermaidDiagramComponent
+    └── components/    ← ArchDiagramComponent (inline SVG)
 public/
 └── assets/data/
     └── projects.json  ← Static project catalog
@@ -74,7 +74,7 @@ public/
 
 ## Architecture Diagrams
 
-Each project card includes a Mermaid.js architecture diagram rendered client-side via dynamic import — no SSR dependency.
+Each project detail page includes an architecture diagram rendered as inline SVG from the project's nodes/edges — no external dependency.
 
 ---
 
@@ -83,7 +83,7 @@ Each project card includes a Mermaid.js architecture diagram rendered client-sid
 Every push to `main` or `develop` and every PR targeting those branches runs:
 
 1. **Lint** — ESLint + Prettier
-2. **Test** — Vitest (89 tests)
+2. **Test** — Vitest
 3. **Build** — Angular production build
 
 Merges to `main` additionally trigger the **Deploy** workflow to GitHub Pages.

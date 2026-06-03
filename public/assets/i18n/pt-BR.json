@@ -12,7 +12,7 @@
   },
   "hero": {
     "eyebrow": "BACKEND ENGINEER · DISPONÍVEL PARA PROJETOS",
-    "title": "Desenvolvedor Backend — .NET · TypeScript · Java",
+    "title": "Desenvolvedor Backend — .NET · Angular · TypeScript",
     "subtitle": "Construindo APIs seguras por design, observáveis em produção e sustentáveis ao longo do tempo. Spec-first, com testes guiando o design.",
     "cta_projects": "Ver Projetos",
     "cta_contact": "Contato"
@@ -21,7 +21,7 @@
     "rail_label": "01 / SOBRE",
     "rail_meta": "Backend\nAPIs · Sistemas Distribuídos\n\nBaseado no Brasil",
     "heading": "Sobre",
-    "bio1": "Sou um desenvolvedor backend focado em construir APIs seguras por design, fáceis de observar em produção e sustentáveis ao longo do tempo. Trabalho principalmente com .NET/C#, TypeScript/NestJS e Java/Spring Boot.",
+    "bio1": "Sou um desenvolvedor backend focado em construir APIs seguras por design, fáceis de observar em produção e sustentáveis ao longo do tempo. Trabalho principalmente com .NET/C# no backend e construo clientes web em Angular e TypeScript.",
     "bio2": "Minha abordagem é spec-first: penso nos casos de falha e invariantes antes de escrever uma linha de código. Me preocupo com logging estruturado, correlation IDs e sistemas que se comportam de forma previsível sob pressão."
   },
   "stack": {
@@ -51,16 +51,16 @@
   },
   "projects_preview": {
     "kicker": "04 / PROJETOS",
-    "heading": "Mesmo domínio. Stacks diferentes.",
-    "sub": "Três implementações do mesmo sistema de helpdesk, cada uma construída para demonstrar profundidade arquitetural em sua stack.",
+    "heading": "Da API à interface.",
+    "sub": "Uma plataforma de helpdesk completa — um backend em .NET e o cliente web em Angular construído sobre ele.",
     "view_project": "Ver Projeto",
     "view_all": "Ver todos os projetos",
     "aria_view": "Ver"
   },
   "projects_page": {
-    "kicker": "PROJETOS · 3 IMPLEMENTAÇÕES",
-    "heading": "Mesmo domínio. Stacks diferentes.",
-    "subtitle": "Cada implementação prova o mesmo conjunto de regras de negócio — máquina de estados de tickets, SLA, auth — usando ferramentas e padrões idiomáticos da sua stack. Comparados lado a lado.",
+    "kicker": "PROJETOS · FULL-STACK",
+    "heading": "Da API à interface.",
+    "subtitle": "Uma plataforma de helpdesk construída de ponta a ponta: um backend em .NET com máquina de estados de tickets, SLA e autenticação — e um cliente web em Angular que o consome.",
     "loading": "Carregando projetos...",
     "view_project": "Ver Projeto",
     "aria_view": "Ver",
@@ -69,17 +69,6 @@
       "planned": "Planejado",
       "complete": "Concluído"
     }
-  },
-  "compare": {
-    "kicker": "COMPARAÇÃO · FEATURE PARITY",
-    "heading": "O que cada uma entrega.",
-    "sub": "As três versões compartilham o mesmo domínio. As diferenças estão em como a stack expressa as decisões — ORM, eventos, ferramentas de teste.",
-    "feature": "Recurso",
-    "row_status": "Status",
-    "row_tests": "Testes",
-    "row_orm": "ORM / Persistência",
-    "tests_unit": "{{ count }} testes",
-    "check_yes": "sim"
   },
   "contact": {
     "kicker": "CONTATO",
@@ -131,15 +120,10 @@
       "description": "Domínio de helpdesk construído em C# .NET 10 como Monolito Modular. Implementa uma máquina de estados para tickets (Aberto → Em Andamento → Resolvido / Cancelado) com controle de acesso por papel, rastreamento de SLA, eventos de domínio e logging estruturado. Rotação de refresh token com Argon2id e invalidação de família. Auditoria de eventos de autenticação. Documentação da API via Scalar.",
       "architectureSummary": "Monolito Modular com Clean Architecture por módulo. Quatro módulos: Tickets (domínio principal), Identity (autenticação + sessões), SLA (engine de prazo + pontuação), Notifications (contratos). A camada de domínio não tem dependências de infraestrutura. Transições de estado aplicadas apenas na camada de domínio. Use Cases injetados diretamente via DI — sem Mediator, sem command bus."
     },
-    "helpdesk-nestjs": {
-      "shortDescription": "Mesmo domínio de helpdesk reimplementado em TypeScript com NestJS, Fastify, Prisma e EventEmitter2.",
-      "description": "Implementação em TypeScript do domínio de helpdesk no NestJS + Fastify. Usa Prisma como ORM, EventEmitter2 para eventos de domínio (despachados após persistência) e Vitest + TestContainers para testes de integração com PostgreSQL real. 248 testes cobrindo o conjunto completo de funcionalidades: tickets, SLA, eventos de auditoria, anexos e autenticação com rotação de JWT e Argon2id. Paridade de funcionalidades com a versão .NET.",
-      "architectureSummary": "Estrutura modular NestJS com módulos dedicados por área de domínio. Use Cases injetados diretamente via DI — sem Mediator, sem command bus. Lógica de domínio isolada do framework. EventEmitter2 despacha eventos de forma síncrona após a persistência."
-    },
-    "helpdesk-java": {
-      "shortDescription": "Implementação Java com Spring Boot, JPA e cobertura de testes com JUnit 5.",
-      "description": "Implementação Java do domínio de helpdesk usando Spring Boot 3 e Spring Data JPA. Aplica as mesmas decisões arquiteturais — Clean Architecture, invariantes de domínio spec-first, autorização por papel — em uma stack enterprise fortemente tipada.",
-      "architectureSummary": "Arquitetura em camadas seguindo as convenções do Spring Boot. Padrão Repository via Spring Data JPA. Invariantes de domínio aplicadas na camada de serviço. JUnit 5 para toda a cobertura de regras de negócio."
+    "helpdesk-web": {
+      "shortDescription": "Cliente web Angular para a API de helpdesk em .NET — gestão de tickets, painéis de SLA e autenticação.",
+      "description": "Aplicação single-page em Angular que consome a API de helpdesk em .NET. Componentes standalone e signals, serviços HTTP tipados, guards de rota para acesso por papel e uma UI reativa para o ciclo de vida do ticket, acompanhamento de SLA e autenticação. Atualmente em design — planejado como o front-end do backend .NET existente.",
+      "architectureSummary": "SPA Angular com componentes standalone e estado baseado em signals. As páginas de feature conversam com serviços core tipados via HTTP client, que chama a API .NET. Guards de rota aplicam acesso por papel."
     }
   },
   "metrics": {
@@ -152,8 +136,7 @@
     "orms": "ORMs",
     "status": "Status",
     "eta": "ETA",
-    "orm": "ORM",
-    "junit": "JUnit"
+    "orm": "ORM"
   },
   "project_detail": {
     "tech_stack": "Stack Tecnológica",

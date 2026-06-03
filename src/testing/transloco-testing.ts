@@ -10,7 +10,7 @@ const en = {
   },
   hero: {
     eyebrow: 'BACKEND ENGINEER · AVAILABLE FOR PROJECTS',
-    title: 'Backend Developer — .NET · TypeScript · Java',
+    title: 'Backend Developer — .NET · Angular · TypeScript',
     subtitle: 'Building secure, observable, and maintainable APIs for real-world systems.',
     cta_projects: 'View Projects',
     cta_contact: 'Contact',
@@ -19,7 +19,7 @@ const en = {
     rail_label: '01 / ABOUT',
     rail_meta: 'Backend\nAPIs · Distributed Systems\n\nBased in Brazil',
     heading: 'About',
-    bio1: "I'm a backend developer focused on building APIs that are secure by design, easy to observe in production, and maintainable over time. I work primarily with .NET/C#, TypeScript/NestJS, and Java/Spring Boot.",
+    bio1: "I'm a backend developer focused on building APIs that are secure by design, easy to observe in production, and maintainable over time. I work primarily with .NET/C# on the backend, and build web clients in Angular and TypeScript.",
     bio2: 'My approach is spec-first: I think through failure cases and invariants before writing a line of code. I care about structured logging, correlation IDs, and making systems that behave predictably under pressure.',
   },
   stack: { heading: 'Tech Stack' },
@@ -50,26 +50,21 @@ const en = {
   },
   projects_preview: {
     kicker: '04 / PROJECTS',
-    heading: 'Same domain. Different stacks.',
-    sub: 'Three implementations of the same helpdesk system.',
+    heading: 'From API to interface.',
+    sub: 'A complete helpdesk platform — a .NET backend and the Angular web client built on top of it.',
     view_project: 'View Project',
     view_all: 'View all projects',
     aria_view: 'View',
   },
   projects_page: {
-    kicker: 'PROJECTS · 3 IMPLEMENTATIONS',
-    heading: 'Same domain. Different stacks.',
-    subtitle: 'Same domain. Different stacks. Each one built to demonstrate architecture depth.',
+    kicker: 'PROJECTS · FULL-STACK',
+    heading: 'From API to interface.',
+    subtitle:
+      'A helpdesk platform built end to end: a .NET backend with a ticket state machine, SLA, and auth — and an Angular web client that consumes it.',
     loading: 'Loading projects...',
     view_project: 'View Project',
     aria_view: 'View',
     status: { 'in-progress': 'In Progress', planned: 'Planned', complete: 'Complete' },
-  },
-  compare: {
-    kicker: 'COMPARISON · FEATURE PARITY',
-    heading: 'What each one delivers.',
-    sub: 'All three versions share the same domain.',
-    feature: 'Feature',
   },
   contact: {
     kicker: 'CONTACT',
@@ -114,16 +109,10 @@ const en = {
       description: 'Full description of the .NET project.',
       architectureSummary: 'Clean Architecture summary.',
     },
-    'helpdesk-nestjs': {
-      shortDescription:
-        'Same helpdesk domain reimplemented in TypeScript using NestJS, Fastify, Prisma, and EventEmitter2.',
-      description: 'Full description of the NestJS project.',
-      architectureSummary: 'Modular NestJS architecture summary.',
-    },
-    'helpdesk-java': {
-      shortDescription: 'Java implementation with Spring Boot, JPA, and JUnit 5 test coverage.',
-      description: 'Full description of the Java project.',
-      architectureSummary: 'Spring Boot layered architecture summary.',
+    'helpdesk-web': {
+      shortDescription: 'Angular web client for the .NET helpdesk API.',
+      description: 'Full description of the Angular web client.',
+      architectureSummary: 'Angular SPA architecture summary.',
     },
     'project-a': {
       shortDescription: 'Short A',

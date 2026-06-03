@@ -74,19 +74,4 @@
       }
     </div>
   </section>
-
-  @if (projects().length > 0) {
-    <section class="section" style="padding-top: 0">
-      <div class="container">
-        <div class="sec-head" appReveal>
-          <div class="sec-head__kicker">{{ t('compare.kicker') }}</div>
-          <h2 class="sec-head__title">{{ t('compare.heading') }}</h2>
-          <p class="sec-head__sub">{{ t('compare.sub') }}</p>
-        </div>
-        <div appReveal>
-          <app-projects-compare [projects]="projects()" />
-        </div>
-      </div>
-    </section>
-  }
 </div>

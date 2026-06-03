@@ -11,21 +11,9 @@ import { RevealDirective } from '../../../../shared/directives/reveal.directive'
 })
 export class TechStackSectionComponent {
   readonly categories = [
-    {
-      name: 'Backend',
-      items: ['.NET / C#', 'TypeScript / NestJS', 'Java / Spring Boot'],
-    },
-    {
-      name: 'Data',
-      items: ['PostgreSQL', 'EF Core', 'Prisma'],
-    },
-    {
-      name: 'DevOps',
-      items: ['Docker', 'GitHub Actions'],
-    },
-    {
-      name: 'Testing',
-      items: ['xUnit', 'Vitest', 'JUnit 5', 'TestContainers'],
-    },
+    { name: 'Backend', items: ['.NET / C#', 'EF Core', 'PostgreSQL'] },
+    { name: 'Frontend', items: ['Angular', 'TypeScript', 'RxJS', 'SCSS'] },
+    { name: 'DevOps', items: ['Docker', 'GitHub Actions'] },
+    { name: 'Testing', items: ['xUnit', 'Vitest', 'TestContainers'] },
   ];
 }

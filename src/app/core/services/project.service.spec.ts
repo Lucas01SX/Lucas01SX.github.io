@@ -25,7 +25,7 @@ const mockProjects: Project[] = [
     stack: ['C#'],
     category: 'Backend API',
     status: 'planned',
-    primaryLang: 'Java',
+    primaryLang: '.NET',
     architecture: { summary: 'Arch B', nodes: [], edges: [] },
     links: {},
   },

@@ -36,10 +36,10 @@ const mockProjects: Project[] = [
     title: 'Project 3',
     shortDescription: 'Desc 3',
     description: '',
-    stack: ['Java'],
+    stack: ['Angular'],
     category: 'API',
     status: 'planned',
-    primaryLang: 'Java',
+    primaryLang: 'TypeScript',
     architecture: { summary: '', nodes: [], edges: [] },
     links: {},
   },
@@ -68,9 +68,7 @@ describe('ProjectsPreviewSectionComponent', () => {
   });
 
   it('should render the section heading', () => {
-    expect(compiled.querySelector('h2')?.textContent?.trim()).toBe(
-      'Same domain. Different stacks.',
-    );
+    expect(compiled.querySelector('h2')?.textContent?.trim()).toBe('From API to interface.');
   });
 
   it('should render exactly 3 project cards', () => {

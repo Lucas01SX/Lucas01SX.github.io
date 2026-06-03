@@ -7,7 +7,7 @@
 @use 'styles/tokens';
 @use 'styles/typography';
 @use 'styles/layout';
-@use 'styles/components'; // NEW — shared classes (.btn, .pillar, .proj-card, .compare, etc.)
+@use 'styles/components'; // shared classes (.btn, .pillar, .proj-card, etc.)
 
 *,
 *::before,
