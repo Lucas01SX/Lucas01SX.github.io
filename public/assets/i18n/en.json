@@ -117,12 +117,12 @@
   "projects": {
     "helpdesk-dotnet": {
       "shortDescription": "Helpdesk ticket system built with Modular Monolith, Clean Architecture, EF Core, and PostgreSQL.",
-      "description": "Helpdesk domain built in C# .NET 10 as a Modular Monolith. Implements a ticket state machine (Open → In Progress → Resolved / Cancelled) with role-based access control, SLA deadline tracking, domain events, and structured logging. Refresh token rotation with Argon2id and family invalidation. Auth audit events. 193 tests: 59 unit, 128 integration (TestContainers + real PostgreSQL), 6 architecture. API documentation via Scalar.",
+      "description": "Helpdesk domain built in C# .NET 10 as a Modular Monolith. Implements a ticket state machine (Open → In Progress → Resolved / Cancelled) with role-based access control, SLA deadline tracking, domain events, and structured logging. Refresh token rotation with Argon2id and family invalidation. Auth audit events. In development.",
       "architectureSummary": "Modular Monolith with Clean Architecture per module. Four modules: Tickets (core domain), Identity (auth + sessions), SLA (deadline engine + scoring), Notifications (contracts). Domain layer has zero infrastructure dependencies. State transitions enforced at domain layer only. Use Cases injected directly via DI — no Mediator, no command bus."
     },
     "helpdesk-web": {
       "shortDescription": "Angular web client for the .NET helpdesk API — ticket management, SLA dashboards, and authentication.",
-      "description": "Single-page Angular application that consumes the .NET helpdesk API. Standalone components and signals, typed HTTP services, route guards for role-based access, and a reactive UI for the ticket lifecycle, SLA tracking, and authentication. Currently in design — planned as the front end for the existing .NET backend.",
+      "description": "Single-page Angular application that consumes the .NET helpdesk API. Standalone components and signals, typed HTTP services, route guards for role-based access, and a reactive UI for the ticket lifecycle, SLA tracking, and authentication. In development alongside the .NET backend.",
       "architectureSummary": "Angular SPA with standalone components and signal-based state. Feature pages talk to typed core services over the HTTP client, which calls the .NET API. Router guards enforce role-based access."
     }
   },

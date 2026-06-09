@@ -117,12 +117,12 @@
   "projects": {
     "helpdesk-dotnet": {
       "shortDescription": "Sistema de tickets de helpdesk com Monolito Modular, Clean Architecture, EF Core e PostgreSQL.",
-      "description": "Domínio de helpdesk construído em C# .NET 10 como Monolito Modular. Implementa uma máquina de estados para tickets (Aberto → Em Andamento → Resolvido / Cancelado) com controle de acesso por papel, rastreamento de SLA, eventos de domínio e logging estruturado. Rotação de refresh token com Argon2id e invalidação de família. Auditoria de eventos de autenticação. Documentação da API via Scalar.",
+      "description": "Domínio de helpdesk construído em C# .NET 10 como Monolito Modular. Implementa uma máquina de estados para tickets (Aberto → Em Andamento → Resolvido / Cancelado) com controle de acesso por papel, rastreamento de SLA, eventos de domínio e logging estruturado. Rotação de refresh token com Argon2id e invalidação de família. Auditoria de eventos de autenticação. Em desenvolvimento.",
       "architectureSummary": "Monolito Modular com Clean Architecture por módulo. Quatro módulos: Tickets (domínio principal), Identity (autenticação + sessões), SLA (engine de prazo + pontuação), Notifications (contratos). A camada de domínio não tem dependências de infraestrutura. Transições de estado aplicadas apenas na camada de domínio. Use Cases injetados diretamente via DI — sem Mediator, sem command bus."
     },
     "helpdesk-web": {
       "shortDescription": "Cliente web Angular para a API de helpdesk em .NET — gestão de tickets, painéis de SLA e autenticação.",
-      "description": "Aplicação single-page em Angular que consome a API de helpdesk em .NET. Componentes standalone e signals, serviços HTTP tipados, guards de rota para acesso por papel e uma UI reativa para o ciclo de vida do ticket, acompanhamento de SLA e autenticação. Atualmente em design — planejado como o front-end do backend .NET existente.",
+      "description": "Aplicação single-page em Angular que consome a API de helpdesk em .NET. Componentes standalone e signals, serviços HTTP tipados, guards de rota para acesso por papel e uma UI reativa para o ciclo de vida do ticket, acompanhamento de SLA e autenticação. Em desenvolvimento junto ao backend .NET.",
       "architectureSummary": "SPA Angular com componentes standalone e estado baseado em signals. As páginas de feature conversam com serviços core tipados via HTTP client, que chama a API .NET. Guards de rota aplicam acesso por papel."
     }
   },
