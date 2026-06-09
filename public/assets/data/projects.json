@@ -16,16 +16,10 @@
       "Scalar"
     ],
     "category": "Backend API",
-    "status": "complete",
+    "status": "in-progress",
     "primaryLang": "C#",
     "language": "C#",
     "framework": ".NET",
-    "metrics": [
-      { "value": "193", "label": "metrics.tests" },
-      { "value": "59", "label": "metrics.unit_tests" },
-      { "value": "128", "label": "metrics.integration" },
-      { "value": "6", "label": "metrics.architecture" }
-    ],
     "architecture": {
       "summary": "Modular Monolith with Clean Architecture per module. Four modules: Tickets (core domain), Identity (auth + sessions), SLA (deadline engine + scoring), Notifications (contracts). Domain layer has zero infrastructure dependencies. State transitions enforced at domain layer only. Use Cases injected directly via DI — no Mediator, no command bus.",
       "nodes": [
@@ -64,7 +58,7 @@
     "description": "Single-page Angular application that consumes the .NET helpdesk API. Standalone components and signals, typed HTTP services, route guards for role-based access, and a reactive UI for the ticket lifecycle, SLA tracking, and authentication. Currently in design — planned as the front end for the existing .NET backend.",
     "stack": ["Angular", "TypeScript", "RxJS", "Signals", "SCSS", "Vitest"],
     "category": "Web Client",
-    "status": "planned",
+    "status": "in-progress",
     "primaryLang": "TypeScript",
     "language": "TypeScript",
     "framework": "Angular",
@@ -89,6 +83,6 @@
         ["http", "api"]
       ]
     },
-    "links": {}
+    "links": { "github": "https://github.com/Lucas01SX/helpdesk-web-angular" }
   }
 ]
