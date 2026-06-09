@@ -1,8 +1,17 @@
 # Lucas Santana — Portfolio
 
-Angular 21 portfolio showcasing a full-stack helpdesk platform — a C# .NET backend and an Angular web client.
+Angular 21 portfolio showcasing a full-stack helpdesk platform.
 
 **Live:** https://lucas01sx.github.io
+
+---
+
+## Projects
+
+| Project | Stack | Repo |
+|---|---|---|
+| **Helpdesk API** | C# .NET 10 · ASP.NET Core · EF Core · PostgreSQL | [helpdesk-platform-dotnet](https://github.com/Lucas01SX/helpdesk-platform-dotnet) |
+| **Helpdesk Web** | Angular 21 · TypeScript · SCSS · Signals | [helpdesk-web-angular](https://github.com/Lucas01SX/helpdesk-web-angular) |
 
 ---
 
@@ -10,8 +19,8 @@ Angular 21 portfolio showcasing a full-stack helpdesk platform — a C# .NET bac
 
 - **Framework:** Angular 21 (standalone components, signals)
 - **Language:** TypeScript (strict mode)
-- **Styles:** SCSS + BEM + CSS custom properties design tokens
-- **Tests:** Vitest via `@analogjs/vitest-angular`
+- **Styles:** SCSS + CSS custom properties design tokens
+- **Tests:** Vitest via `@angular/build:unit-test`
 - **CI/CD:** GitHub Actions → GitHub Pages
 
 ---
@@ -39,42 +48,14 @@ npm run build
 
 ## Branching Strategy
 
-This project follows **Gitflow Lite** to demonstrate a professional development workflow:
-
 | Branch | Purpose |
 |---|---|
 | `main` | Production — triggers GitHub Pages deploy |
 | `develop` | Integration — all features merge here first |
 | `feature/*` | Individual feature work branched from `develop` |
-| `hotfix/*` | Critical fixes branched from `main`, merged into both `main` and `develop` |
+| `hotfix/*` | Critical fixes branched from `main` |
 
 **Flow:** `feature/*` → PR → `develop` → PR → `main` → auto-deploy
-
----
-
-## Project Structure
-
-```
-src/app/
-├── core/
-│   ├── models/        ← TypeScript interfaces (Project, etc.)
-│   └── services/      ← ProjectService (HTTP), ThemeService (signals)
-├── features/
-│   ├── home/          ← Landing page with 6 sections
-│   └── projects/      ← Project list + detail with architecture diagrams
-├── layout/            ← Header (theme toggle, nav) and Footer
-└── shared/
-    └── components/    ← ArchDiagramComponent (inline SVG)
-public/
-└── assets/data/
-    └── projects.json  ← Static project catalog
-```
-
----
-
-## Architecture Diagrams
-
-Each project detail page includes an architecture diagram rendered as inline SVG from the project's nodes/edges — no external dependency.
 
 ---
 
