@@ -11,18 +11,18 @@
     "aria_to_dark": "Mudar para tema escuro"
   },
   "hero": {
-    "eyebrow": "BACKEND ENGINEER · DISPONÍVEL PARA PROJETOS",
-    "title": "Desenvolvedor Backend — .NET · Angular · TypeScript",
-    "subtitle": "Construindo APIs seguras por design, observáveis em produção e sustentáveis ao longo do tempo. Spec-first, com testes guiando o design.",
+    "eyebrow": "BACKEND & DEVOPS ENGINEER · DISPONÍVEL PARA PROJETOS",
+    "title": "Analista de Sistemas — Backend .NET · DevOps · Docker · CI/CD",
+    "subtitle": "Desenvolvimento de APIs e microsserviços com .NET 8+ e operações de infraestrutura em produção: Docker, GitLab CI/CD, Grafana e Kong API Gateway.",
     "cta_projects": "Ver Projetos",
     "cta_contact": "Contato"
   },
   "about": {
     "rail_label": "01 / SOBRE",
-    "rail_meta": "Backend\nAPIs · Sistemas Distribuídos\n\nBaseado no Brasil",
+    "rail_meta": "Backend · DevOps\nAPIs · Infraestrutura\n\nBaseado no Brasil",
     "heading": "Sobre",
-    "bio1": "Sou um desenvolvedor backend focado em construir APIs seguras por design, fáceis de observar em produção e sustentáveis ao longo do tempo. Trabalho principalmente com .NET/C# no backend e construo clientes web em Angular e TypeScript.",
-    "bio2": "Minha abordagem é spec-first: penso nos casos de falha e invariantes antes de escrever uma linha de código. Me preocupo com logging estruturado, correlation IDs e sistemas que se comportam de forma previsível sob pressão."
+    "bio1": "Sou um Analista de Sistemas com duplo foco em backend e DevOps. Desenvolvo APIs e microsserviços com .NET 8+/C# e opero infraestrutura em produção com Docker (2+ anos), GitLab CI/CD, Grafana e Kong API Gateway. Uso Linux no dia a dia — máquina pessoal e servidores de produção.",
+    "bio2": "Investiguei e resolvi incidentes de produção, incluindo a redução de consumo de CPU de uma API NestJS de 14% para menos de 3%, e a correção de um vazamento de memória em plugin customizado do Kong API Gateway que reduziu o uso de RAM do servidor de 35% para ~3%. Também construo ferramentas de automação em Python e Bash."
   },
   "stack": {
     "heading": "Stack Tecnológica"
@@ -73,7 +73,7 @@
   "contact": {
     "kicker": "CONTATO",
     "heading": "Vamos conversar.",
-    "sub": "Interessado em colaborar, contratar ou apenas trocar uma ideia sobre arquitetura backend? Respondo em até 48h úteis.",
+    "sub": "Interessado em colaborar, contratar ou trocar uma ideia sobre backend, DevOps ou infraestrutura? Respondo em até 48h úteis.",
     "name": "Nome",
     "name_placeholder": "Como você se chama?",
     "email": "E-mail",
@@ -117,12 +117,12 @@
   "projects": {
     "helpdesk-dotnet": {
       "shortDescription": "Sistema de tickets de helpdesk com Monolito Modular, Clean Architecture, EF Core e PostgreSQL.",
-      "description": "Domínio de helpdesk construído em C# .NET 10 como Monolito Modular. Implementa uma máquina de estados para tickets (Aberto → Em Andamento → Resolvido / Cancelado) com controle de acesso por papel, rastreamento de SLA, eventos de domínio e logging estruturado. Rotação de refresh token com Argon2id e invalidação de família. Auditoria de eventos de autenticação. Em desenvolvimento.",
+      "description": "Domínio de helpdesk construído em C# .NET 10 como Monolito Modular. Implementa uma máquina de estados para tickets (Aberto → Em Andamento → Resolvido / Cancelado) com controle de acesso por papel, rastreamento de SLA, eventos de domínio e logging estruturado. Rotação de refresh token com Argon2id e invalidação de família. Auditoria de eventos de autenticação.",
       "architectureSummary": "Monolito Modular com Clean Architecture por módulo. Quatro módulos: Tickets (domínio principal), Identity (autenticação + sessões), SLA (engine de prazo + pontuação), Notifications (contratos). A camada de domínio não tem dependências de infraestrutura. Transições de estado aplicadas apenas na camada de domínio. Use Cases injetados diretamente via DI — sem Mediator, sem command bus."
     },
     "helpdesk-web": {
       "shortDescription": "Cliente web Angular para a API de helpdesk em .NET — gestão de tickets, painéis de SLA e autenticação.",
-      "description": "Aplicação single-page em Angular que consome a API de helpdesk em .NET. Componentes standalone e signals, serviços HTTP tipados, guards de rota para acesso por papel e uma UI reativa para o ciclo de vida do ticket, acompanhamento de SLA e autenticação. Em desenvolvimento junto ao backend .NET.",
+      "description": "Aplicação single-page em Angular que consome a API de helpdesk em .NET. Componentes standalone e signals, serviços HTTP tipados, guards de rota para acesso por papel e uma UI reativa para o ciclo de vida do ticket, acompanhamento de SLA e autenticação.",
       "architectureSummary": "SPA Angular com componentes standalone e estado baseado em signals. As páginas de feature conversam com serviços core tipados via HTTP client, que chama a API .NET. Guards de rota aplicam acesso por papel."
     }
   },
