@@ -33,5 +33,5 @@ jobs:
       - name: Build
         run: npm run build
 
-      - name: Audit
-        run: npm audit --audit-level=high
+      - name: Audit (runtime deps only — Angular build tools contain unfixable upstream devDep vulns)
+        run: npm audit --audit-level=high --omit=dev
